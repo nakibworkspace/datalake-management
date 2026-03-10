@@ -1,0 +1,2790 @@
+[0m17:32:52.545527 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f01c86e4710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f01c895fda0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f01c85f8d70>]}
+
+
+============================== 17:32:52.549670 | 1e1748ba-2884-474f-bdb7-0c375d26f83a ==============================
+[0m17:32:52.549670 [info ] [MainThread]: Running with dbt=1.8.3
+[0m17:32:52.550562 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '.', 'version_check': 'True', 'debug': 'False', 'log_path': '/home/poridhian/code/datalake-management/project1/dbt_project/logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'target_path': 'None', 'invocation_command': 'dbt run --profiles-dir .', 'send_anonymous_usage_stats': 'True'}
+[0m17:32:52.808162 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '1e1748ba-2884-474f-bdb7-0c375d26f83a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f01ca3bd7c0>]}
+[0m17:32:52.885011 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '1e1748ba-2884-474f-bdb7-0c375d26f83a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f01c83b33b0>]}
+[0m17:32:52.885948 [info ] [MainThread]: Registered adapter: clickhouse=1.8.1
+[0m17:32:52.982642 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m17:32:52.983606 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m17:32:52.984159 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '1e1748ba-2884-474f-bdb7-0c375d26f83a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f01c83b2e70>]}
+[0m17:32:55.253709 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- seeds.nyc_taxi_warehouse.taxi_zone_lookup
+[0m17:32:55.267890 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '1e1748ba-2884-474f-bdb7-0c375d26f83a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f01c80399a0>]}
+[0m17:32:55.420182 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '1e1748ba-2884-474f-bdb7-0c375d26f83a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f01c80046b0>]}
+[0m17:32:55.421289 [info ] [MainThread]: Found 5 models, 16 data tests, 2 sources, 456 macros
+[0m17:32:55.421963 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '1e1748ba-2884-474f-bdb7-0c375d26f83a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f01c8026360>]}
+[0m17:32:55.425329 [info ] [MainThread]: 
+[0m17:32:55.426419 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m17:32:55.436245 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list_'
+[0m17:32:55.466691 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:32:56.264397 [debug] [ThreadPool]: dbt_clickhouse adapter: On list_: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list_"} */
+
+    select name from system.databases
+  ...
+[0m17:32:56.270749 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m17:32:56.456853 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_, now list__analytics)
+[0m17:32:56.474841 [debug] [ThreadPool]: dbt_clickhouse adapter: On list__analytics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list__analytics"} */
+select
+      t.name as name,
+      t.database as schema,
+      multiIf(
+        engine in ('MaterializedView', 'View'), 'view',
+        engine = 'Dictionary', 'dictionary',
+        'table'
+      ) as type,
+      db.engine as db_engine,0 as is_on_cluster
+          from system.tables as t join system.databases as db on t.database = db.name
+        where schema = 'analytics'
+      
+
+  ...
+[0m17:32:56.489048 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m17:32:56.500999 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '1e1748ba-2884-474f-bdb7-0c375d26f83a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f01c40d79e0>]}
+[0m17:32:56.504384 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m17:32:56.505891 [info ] [MainThread]: 
+[0m17:32:56.519667 [debug] [Thread-1 (]: Began running node model.nyc_taxi_warehouse.stg_taxi_trips
+[0m17:32:56.521797 [info ] [Thread-1 (]: 1 of 5 START sql view model `analytics`.`stg_taxi_trips` ....................... [RUN]
+[0m17:32:56.523516 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list__analytics, now model.nyc_taxi_warehouse.stg_taxi_trips)
+[0m17:32:56.524887 [debug] [Thread-1 (]: Began compiling node model.nyc_taxi_warehouse.stg_taxi_trips
+[0m17:32:56.550659 [debug] [Thread-1 (]: Writing injected SQL for node "model.nyc_taxi_warehouse.stg_taxi_trips"
+[0m17:32:56.553127 [debug] [Thread-1 (]: Began executing node model.nyc_taxi_warehouse.stg_taxi_trips
+[0m17:32:56.598806 [debug] [Thread-1 (]: Creating new relation stg_taxi_trips
+[0m17:32:56.615723 [debug] [Thread-1 (]: Writing runtime sql for node "model.nyc_taxi_warehouse.stg_taxi_trips"
+[0m17:32:56.617169 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.stg_taxi_trips: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.stg_taxi_trips"} */
+
+
+  create view `analytics`.`stg_taxi_trips` 
+  
+    
+    
+  as (
+    with source as (
+    select * from `raw`.`taxi_trips`
+),
+
+renamed as (
+    select
+        VendorID                as vendor_id,
+        tpep_pickup_datetime    as pickup_datetime,
+        tpep_dropoff_datetime   as dropoff_datetime,
+        passenger_count,
+        trip_distance,
+        RatecodeID              as ratecode_id,
+        store_and_fwd_flag,
+        PULocationID            as pickup_location_id,
+        DOLocationID            as dropoff_location_id,
+        payment_type,
+        fare_amount,
+        extra,
+        mta_tax,
+        tip_amount,
+        tolls_amount,
+        improvement_surcharge,
+        total_amount,
+        congestion_surcharge,
+        Airport_fee             as airport_fee
+    from source
+)
+
+select * from renamed
+  )
+      
+      
+                    -- end_of_sql
+                    
+                    ...
+[0m17:32:56.631512 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m17:32:56.665742 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1e1748ba-2884-474f-bdb7-0c375d26f83a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f01ca3bc860>]}
+[0m17:32:56.666899 [info ] [Thread-1 (]: 1 of 5 OK created sql view model `analytics`.`stg_taxi_trips` .................. [[32mOK[0m in 0.14s]
+[0m17:32:56.668098 [debug] [Thread-1 (]: Finished running node model.nyc_taxi_warehouse.stg_taxi_trips
+[0m17:32:56.670667 [debug] [Thread-1 (]: Began running node model.nyc_taxi_warehouse.int_taxi_trips_enriched
+[0m17:32:56.671568 [info ] [Thread-1 (]: 2 of 5 START sql table model `analytics`.`int_taxi_trips_enriched` ............. [RUN]
+[0m17:32:56.672403 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.nyc_taxi_warehouse.stg_taxi_trips, now model.nyc_taxi_warehouse.int_taxi_trips_enriched)
+[0m17:32:56.673101 [debug] [Thread-1 (]: Began compiling node model.nyc_taxi_warehouse.int_taxi_trips_enriched
+[0m17:32:56.680164 [debug] [Thread-1 (]: Writing injected SQL for node "model.nyc_taxi_warehouse.int_taxi_trips_enriched"
+[0m17:32:56.681160 [debug] [Thread-1 (]: Began executing node model.nyc_taxi_warehouse.int_taxi_trips_enriched
+[0m17:32:56.701609 [debug] [Thread-1 (]: Creating new relation int_taxi_trips_enriched
+[0m17:32:56.752235 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.int_taxi_trips_enriched: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.int_taxi_trips_enriched"} */
+
+            
+
+    
+        create table `analytics`.`int_taxi_trips_enriched`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            with trips as (
+    select * from `analytics`.`stg_taxi_trips`
+),
+
+pickup_zones as (
+    select
+        LocationID  as location_id,
+        Borough     as borough,
+        Zone        as zone_name
+    from `raw`.`taxi_zones`
+),
+
+dropoff_zones as (
+    select
+        LocationID  as location_id,
+        Borough     as borough,
+        Zone        as zone_name
+    from `raw`.`taxi_zones`
+),
+
+enriched as (
+    select
+        t.vendor_id,
+        t.pickup_datetime,
+        t.dropoff_datetime,
+        t.passenger_count,
+        t.trip_distance,
+        t.ratecode_id,
+        t.payment_type,
+        t.fare_amount,
+        t.tip_amount,
+        t.tolls_amount,
+        t.total_amount,
+        t.congestion_surcharge,
+        t.airport_fee,
+
+        pz.borough    as pickup_borough,
+        pz.zone_name  as pickup_zone,
+        dz.borough    as dropoff_borough,
+        dz.zone_name  as dropoff_zone,
+
+        dateDiff('minute', t.pickup_datetime, t.dropoff_datetime) as trip_duration_minutes,
+        toHour(t.pickup_datetime) as pickup_hour,
+        toDayOfWeek(t.pickup_datetime) as pickup_day_of_week
+
+    from trips t
+    left join pickup_zones pz on t.pickup_location_id = pz.location_id
+    left join dropoff_zones dz on t.dropoff_location_id = dz.location_id
+    where
+        t.fare_amount > 0
+        and t.trip_distance > 0
+        and t.dropoff_datetime > t.pickup_datetime
+)
+
+select * from enriched
+          )
+        ...
+[0m17:32:56.774483 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.02 seconds
+[0m17:32:56.791787 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.int_taxi_trips_enriched: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.int_taxi_trips_enriched"} */
+
+    select name, type from system.columns where table = 'int_taxi_trips_enriched'
+    
+      and database = 'analytics'
+    
+    order by position
+  ...
+[0m17:32:56.799842 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m17:32:56.807986 [debug] [Thread-1 (]: Writing runtime sql for node "model.nyc_taxi_warehouse.int_taxi_trips_enriched"
+[0m17:32:56.809234 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.int_taxi_trips_enriched: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.int_taxi_trips_enriched"} */
+
+  
+    
+    
+    
+        
+        insert into `analytics`.`int_taxi_trips_enriched`
+        ("vendor_id", "pickup_datetime", "dropoff_datetime", "passenger_count", "trip_distance", "ratecode_id", "payment_type", "fare_amount", "tip_amount", "tolls_amount", "total_amount", "congestion_surcharge", "airport_fee", "pickup_borough", "pickup_zone", "dropoff_borough", "dropoff_zone", "trip_duration_minutes", "pickup_hour", "pickup_day_of_week")with trips as (
+    select * from `analytics`.`stg_taxi_trips`
+),
+
+pickup_zones as (
+    select
+        LocationID  as location_id,
+        Borough     as borough,
+        Zone        as zone_name
+    from `raw`.`taxi_zones`
+),
+
+dropoff_zones as (
+    select
+        LocationID  as location_id,
+        Borough     as borough,
+        Zone        as zone_name
+    from `raw`.`taxi_zones`
+),
+
+enriched as (
+    select
+        t.vendor_id,
+        t.pickup_datetime,
+        t.dropoff_datetime,
+        t.passenger_count,
+        t.trip_distance,
+        t.ratecode_id,
+        t.payment_type,
+        t.fare_amount,
+        t.tip_amount,
+        t.tolls_amount,
+        t.total_amount,
+        t.congestion_surcharge,
+        t.airport_fee,
+
+        pz.borough    as pickup_borough,
+        pz.zone_name  as pickup_zone,
+        dz.borough    as dropoff_borough,
+        dz.zone_name  as dropoff_zone,
+
+        dateDiff('minute', t.pickup_datetime, t.dropoff_datetime) as trip_duration_minutes,
+        toHour(t.pickup_datetime) as pickup_hour,
+        toDayOfWeek(t.pickup_datetime) as pickup_day_of_week
+
+    from trips t
+    left join pickup_zones pz on t.pickup_location_id = pz.location_id
+    left join dropoff_zones dz on t.dropoff_location_id = dz.location_id
+    where
+        t.fare_amount > 0
+        and t.trip_distance > 0
+        and t.dropoff_datetime > t.pickup_datetime
+)
+
+select * from enriched
+  ...
+[0m17:33:02.246515 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 5.43 seconds
+[0m17:33:02.264195 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1e1748ba-2884-474f-bdb7-0c375d26f83a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f018b65e5d0>]}
+[0m17:33:02.268001 [info ] [Thread-1 (]: 2 of 5 OK created sql table model `analytics`.`int_taxi_trips_enriched` ........ [[32mOK[0m in 5.59s]
+[0m17:33:02.270594 [debug] [Thread-1 (]: Finished running node model.nyc_taxi_warehouse.int_taxi_trips_enriched
+[0m17:33:02.275430 [debug] [Thread-1 (]: Began running node model.nyc_taxi_warehouse.mart_borough_metrics
+[0m17:33:02.277004 [info ] [Thread-1 (]: 3 of 5 START sql table model `analytics`.`mart_borough_metrics` ................ [RUN]
+[0m17:33:02.278677 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.nyc_taxi_warehouse.int_taxi_trips_enriched, now model.nyc_taxi_warehouse.mart_borough_metrics)
+[0m17:33:02.280004 [debug] [Thread-1 (]: Began compiling node model.nyc_taxi_warehouse.mart_borough_metrics
+[0m17:33:02.292160 [debug] [Thread-1 (]: Writing injected SQL for node "model.nyc_taxi_warehouse.mart_borough_metrics"
+[0m17:33:02.294070 [debug] [Thread-1 (]: Began executing node model.nyc_taxi_warehouse.mart_borough_metrics
+[0m17:33:02.300152 [debug] [Thread-1 (]: Creating new relation mart_borough_metrics
+[0m17:33:02.304199 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_borough_metrics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_borough_metrics"} */
+
+            
+
+    
+        create table `analytics`.`mart_borough_metrics`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            select
+    pickup_borough,
+    count(*)                          as total_trips,
+    round(avg(fare_amount), 2)        as avg_fare,
+    round(avg(tip_amount), 2)         as avg_tip,
+    round(avg(trip_distance), 2)      as avg_distance,
+    round(avg(trip_duration_minutes), 2) as avg_duration_minutes,
+    round(sum(total_amount), 2)       as total_revenue
+from `analytics`.`int_taxi_trips_enriched`
+where pickup_borough != ''
+group by pickup_borough
+order by total_trips desc
+          )
+        ...
+[0m17:33:02.323328 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.02 seconds
+[0m17:33:02.329661 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_borough_metrics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_borough_metrics"} */
+
+    select name, type from system.columns where table = 'mart_borough_metrics'
+    
+      and database = 'analytics'
+    
+    order by position
+  ...
+[0m17:33:02.338204 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m17:33:02.343379 [debug] [Thread-1 (]: Writing runtime sql for node "model.nyc_taxi_warehouse.mart_borough_metrics"
+[0m17:33:02.344918 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_borough_metrics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_borough_metrics"} */
+
+  
+    
+    
+    
+        
+        insert into `analytics`.`mart_borough_metrics`
+        ("pickup_borough", "total_trips", "avg_fare", "avg_tip", "avg_distance", "avg_duration_minutes", "total_revenue")select
+    pickup_borough,
+    count(*)                          as total_trips,
+    round(avg(fare_amount), 2)        as avg_fare,
+    round(avg(tip_amount), 2)         as avg_tip,
+    round(avg(trip_distance), 2)      as avg_distance,
+    round(avg(trip_duration_minutes), 2) as avg_duration_minutes,
+    round(sum(total_amount), 2)       as total_revenue
+from `analytics`.`int_taxi_trips_enriched`
+where pickup_borough != ''
+group by pickup_borough
+order by total_trips desc
+  ...
+[0m17:33:02.508156 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.16 seconds
+[0m17:33:02.512585 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1e1748ba-2884-474f-bdb7-0c375d26f83a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f018b6775f0>]}
+[0m17:33:02.513892 [info ] [Thread-1 (]: 3 of 5 OK created sql table model `analytics`.`mart_borough_metrics` ........... [[32mOK[0m in 0.23s]
+[0m17:33:02.515231 [debug] [Thread-1 (]: Finished running node model.nyc_taxi_warehouse.mart_borough_metrics
+[0m17:33:02.516261 [debug] [Thread-1 (]: Began running node model.nyc_taxi_warehouse.mart_hourly_demand
+[0m17:33:02.517510 [info ] [Thread-1 (]: 4 of 5 START sql table model `analytics`.`mart_hourly_demand` .................. [RUN]
+[0m17:33:02.518488 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.nyc_taxi_warehouse.mart_borough_metrics, now model.nyc_taxi_warehouse.mart_hourly_demand)
+[0m17:33:02.519334 [debug] [Thread-1 (]: Began compiling node model.nyc_taxi_warehouse.mart_hourly_demand
+[0m17:33:02.524996 [debug] [Thread-1 (]: Writing injected SQL for node "model.nyc_taxi_warehouse.mart_hourly_demand"
+[0m17:33:02.526149 [debug] [Thread-1 (]: Began executing node model.nyc_taxi_warehouse.mart_hourly_demand
+[0m17:33:02.529951 [debug] [Thread-1 (]: Creating new relation mart_hourly_demand
+[0m17:33:02.532456 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_hourly_demand: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_hourly_demand"} */
+
+            
+
+    
+        create table `analytics`.`mart_hourly_demand`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            select
+    pickup_hour,
+    count(*)                          as total_trips,
+    round(avg(fare_amount), 2)        as avg_fare,
+    round(avg(tip_amount), 2)         as avg_tip,
+    round(avg(trip_distance), 2)      as avg_distance,
+    round(avg(trip_duration_minutes), 2) as avg_duration_minutes
+from `analytics`.`int_taxi_trips_enriched`
+group by pickup_hour
+order by pickup_hour
+          )
+        ...
+[0m17:33:02.544496 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m17:33:02.549176 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_hourly_demand: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_hourly_demand"} */
+
+    select name, type from system.columns where table = 'mart_hourly_demand'
+    
+      and database = 'analytics'
+    
+    order by position
+  ...
+[0m17:33:02.555172 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m17:33:02.558483 [debug] [Thread-1 (]: Writing runtime sql for node "model.nyc_taxi_warehouse.mart_hourly_demand"
+[0m17:33:02.559639 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_hourly_demand: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_hourly_demand"} */
+
+  
+    
+    
+    
+        
+        insert into `analytics`.`mart_hourly_demand`
+        ("pickup_hour", "total_trips", "avg_fare", "avg_tip", "avg_distance", "avg_duration_minutes")select
+    pickup_hour,
+    count(*)                          as total_trips,
+    round(avg(fare_amount), 2)        as avg_fare,
+    round(avg(tip_amount), 2)         as avg_tip,
+    round(avg(trip_distance), 2)      as avg_distance,
+    round(avg(trip_duration_minutes), 2) as avg_duration_minutes
+from `analytics`.`int_taxi_trips_enriched`
+group by pickup_hour
+order by pickup_hour
+  ...
+[0m17:33:02.626146 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.07 seconds
+[0m17:33:02.629985 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1e1748ba-2884-474f-bdb7-0c375d26f83a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f01904e13d0>]}
+[0m17:33:02.631099 [info ] [Thread-1 (]: 4 of 5 OK created sql table model `analytics`.`mart_hourly_demand` ............. [[32mOK[0m in 0.11s]
+[0m17:33:02.632196 [debug] [Thread-1 (]: Finished running node model.nyc_taxi_warehouse.mart_hourly_demand
+[0m17:33:02.633080 [debug] [Thread-1 (]: Began running node model.nyc_taxi_warehouse.mart_payment_summary
+[0m17:33:02.634137 [info ] [Thread-1 (]: 5 of 5 START sql table model `analytics`.`mart_payment_summary` ................ [RUN]
+[0m17:33:02.634985 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.nyc_taxi_warehouse.mart_hourly_demand, now model.nyc_taxi_warehouse.mart_payment_summary)
+[0m17:33:02.635694 [debug] [Thread-1 (]: Began compiling node model.nyc_taxi_warehouse.mart_payment_summary
+[0m17:33:02.643622 [debug] [Thread-1 (]: Writing injected SQL for node "model.nyc_taxi_warehouse.mart_payment_summary"
+[0m17:33:02.644554 [debug] [Thread-1 (]: Began executing node model.nyc_taxi_warehouse.mart_payment_summary
+[0m17:33:02.647613 [debug] [Thread-1 (]: Creating new relation mart_payment_summary
+[0m17:33:02.649593 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_payment_summary: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_payment_summary"} */
+
+            
+
+    
+        create table `analytics`.`mart_payment_summary`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            select
+    payment_type,
+    case payment_type
+        when 1 then 'Credit Card'
+        when 2 then 'Cash'
+        when 3 then 'No Charge'
+        when 4 then 'Dispute'
+        when 5 then 'Unknown'
+        when 6 then 'Voided Trip'
+        else 'Other'
+    end as payment_type_name,
+    count(*)                          as total_trips,
+    round(sum(total_amount), 2)       as total_revenue,
+    round(avg(fare_amount), 2)        as avg_fare,
+    round(avg(tip_amount), 2)         as avg_tip,
+    round(avg(trip_distance), 2)      as avg_distance
+from `analytics`.`int_taxi_trips_enriched`
+group by payment_type
+order by total_trips desc
+          )
+        ...
+[0m17:33:02.660522 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m17:33:02.664704 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_payment_summary: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_payment_summary"} */
+
+    select name, type from system.columns where table = 'mart_payment_summary'
+    
+      and database = 'analytics'
+    
+    order by position
+  ...
+[0m17:33:02.669940 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m17:33:02.673077 [debug] [Thread-1 (]: Writing runtime sql for node "model.nyc_taxi_warehouse.mart_payment_summary"
+[0m17:33:02.674154 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_payment_summary: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_payment_summary"} */
+
+  
+    
+    
+    
+        
+        insert into `analytics`.`mart_payment_summary`
+        ("payment_type", "payment_type_name", "total_trips", "total_revenue", "avg_fare", "avg_tip", "avg_distance")select
+    payment_type,
+    case payment_type
+        when 1 then 'Credit Card'
+        when 2 then 'Cash'
+        when 3 then 'No Charge'
+        when 4 then 'Dispute'
+        when 5 then 'Unknown'
+        when 6 then 'Voided Trip'
+        else 'Other'
+    end as payment_type_name,
+    count(*)                          as total_trips,
+    round(sum(total_amount), 2)       as total_revenue,
+    round(avg(fare_amount), 2)        as avg_fare,
+    round(avg(tip_amount), 2)         as avg_tip,
+    round(avg(trip_distance), 2)      as avg_distance
+from `analytics`.`int_taxi_trips_enriched`
+group by payment_type
+order by total_trips desc
+  ...
+[0m17:33:02.758468 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.08 seconds
+[0m17:33:02.762096 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1e1748ba-2884-474f-bdb7-0c375d26f83a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f018b6d6c00>]}
+[0m17:33:02.763169 [info ] [Thread-1 (]: 5 of 5 OK created sql table model `analytics`.`mart_payment_summary` ........... [[32mOK[0m in 0.13s]
+[0m17:33:02.764242 [debug] [Thread-1 (]: Finished running node model.nyc_taxi_warehouse.mart_payment_summary
+[0m17:33:02.768583 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:33:02.769778 [debug] [MainThread]: Connection 'model.nyc_taxi_warehouse.mart_payment_summary' was left open.
+[0m17:33:02.770806 [debug] [MainThread]: On model.nyc_taxi_warehouse.mart_payment_summary: Close
+[0m17:33:02.773222 [info ] [MainThread]: 
+[0m17:33:02.774620 [info ] [MainThread]: Finished running 1 view model, 4 table models in 0 hours 0 minutes and 7.35 seconds (7.35s).
+[0m17:33:02.778414 [debug] [MainThread]: Command end result
+[0m17:33:02.844724 [info ] [MainThread]: 
+[0m17:33:02.845595 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m17:33:02.846389 [info ] [MainThread]: 
+[0m17:33:02.847281 [info ] [MainThread]: Done. PASS=5 WARN=0 ERROR=0 SKIP=0 TOTAL=5
+[0m17:33:02.851858 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 10.379279, "process_user_time": 6.617774, "process_kernel_time": 0.592095, "process_mem_max_rss": "190480", "process_out_blocks": "3296", "process_in_blocks": "0"}
+[0m17:33:02.853659 [debug] [MainThread]: Command `dbt run` succeeded at 17:33:02.853285 after 10.38 seconds
+[0m17:33:02.855132 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f01c86e4710>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f01c84b4e30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f01c895e570>]}
+[0m17:33:02.856110 [debug] [MainThread]: Flushing usage events
+[0m17:33:39.451118 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa1a2cacec0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa1a2f1d070>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa1a2cad040>]}
+
+
+============================== 17:33:39.459008 | 9575a621-b35f-4a59-b8bf-129ca5e29fbc ==============================
+[0m17:33:39.459008 [info ] [MainThread]: Running with dbt=1.8.3
+[0m17:33:39.460700 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '.', 'version_check': 'True', 'warn_error': 'None', 'log_path': '/home/poridhian/code/datalake-management/project1/dbt_project/logs', 'debug': 'False', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt test --profiles-dir .', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m17:33:39.762235 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '9575a621-b35f-4a59-b8bf-129ca5e29fbc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa1a3bd4680>]}
+[0m17:33:39.858178 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '9575a621-b35f-4a59-b8bf-129ca5e29fbc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa1a36477d0>]}
+[0m17:33:39.859313 [info ] [MainThread]: Registered adapter: clickhouse=1.8.1
+[0m17:33:39.982619 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m17:33:40.185416 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m17:33:40.186117 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m17:33:40.196776 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- seeds.nyc_taxi_warehouse.taxi_zone_lookup
+[0m17:33:40.259433 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '9575a621-b35f-4a59-b8bf-129ca5e29fbc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa1a27d96a0>]}
+[0m17:33:40.448867 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '9575a621-b35f-4a59-b8bf-129ca5e29fbc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa1a280b140>]}
+[0m17:33:40.449734 [info ] [MainThread]: Found 5 models, 16 data tests, 2 sources, 456 macros
+[0m17:33:40.450450 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '9575a621-b35f-4a59-b8bf-129ca5e29fbc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa1a2378740>]}
+[0m17:33:40.454954 [info ] [MainThread]: 
+[0m17:33:40.456033 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m17:33:40.467234 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list__analytics'
+[0m17:33:40.502430 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:33:41.371985 [debug] [ThreadPool]: dbt_clickhouse adapter: On list__analytics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list__analytics"} */
+select
+      t.name as name,
+      t.database as schema,
+      multiIf(
+        engine in ('MaterializedView', 'View'), 'view',
+        engine = 'Dictionary', 'dictionary',
+        'table'
+      ) as type,
+      db.engine as db_engine,0 as is_on_cluster
+          from system.tables as t join system.databases as db on t.database = db.name
+        where schema = 'analytics'
+      
+
+  ...
+[0m17:33:41.386823 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m17:33:41.431995 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '9575a621-b35f-4a59-b8bf-129ca5e29fbc', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa1a2a213a0>]}
+[0m17:33:41.433881 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m17:33:41.435139 [info ] [MainThread]: 
+[0m17:33:41.442218 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6.62998fdb0e
+[0m17:33:41.443591 [info ] [Thread-1 (]: 1 of 16 START test accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6  [RUN]
+[0m17:33:41.445121 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list__analytics, now test.nyc_taxi_warehouse.accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6.62998fdb0e)
+[0m17:33:41.446477 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6.62998fdb0e
+[0m17:33:41.491919 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6.62998fdb0e"
+[0m17:33:41.493936 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6.62998fdb0e
+[0m17:33:41.529185 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6.62998fdb0e"
+[0m17:33:41.530442 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6.62998fdb0e: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6.62998fdb0e"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with all_values as (
+
+    select
+        payment_type as value_field,
+        count(*) as n_records
+
+    from `analytics`.`stg_taxi_trips`
+    group by payment_type
+
+)
+
+select *
+from all_values
+where value_field not in (
+    '0','1','2','3','4','5','6'
+)
+
+
+
+    ) dbt_internal_test...
+[0m17:33:41.568557 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.04 seconds
+[0m17:33:41.579399 [info ] [Thread-1 (]: 1 of 16 PASS accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6 .. [[32mPASS[0m in 0.13s]
+[0m17:33:41.580723 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6.62998fdb0e
+[0m17:33:41.581634 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_dropoff_borough.6363e42081
+[0m17:33:41.582721 [info ] [Thread-1 (]: 2 of 16 START test not_null_int_taxi_trips_enriched_dropoff_borough ............ [RUN]
+[0m17:33:41.583622 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6.62998fdb0e, now test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_dropoff_borough.6363e42081)
+[0m17:33:41.584398 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_dropoff_borough.6363e42081
+[0m17:33:41.595385 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_dropoff_borough.6363e42081"
+[0m17:33:41.596515 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_dropoff_borough.6363e42081
+[0m17:33:41.599684 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_dropoff_borough.6363e42081"
+[0m17:33:41.601314 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_dropoff_borough.6363e42081: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_dropoff_borough.6363e42081"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select dropoff_borough
+from `analytics`.`int_taxi_trips_enriched`
+where dropoff_borough is null
+
+
+
+    ) dbt_internal_test...
+[0m17:33:41.613067 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m17:33:41.616626 [info ] [Thread-1 (]: 2 of 16 PASS not_null_int_taxi_trips_enriched_dropoff_borough .................. [[32mPASS[0m in 0.03s]
+[0m17:33:41.618097 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_dropoff_borough.6363e42081
+[0m17:33:41.619158 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_pickup_borough.5369b6d7f9
+[0m17:33:41.620309 [info ] [Thread-1 (]: 3 of 16 START test not_null_int_taxi_trips_enriched_pickup_borough ............. [RUN]
+[0m17:33:41.621442 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_dropoff_borough.6363e42081, now test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_pickup_borough.5369b6d7f9)
+[0m17:33:41.622408 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_pickup_borough.5369b6d7f9
+[0m17:33:41.630613 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_pickup_borough.5369b6d7f9"
+[0m17:33:41.631860 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_pickup_borough.5369b6d7f9
+[0m17:33:41.636247 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_pickup_borough.5369b6d7f9"
+[0m17:33:41.637632 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_pickup_borough.5369b6d7f9: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_pickup_borough.5369b6d7f9"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select pickup_borough
+from `analytics`.`int_taxi_trips_enriched`
+where pickup_borough is null
+
+
+
+    ) dbt_internal_test...
+[0m17:33:41.649096 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m17:33:41.652676 [info ] [Thread-1 (]: 3 of 16 PASS not_null_int_taxi_trips_enriched_pickup_borough ................... [[32mPASS[0m in 0.03s]
+[0m17:33:41.654211 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_pickup_borough.5369b6d7f9
+[0m17:33:41.655279 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_mart_borough_metrics_pickup_borough.8f938c7098
+[0m17:33:41.656419 [info ] [Thread-1 (]: 4 of 16 START test not_null_mart_borough_metrics_pickup_borough ................ [RUN]
+[0m17:33:41.657635 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_pickup_borough.5369b6d7f9, now test.nyc_taxi_warehouse.not_null_mart_borough_metrics_pickup_borough.8f938c7098)
+[0m17:33:41.658594 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_mart_borough_metrics_pickup_borough.8f938c7098
+[0m17:33:41.666939 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_mart_borough_metrics_pickup_borough.8f938c7098"
+[0m17:33:41.668585 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_mart_borough_metrics_pickup_borough.8f938c7098
+[0m17:33:41.673347 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_mart_borough_metrics_pickup_borough.8f938c7098"
+[0m17:33:41.674884 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_mart_borough_metrics_pickup_borough.8f938c7098: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_mart_borough_metrics_pickup_borough.8f938c7098"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select pickup_borough
+from `analytics`.`mart_borough_metrics`
+where pickup_borough is null
+
+
+
+    ) dbt_internal_test...
+[0m17:33:41.749941 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.07 seconds
+[0m17:33:41.754811 [info ] [Thread-1 (]: 4 of 16 PASS not_null_mart_borough_metrics_pickup_borough ...................... [[32mPASS[0m in 0.10s]
+[0m17:33:41.756757 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_mart_borough_metrics_pickup_borough.8f938c7098
+[0m17:33:41.758207 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_mart_borough_metrics_total_trips.65c3124da9
+[0m17:33:41.759650 [info ] [Thread-1 (]: 5 of 16 START test not_null_mart_borough_metrics_total_trips ................... [RUN]
+[0m17:33:41.761160 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_mart_borough_metrics_pickup_borough.8f938c7098, now test.nyc_taxi_warehouse.not_null_mart_borough_metrics_total_trips.65c3124da9)
+[0m17:33:41.762484 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_mart_borough_metrics_total_trips.65c3124da9
+[0m17:33:41.774268 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_mart_borough_metrics_total_trips.65c3124da9"
+[0m17:33:41.775889 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_mart_borough_metrics_total_trips.65c3124da9
+[0m17:33:41.781767 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_mart_borough_metrics_total_trips.65c3124da9"
+[0m17:33:41.783438 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_mart_borough_metrics_total_trips.65c3124da9: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_mart_borough_metrics_total_trips.65c3124da9"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select total_trips
+from `analytics`.`mart_borough_metrics`
+where total_trips is null
+
+
+
+    ) dbt_internal_test...
+[0m17:33:41.794735 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m17:33:41.798851 [info ] [Thread-1 (]: 5 of 16 PASS not_null_mart_borough_metrics_total_trips ......................... [[32mPASS[0m in 0.04s]
+[0m17:33:41.800604 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_mart_borough_metrics_total_trips.65c3124da9
+[0m17:33:41.801929 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_mart_hourly_demand_pickup_hour.ba5dc86418
+[0m17:33:41.803392 [info ] [Thread-1 (]: 6 of 16 START test not_null_mart_hourly_demand_pickup_hour ..................... [RUN]
+[0m17:33:41.804838 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_mart_borough_metrics_total_trips.65c3124da9, now test.nyc_taxi_warehouse.not_null_mart_hourly_demand_pickup_hour.ba5dc86418)
+[0m17:33:41.806168 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_mart_hourly_demand_pickup_hour.ba5dc86418
+[0m17:33:41.816223 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_mart_hourly_demand_pickup_hour.ba5dc86418"
+[0m17:33:41.817664 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_mart_hourly_demand_pickup_hour.ba5dc86418
+[0m17:33:41.822557 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_mart_hourly_demand_pickup_hour.ba5dc86418"
+[0m17:33:41.823973 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_mart_hourly_demand_pickup_hour.ba5dc86418: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_mart_hourly_demand_pickup_hour.ba5dc86418"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select pickup_hour
+from `analytics`.`mart_hourly_demand`
+where pickup_hour is null
+
+
+
+    ) dbt_internal_test...
+[0m17:33:41.833694 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m17:33:41.837017 [info ] [Thread-1 (]: 6 of 16 PASS not_null_mart_hourly_demand_pickup_hour ........................... [[32mPASS[0m in 0.03s]
+[0m17:33:41.838540 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_mart_hourly_demand_pickup_hour.ba5dc86418
+[0m17:33:41.839606 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_mart_payment_summary_payment_type_name.1bf9dea6e8
+[0m17:33:41.840766 [info ] [Thread-1 (]: 7 of 16 START test not_null_mart_payment_summary_payment_type_name ............. [RUN]
+[0m17:33:41.841899 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_mart_hourly_demand_pickup_hour.ba5dc86418, now test.nyc_taxi_warehouse.not_null_mart_payment_summary_payment_type_name.1bf9dea6e8)
+[0m17:33:41.842814 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_mart_payment_summary_payment_type_name.1bf9dea6e8
+[0m17:33:41.851319 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_mart_payment_summary_payment_type_name.1bf9dea6e8"
+[0m17:33:41.852900 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_mart_payment_summary_payment_type_name.1bf9dea6e8
+[0m17:33:41.861046 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_mart_payment_summary_payment_type_name.1bf9dea6e8"
+[0m17:33:41.862252 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_mart_payment_summary_payment_type_name.1bf9dea6e8: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_mart_payment_summary_payment_type_name.1bf9dea6e8"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select payment_type_name
+from `analytics`.`mart_payment_summary`
+where payment_type_name is null
+
+
+
+    ) dbt_internal_test...
+[0m17:33:41.871925 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m17:33:41.874969 [info ] [Thread-1 (]: 7 of 16 PASS not_null_mart_payment_summary_payment_type_name ................... [[32mPASS[0m in 0.03s]
+[0m17:33:41.876274 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_mart_payment_summary_payment_type_name.1bf9dea6e8
+[0m17:33:41.877246 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_datetime.4acfe2ebac
+[0m17:33:41.878270 [info ] [Thread-1 (]: 8 of 16 START test not_null_stg_taxi_trips_dropoff_datetime .................... [RUN]
+[0m17:33:41.879211 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_mart_payment_summary_payment_type_name.1bf9dea6e8, now test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_datetime.4acfe2ebac)
+[0m17:33:41.880007 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_datetime.4acfe2ebac
+[0m17:33:41.886810 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_datetime.4acfe2ebac"
+[0m17:33:41.887830 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_datetime.4acfe2ebac
+[0m17:33:41.891293 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_datetime.4acfe2ebac"
+[0m17:33:41.892434 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_datetime.4acfe2ebac: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_datetime.4acfe2ebac"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select dropoff_datetime
+from `analytics`.`stg_taxi_trips`
+where dropoff_datetime is null
+
+
+
+    ) dbt_internal_test...
+[0m17:33:41.908652 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.02 seconds
+[0m17:33:41.911426 [info ] [Thread-1 (]: 8 of 16 PASS not_null_stg_taxi_trips_dropoff_datetime .......................... [[32mPASS[0m in 0.03s]
+[0m17:33:41.912649 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_datetime.4acfe2ebac
+[0m17:33:41.913584 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_location_id.bfbac61211
+[0m17:33:41.914524 [info ] [Thread-1 (]: 9 of 16 START test not_null_stg_taxi_trips_dropoff_location_id ................. [RUN]
+[0m17:33:41.915432 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_datetime.4acfe2ebac, now test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_location_id.bfbac61211)
+[0m17:33:41.920344 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_location_id.bfbac61211
+[0m17:33:41.928883 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_location_id.bfbac61211"
+[0m17:33:41.930013 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_location_id.bfbac61211
+[0m17:33:41.933504 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_location_id.bfbac61211"
+[0m17:33:41.934665 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_location_id.bfbac61211: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_location_id.bfbac61211"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select dropoff_location_id
+from `analytics`.`stg_taxi_trips`
+where dropoff_location_id is null
+
+
+
+    ) dbt_internal_test...
+[0m17:33:41.952731 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.02 seconds
+[0m17:33:41.955714 [info ] [Thread-1 (]: 9 of 16 PASS not_null_stg_taxi_trips_dropoff_location_id ....................... [[32mPASS[0m in 0.04s]
+[0m17:33:41.956992 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_location_id.bfbac61211
+[0m17:33:41.957887 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_payment_type.80d546946a
+[0m17:33:41.958801 [info ] [Thread-1 (]: 10 of 16 START test not_null_stg_taxi_trips_payment_type ....................... [RUN]
+[0m17:33:41.959689 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_location_id.bfbac61211, now test.nyc_taxi_warehouse.not_null_stg_taxi_trips_payment_type.80d546946a)
+[0m17:33:41.960496 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_payment_type.80d546946a
+[0m17:33:41.966857 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_payment_type.80d546946a"
+[0m17:33:41.967793 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_payment_type.80d546946a
+[0m17:33:41.970947 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_payment_type.80d546946a"
+[0m17:33:41.971983 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_stg_taxi_trips_payment_type.80d546946a: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_payment_type.80d546946a"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select payment_type
+from `analytics`.`stg_taxi_trips`
+where payment_type is null
+
+
+
+    ) dbt_internal_test...
+[0m17:33:41.997156 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.02 seconds
+[0m17:33:42.000658 [info ] [Thread-1 (]: 10 of 16 PASS not_null_stg_taxi_trips_payment_type ............................. [[32mPASS[0m in 0.04s]
+[0m17:33:42.002393 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_payment_type.80d546946a
+[0m17:33:42.003468 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_datetime.aff3dfcc22
+[0m17:33:42.004718 [info ] [Thread-1 (]: 11 of 16 START test not_null_stg_taxi_trips_pickup_datetime .................... [RUN]
+[0m17:33:42.005870 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_stg_taxi_trips_payment_type.80d546946a, now test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_datetime.aff3dfcc22)
+[0m17:33:42.006828 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_datetime.aff3dfcc22
+[0m17:33:42.014960 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_datetime.aff3dfcc22"
+[0m17:33:42.016196 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_datetime.aff3dfcc22
+[0m17:33:42.020358 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_datetime.aff3dfcc22"
+[0m17:33:42.021715 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_datetime.aff3dfcc22: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_datetime.aff3dfcc22"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select pickup_datetime
+from `analytics`.`stg_taxi_trips`
+where pickup_datetime is null
+
+
+
+    ) dbt_internal_test...
+[0m17:33:42.038209 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.02 seconds
+[0m17:33:42.043666 [info ] [Thread-1 (]: 11 of 16 PASS not_null_stg_taxi_trips_pickup_datetime .......................... [[32mPASS[0m in 0.04s]
+[0m17:33:42.045847 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_datetime.aff3dfcc22
+[0m17:33:42.047322 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_location_id.8e42a5d81c
+[0m17:33:42.048990 [info ] [Thread-1 (]: 12 of 16 START test not_null_stg_taxi_trips_pickup_location_id ................. [RUN]
+[0m17:33:42.050646 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_datetime.aff3dfcc22, now test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_location_id.8e42a5d81c)
+[0m17:33:42.051873 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_location_id.8e42a5d81c
+[0m17:33:42.062764 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_location_id.8e42a5d81c"
+[0m17:33:42.064388 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_location_id.8e42a5d81c
+[0m17:33:42.070120 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_location_id.8e42a5d81c"
+[0m17:33:42.071929 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_location_id.8e42a5d81c: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_location_id.8e42a5d81c"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select pickup_location_id
+from `analytics`.`stg_taxi_trips`
+where pickup_location_id is null
+
+
+
+    ) dbt_internal_test...
+[0m17:33:42.087544 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m17:33:42.092348 [info ] [Thread-1 (]: 12 of 16 PASS not_null_stg_taxi_trips_pickup_location_id ....................... [[32mPASS[0m in 0.04s]
+[0m17:33:42.094337 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_location_id.8e42a5d81c
+[0m17:33:42.095801 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_vendor_id.f704f52418
+[0m17:33:42.097288 [info ] [Thread-1 (]: 13 of 16 START test not_null_stg_taxi_trips_vendor_id .......................... [RUN]
+[0m17:33:42.098834 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_location_id.8e42a5d81c, now test.nyc_taxi_warehouse.not_null_stg_taxi_trips_vendor_id.f704f52418)
+[0m17:33:42.100094 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_vendor_id.f704f52418
+[0m17:33:42.116463 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_vendor_id.f704f52418"
+[0m17:33:42.118089 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_vendor_id.f704f52418
+[0m17:33:42.123624 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_vendor_id.f704f52418"
+[0m17:33:42.125472 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_stg_taxi_trips_vendor_id.f704f52418: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_vendor_id.f704f52418"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select vendor_id
+from `analytics`.`stg_taxi_trips`
+where vendor_id is null
+
+
+
+    ) dbt_internal_test...
+[0m17:33:42.142800 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.02 seconds
+[0m17:33:42.147579 [info ] [Thread-1 (]: 13 of 16 PASS not_null_stg_taxi_trips_vendor_id ................................ [[32mPASS[0m in 0.05s]
+[0m17:33:42.149671 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_vendor_id.f704f52418
+[0m17:33:42.151092 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.unique_mart_borough_metrics_pickup_borough.5d2eb7c9b0
+[0m17:33:42.152595 [info ] [Thread-1 (]: 14 of 16 START test unique_mart_borough_metrics_pickup_borough ................. [RUN]
+[0m17:33:42.154096 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_stg_taxi_trips_vendor_id.f704f52418, now test.nyc_taxi_warehouse.unique_mart_borough_metrics_pickup_borough.5d2eb7c9b0)
+[0m17:33:42.155341 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.unique_mart_borough_metrics_pickup_borough.5d2eb7c9b0
+[0m17:33:42.172769 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.unique_mart_borough_metrics_pickup_borough.5d2eb7c9b0"
+[0m17:33:42.174385 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.unique_mart_borough_metrics_pickup_borough.5d2eb7c9b0
+[0m17:33:42.179921 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.unique_mart_borough_metrics_pickup_borough.5d2eb7c9b0"
+[0m17:33:42.181784 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.unique_mart_borough_metrics_pickup_borough.5d2eb7c9b0: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.unique_mart_borough_metrics_pickup_borough.5d2eb7c9b0"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    pickup_borough as unique_field,
+    count(*) as n_records
+
+from `analytics`.`mart_borough_metrics`
+where pickup_borough is not null
+group by pickup_borough
+having count(*) > 1
+
+
+
+    ) dbt_internal_test...
+[0m17:33:42.196481 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m17:33:42.201094 [info ] [Thread-1 (]: 14 of 16 PASS unique_mart_borough_metrics_pickup_borough ....................... [[32mPASS[0m in 0.05s]
+[0m17:33:42.203100 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.unique_mart_borough_metrics_pickup_borough.5d2eb7c9b0
+[0m17:33:42.204531 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.unique_mart_hourly_demand_pickup_hour.210a19f487
+[0m17:33:42.206010 [info ] [Thread-1 (]: 15 of 16 START test unique_mart_hourly_demand_pickup_hour ...................... [RUN]
+[0m17:33:42.207465 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.unique_mart_borough_metrics_pickup_borough.5d2eb7c9b0, now test.nyc_taxi_warehouse.unique_mart_hourly_demand_pickup_hour.210a19f487)
+[0m17:33:42.208754 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.unique_mart_hourly_demand_pickup_hour.210a19f487
+[0m17:33:42.219194 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.unique_mart_hourly_demand_pickup_hour.210a19f487"
+[0m17:33:42.220827 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.unique_mart_hourly_demand_pickup_hour.210a19f487
+[0m17:33:42.226928 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.unique_mart_hourly_demand_pickup_hour.210a19f487"
+[0m17:33:42.228697 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.unique_mart_hourly_demand_pickup_hour.210a19f487: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.unique_mart_hourly_demand_pickup_hour.210a19f487"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    pickup_hour as unique_field,
+    count(*) as n_records
+
+from `analytics`.`mart_hourly_demand`
+where pickup_hour is not null
+group by pickup_hour
+having count(*) > 1
+
+
+
+    ) dbt_internal_test...
+[0m17:33:42.243090 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m17:33:42.247793 [info ] [Thread-1 (]: 15 of 16 PASS unique_mart_hourly_demand_pickup_hour ............................ [[32mPASS[0m in 0.04s]
+[0m17:33:42.249890 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.unique_mart_hourly_demand_pickup_hour.210a19f487
+[0m17:33:42.251324 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0
+[0m17:33:42.252818 [info ] [Thread-1 (]: 16 of 16 START test unique_mart_payment_summary_payment_type_name .............. [RUN]
+[0m17:33:42.254322 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.unique_mart_hourly_demand_pickup_hour.210a19f487, now test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0)
+[0m17:33:42.255563 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0
+[0m17:33:42.265970 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0"
+[0m17:33:42.267572 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0
+[0m17:33:42.273272 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0"
+[0m17:33:42.275079 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    payment_type_name as unique_field,
+    count(*) as n_records
+
+from `analytics`.`mart_payment_summary`
+where payment_type_name is not null
+group by payment_type_name
+having count(*) > 1
+
+
+
+    ) dbt_internal_test...
+[0m17:33:42.289666 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m17:33:42.294274 [info ] [Thread-1 (]: 16 of 16 PASS unique_mart_payment_summary_payment_type_name .................... [[32mPASS[0m in 0.04s]
+[0m17:33:42.296243 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0
+[0m17:33:42.301096 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:33:42.302320 [debug] [MainThread]: Connection 'test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0' was left open.
+[0m17:33:42.303475 [debug] [MainThread]: On test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0: Close
+[0m17:33:42.305070 [info ] [MainThread]: 
+[0m17:33:42.306409 [info ] [MainThread]: Finished running 16 data tests in 0 hours 0 minutes and 1.85 seconds (1.85s).
+[0m17:33:42.314928 [debug] [MainThread]: Command end result
+[0m17:33:42.382393 [info ] [MainThread]: 
+[0m17:33:42.383237 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m17:33:42.383972 [info ] [MainThread]: 
+[0m17:33:42.384779 [info ] [MainThread]: Done. PASS=16 WARN=0 ERROR=0 SKIP=0 TOTAL=16
+[0m17:33:42.386696 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": true, "command_wall_clock_time": 3.0067916, "process_user_time": 4.849493, "process_kernel_time": 0.628371, "process_mem_max_rss": "188216", "process_out_blocks": "2496", "process_in_blocks": "0"}
+[0m17:33:42.387658 [debug] [MainThread]: Command `dbt test` succeeded at 17:33:42.387439 after 3.01 seconds
+[0m17:33:42.388433 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa1a2c8b260>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa1a3875430>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa1a2fb6030>]}
+[0m17:33:42.389217 [debug] [MainThread]: Flushing usage events
+[0m18:20:12.882218 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa962a93d70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa963c283e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa96295aa20>]}
+
+
+============================== 18:20:12.886333 | 73124ff8-8241-4ccf-98f3-7eb625f80ced ==============================
+[0m18:20:12.886333 [info ] [MainThread]: Running with dbt=1.8.3
+[0m18:20:12.887130 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '.', 'fail_fast': 'False', 'warn_error': 'None', 'log_path': '/home/poridhian/code/datalake-management/project1/dbt_project/logs', 'debug': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'invocation_command': 'dbt run --profiles-dir .', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m18:20:13.109652 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '73124ff8-8241-4ccf-98f3-7eb625f80ced', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa962763d70>]}
+[0m18:20:13.232390 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '73124ff8-8241-4ccf-98f3-7eb625f80ced', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa962c83b30>]}
+[0m18:20:13.233617 [info ] [MainThread]: Registered adapter: clickhouse=1.8.1
+[0m18:20:13.353229 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m18:20:13.560334 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m18:20:13.561116 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m18:20:13.571967 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- seeds.nyc_taxi_warehouse.taxi_zone_lookup
+[0m18:20:13.636728 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '73124ff8-8241-4ccf-98f3-7eb625f80ced', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa9626df7a0>]}
+[0m18:20:13.796971 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '73124ff8-8241-4ccf-98f3-7eb625f80ced', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa9620cef90>]}
+[0m18:20:13.797677 [info ] [MainThread]: Found 5 models, 16 data tests, 2 sources, 456 macros
+[0m18:20:13.798306 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '73124ff8-8241-4ccf-98f3-7eb625f80ced', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa9624d3350>]}
+[0m18:20:13.801082 [info ] [MainThread]: 
+[0m18:20:13.802003 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m18:20:13.810990 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list_'
+[0m18:20:13.842628 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m18:20:14.651975 [debug] [ThreadPool]: dbt_clickhouse adapter: On list_: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list_"} */
+
+    select name from system.databases
+  ...
+[0m18:20:14.658157 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m18:20:14.704100 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_, now list__analytics)
+[0m18:20:14.715791 [debug] [ThreadPool]: dbt_clickhouse adapter: On list__analytics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list__analytics"} */
+select
+      t.name as name,
+      t.database as schema,
+      multiIf(
+        engine in ('MaterializedView', 'View'), 'view',
+        engine = 'Dictionary', 'dictionary',
+        'table'
+      ) as type,
+      db.engine as db_engine,0 as is_on_cluster
+          from system.tables as t join system.databases as db on t.database = db.name
+        where schema = 'analytics'
+      
+
+  ...
+[0m18:20:14.727956 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:14.732038 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '73124ff8-8241-4ccf-98f3-7eb625f80ced', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa93f415460>]}
+[0m18:20:14.733762 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m18:20:14.734978 [info ] [MainThread]: 
+[0m18:20:14.741867 [debug] [Thread-1 (]: Began running node model.nyc_taxi_warehouse.stg_taxi_trips
+[0m18:20:14.743497 [info ] [Thread-1 (]: 1 of 5 START sql view model `analytics`.`stg_taxi_trips` ....................... [RUN]
+[0m18:20:14.744911 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list__analytics, now model.nyc_taxi_warehouse.stg_taxi_trips)
+[0m18:20:14.746276 [debug] [Thread-1 (]: Began compiling node model.nyc_taxi_warehouse.stg_taxi_trips
+[0m18:20:14.768066 [debug] [Thread-1 (]: Writing injected SQL for node "model.nyc_taxi_warehouse.stg_taxi_trips"
+[0m18:20:14.769724 [debug] [Thread-1 (]: Began executing node model.nyc_taxi_warehouse.stg_taxi_trips
+[0m18:20:14.806753 [debug] [Thread-1 (]: Creating new relation stg_taxi_trips
+[0m18:20:14.824616 [debug] [Thread-1 (]: Writing runtime sql for node "model.nyc_taxi_warehouse.stg_taxi_trips"
+[0m18:20:14.825914 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.stg_taxi_trips: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.stg_taxi_trips"} */
+
+
+  create view `analytics`.`stg_taxi_trips` 
+  
+    
+    
+  as (
+    with source as (
+    select * from `raw`.`taxi_trips`
+),
+
+renamed as (
+    select
+        VendorID                as vendor_id,
+        tpep_pickup_datetime    as pickup_datetime,
+        tpep_dropoff_datetime   as dropoff_datetime,
+        passenger_count,
+        trip_distance,
+        RatecodeID              as ratecode_id,
+        store_and_fwd_flag,
+        PULocationID            as pickup_location_id,
+        DOLocationID            as dropoff_location_id,
+        payment_type,
+        fare_amount,
+        extra,
+        mta_tax,
+        tip_amount,
+        tolls_amount,
+        improvement_surcharge,
+        total_amount,
+        congestion_surcharge,
+        Airport_fee             as airport_fee
+    from source
+)
+
+select * from renamed
+  )
+      
+      
+                    -- end_of_sql
+                    
+                    ...
+[0m18:20:14.837700 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:14.883370 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '73124ff8-8241-4ccf-98f3-7eb625f80ced', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa964660680>]}
+[0m18:20:14.884890 [info ] [Thread-1 (]: 1 of 5 OK created sql view model `analytics`.`stg_taxi_trips` .................. [[32mOK[0m in 0.14s]
+[0m18:20:14.886530 [debug] [Thread-1 (]: Finished running node model.nyc_taxi_warehouse.stg_taxi_trips
+[0m18:20:14.888739 [debug] [Thread-1 (]: Began running node model.nyc_taxi_warehouse.int_taxi_trips_enriched
+[0m18:20:14.889639 [info ] [Thread-1 (]: 2 of 5 START sql table model `analytics`.`int_taxi_trips_enriched` ............. [RUN]
+[0m18:20:14.890512 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.nyc_taxi_warehouse.stg_taxi_trips, now model.nyc_taxi_warehouse.int_taxi_trips_enriched)
+[0m18:20:14.891189 [debug] [Thread-1 (]: Began compiling node model.nyc_taxi_warehouse.int_taxi_trips_enriched
+[0m18:20:14.896463 [debug] [Thread-1 (]: Writing injected SQL for node "model.nyc_taxi_warehouse.int_taxi_trips_enriched"
+[0m18:20:14.897505 [debug] [Thread-1 (]: Began executing node model.nyc_taxi_warehouse.int_taxi_trips_enriched
+[0m18:20:14.919312 [debug] [Thread-1 (]: Creating new relation int_taxi_trips_enriched
+[0m18:20:14.968698 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.int_taxi_trips_enriched: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.int_taxi_trips_enriched"} */
+
+            
+
+    
+        create table `analytics`.`int_taxi_trips_enriched`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            with trips as (
+    select * from `analytics`.`stg_taxi_trips`
+),
+
+pickup_zones as (
+    select
+        LocationID  as location_id,
+        Borough     as borough,
+        Zone        as zone_name
+    from `raw`.`taxi_zones`
+),
+
+dropoff_zones as (
+    select
+        LocationID  as location_id,
+        Borough     as borough,
+        Zone        as zone_name
+    from `raw`.`taxi_zones`
+),
+
+enriched as (
+    select
+        t.vendor_id,
+        t.pickup_datetime,
+        t.dropoff_datetime,
+        t.passenger_count,
+        t.trip_distance,
+        t.ratecode_id,
+        t.payment_type,
+        t.fare_amount,
+        t.tip_amount,
+        t.tolls_amount,
+        t.total_amount,
+        t.congestion_surcharge,
+        t.airport_fee,
+
+        pz.borough    as pickup_borough,
+        pz.zone_name  as pickup_zone,
+        dz.borough    as dropoff_borough,
+        dz.zone_name  as dropoff_zone,
+
+        dateDiff('minute', t.pickup_datetime, t.dropoff_datetime) as trip_duration_minutes,
+        toHour(t.pickup_datetime) as pickup_hour,
+        toDayOfWeek(t.pickup_datetime) as pickup_day_of_week
+
+    from trips t
+    left join pickup_zones pz on t.pickup_location_id = pz.location_id
+    left join dropoff_zones dz on t.dropoff_location_id = dz.location_id
+    where
+        t.fare_amount > 0
+        and t.trip_distance > 0
+        and t.dropoff_datetime > t.pickup_datetime
+)
+
+select * from enriched
+          )
+        ...
+[0m18:20:14.986894 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.02 seconds
+[0m18:20:15.004789 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.int_taxi_trips_enriched: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.int_taxi_trips_enriched"} */
+
+    select name, type from system.columns where table = 'int_taxi_trips_enriched'
+    
+      and database = 'analytics'
+    
+    order by position
+  ...
+[0m18:20:15.013778 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:15.021496 [debug] [Thread-1 (]: Writing runtime sql for node "model.nyc_taxi_warehouse.int_taxi_trips_enriched"
+[0m18:20:15.022671 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.int_taxi_trips_enriched: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.int_taxi_trips_enriched"} */
+
+  
+    
+    
+    
+        
+        insert into `analytics`.`int_taxi_trips_enriched`
+        ("vendor_id", "pickup_datetime", "dropoff_datetime", "passenger_count", "trip_distance", "ratecode_id", "payment_type", "fare_amount", "tip_amount", "tolls_amount", "total_amount", "congestion_surcharge", "airport_fee", "pickup_borough", "pickup_zone", "dropoff_borough", "dropoff_zone", "trip_duration_minutes", "pickup_hour", "pickup_day_of_week")with trips as (
+    select * from `analytics`.`stg_taxi_trips`
+),
+
+pickup_zones as (
+    select
+        LocationID  as location_id,
+        Borough     as borough,
+        Zone        as zone_name
+    from `raw`.`taxi_zones`
+),
+
+dropoff_zones as (
+    select
+        LocationID  as location_id,
+        Borough     as borough,
+        Zone        as zone_name
+    from `raw`.`taxi_zones`
+),
+
+enriched as (
+    select
+        t.vendor_id,
+        t.pickup_datetime,
+        t.dropoff_datetime,
+        t.passenger_count,
+        t.trip_distance,
+        t.ratecode_id,
+        t.payment_type,
+        t.fare_amount,
+        t.tip_amount,
+        t.tolls_amount,
+        t.total_amount,
+        t.congestion_surcharge,
+        t.airport_fee,
+
+        pz.borough    as pickup_borough,
+        pz.zone_name  as pickup_zone,
+        dz.borough    as dropoff_borough,
+        dz.zone_name  as dropoff_zone,
+
+        dateDiff('minute', t.pickup_datetime, t.dropoff_datetime) as trip_duration_minutes,
+        toHour(t.pickup_datetime) as pickup_hour,
+        toDayOfWeek(t.pickup_datetime) as pickup_day_of_week
+
+    from trips t
+    left join pickup_zones pz on t.pickup_location_id = pz.location_id
+    left join dropoff_zones dz on t.dropoff_location_id = dz.location_id
+    where
+        t.fare_amount > 0
+        and t.trip_distance > 0
+        and t.dropoff_datetime > t.pickup_datetime
+)
+
+select * from enriched
+  ...
+[0m18:20:15.061922 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.04 seconds
+[0m18:20:15.066351 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '73124ff8-8241-4ccf-98f3-7eb625f80ced', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa93e6503b0>]}
+[0m18:20:15.067852 [info ] [Thread-1 (]: 2 of 5 OK created sql table model `analytics`.`int_taxi_trips_enriched` ........ [[32mOK[0m in 0.18s]
+[0m18:20:15.069424 [debug] [Thread-1 (]: Finished running node model.nyc_taxi_warehouse.int_taxi_trips_enriched
+[0m18:20:15.072043 [debug] [Thread-1 (]: Began running node model.nyc_taxi_warehouse.mart_borough_metrics
+[0m18:20:15.073462 [info ] [Thread-1 (]: 3 of 5 START sql table model `analytics`.`mart_borough_metrics` ................ [RUN]
+[0m18:20:15.074791 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.nyc_taxi_warehouse.int_taxi_trips_enriched, now model.nyc_taxi_warehouse.mart_borough_metrics)
+[0m18:20:15.075879 [debug] [Thread-1 (]: Began compiling node model.nyc_taxi_warehouse.mart_borough_metrics
+[0m18:20:15.081932 [debug] [Thread-1 (]: Writing injected SQL for node "model.nyc_taxi_warehouse.mart_borough_metrics"
+[0m18:20:15.083285 [debug] [Thread-1 (]: Began executing node model.nyc_taxi_warehouse.mart_borough_metrics
+[0m18:20:15.087550 [debug] [Thread-1 (]: Creating new relation mart_borough_metrics
+[0m18:20:15.090251 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_borough_metrics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_borough_metrics"} */
+
+            
+
+    
+        create table `analytics`.`mart_borough_metrics`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            select
+    pickup_borough,
+    count(*)                          as total_trips,
+    round(avg(fare_amount), 2)        as avg_fare,
+    round(avg(tip_amount), 2)         as avg_tip,
+    round(avg(trip_distance), 2)      as avg_distance,
+    round(avg(trip_duration_minutes), 2) as avg_duration_minutes,
+    round(sum(total_amount), 2)       as total_revenue
+from `analytics`.`int_taxi_trips_enriched`
+where pickup_borough != ''
+group by pickup_borough
+order by total_trips desc
+          )
+        ...
+[0m18:20:15.107123 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.02 seconds
+[0m18:20:15.115699 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_borough_metrics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_borough_metrics"} */
+
+    select name, type from system.columns where table = 'mart_borough_metrics'
+    
+      and database = 'analytics'
+    
+    order by position
+  ...
+[0m18:20:15.124634 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:15.130579 [debug] [Thread-1 (]: Writing runtime sql for node "model.nyc_taxi_warehouse.mart_borough_metrics"
+[0m18:20:15.132708 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_borough_metrics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_borough_metrics"} */
+
+  
+    
+    
+    
+        
+        insert into `analytics`.`mart_borough_metrics`
+        ("pickup_borough", "total_trips", "avg_fare", "avg_tip", "avg_distance", "avg_duration_minutes", "total_revenue")select
+    pickup_borough,
+    count(*)                          as total_trips,
+    round(avg(fare_amount), 2)        as avg_fare,
+    round(avg(tip_amount), 2)         as avg_tip,
+    round(avg(trip_distance), 2)      as avg_distance,
+    round(avg(trip_duration_minutes), 2) as avg_duration_minutes,
+    round(sum(total_amount), 2)       as total_revenue
+from `analytics`.`int_taxi_trips_enriched`
+where pickup_borough != ''
+group by pickup_borough
+order by total_trips desc
+  ...
+[0m18:20:15.146386 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:15.152105 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '73124ff8-8241-4ccf-98f3-7eb625f80ced', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa93e7830e0>]}
+[0m18:20:15.154110 [info ] [Thread-1 (]: 3 of 5 OK created sql table model `analytics`.`mart_borough_metrics` ........... [[32mOK[0m in 0.08s]
+[0m18:20:15.156089 [debug] [Thread-1 (]: Finished running node model.nyc_taxi_warehouse.mart_borough_metrics
+[0m18:20:15.157627 [debug] [Thread-1 (]: Began running node model.nyc_taxi_warehouse.mart_hourly_demand
+[0m18:20:15.159435 [info ] [Thread-1 (]: 4 of 5 START sql table model `analytics`.`mart_hourly_demand` .................. [RUN]
+[0m18:20:15.160966 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.nyc_taxi_warehouse.mart_borough_metrics, now model.nyc_taxi_warehouse.mart_hourly_demand)
+[0m18:20:15.162361 [debug] [Thread-1 (]: Began compiling node model.nyc_taxi_warehouse.mart_hourly_demand
+[0m18:20:15.169975 [debug] [Thread-1 (]: Writing injected SQL for node "model.nyc_taxi_warehouse.mart_hourly_demand"
+[0m18:20:15.171765 [debug] [Thread-1 (]: Began executing node model.nyc_taxi_warehouse.mart_hourly_demand
+[0m18:20:15.177337 [debug] [Thread-1 (]: Creating new relation mart_hourly_demand
+[0m18:20:15.180926 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_hourly_demand: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_hourly_demand"} */
+
+            
+
+    
+        create table `analytics`.`mart_hourly_demand`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            select
+    pickup_hour,
+    count(*)                          as total_trips,
+    round(avg(fare_amount), 2)        as avg_fare,
+    round(avg(tip_amount), 2)         as avg_tip,
+    round(avg(trip_distance), 2)      as avg_distance,
+    round(avg(trip_duration_minutes), 2) as avg_duration_minutes
+from `analytics`.`int_taxi_trips_enriched`
+group by pickup_hour
+order by pickup_hour
+          )
+        ...
+[0m18:20:15.195638 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:15.201985 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_hourly_demand: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_hourly_demand"} */
+
+    select name, type from system.columns where table = 'mart_hourly_demand'
+    
+      and database = 'analytics'
+    
+    order by position
+  ...
+[0m18:20:15.210228 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:15.214965 [debug] [Thread-1 (]: Writing runtime sql for node "model.nyc_taxi_warehouse.mart_hourly_demand"
+[0m18:20:15.216634 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_hourly_demand: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_hourly_demand"} */
+
+  
+    
+    
+    
+        
+        insert into `analytics`.`mart_hourly_demand`
+        ("pickup_hour", "total_trips", "avg_fare", "avg_tip", "avg_distance", "avg_duration_minutes")select
+    pickup_hour,
+    count(*)                          as total_trips,
+    round(avg(fare_amount), 2)        as avg_fare,
+    round(avg(tip_amount), 2)         as avg_tip,
+    round(avg(trip_distance), 2)      as avg_distance,
+    round(avg(trip_duration_minutes), 2) as avg_duration_minutes
+from `analytics`.`int_taxi_trips_enriched`
+group by pickup_hour
+order by pickup_hour
+  ...
+[0m18:20:15.230086 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:15.236071 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '73124ff8-8241-4ccf-98f3-7eb625f80ced', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa93e69a960>]}
+[0m18:20:15.238032 [info ] [Thread-1 (]: 4 of 5 OK created sql table model `analytics`.`mart_hourly_demand` ............. [[32mOK[0m in 0.08s]
+[0m18:20:15.240029 [debug] [Thread-1 (]: Finished running node model.nyc_taxi_warehouse.mart_hourly_demand
+[0m18:20:15.241777 [debug] [Thread-1 (]: Began running node model.nyc_taxi_warehouse.mart_payment_summary
+[0m18:20:15.243571 [info ] [Thread-1 (]: 5 of 5 START sql table model `analytics`.`mart_payment_summary` ................ [RUN]
+[0m18:20:15.245473 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.nyc_taxi_warehouse.mart_hourly_demand, now model.nyc_taxi_warehouse.mart_payment_summary)
+[0m18:20:15.247101 [debug] [Thread-1 (]: Began compiling node model.nyc_taxi_warehouse.mart_payment_summary
+[0m18:20:15.254560 [debug] [Thread-1 (]: Writing injected SQL for node "model.nyc_taxi_warehouse.mart_payment_summary"
+[0m18:20:15.256386 [debug] [Thread-1 (]: Began executing node model.nyc_taxi_warehouse.mart_payment_summary
+[0m18:20:15.262151 [debug] [Thread-1 (]: Creating new relation mart_payment_summary
+[0m18:20:15.265077 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_payment_summary: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_payment_summary"} */
+
+            
+
+    
+        create table `analytics`.`mart_payment_summary`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            select
+    payment_type,
+    case payment_type
+        when 1 then 'Credit Card'
+        when 2 then 'Cash'
+        when 3 then 'No Charge'
+        when 4 then 'Dispute'
+        when 5 then 'Unknown'
+        when 6 then 'Voided Trip'
+        else 'Other'
+    end as payment_type_name,
+    count(*)                          as total_trips,
+    round(sum(total_amount), 2)       as total_revenue,
+    round(avg(fare_amount), 2)        as avg_fare,
+    round(avg(tip_amount), 2)         as avg_tip,
+    round(avg(trip_distance), 2)      as avg_distance
+from `analytics`.`int_taxi_trips_enriched`
+group by payment_type
+order by total_trips desc
+          )
+        ...
+[0m18:20:15.280777 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:15.286804 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_payment_summary: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_payment_summary"} */
+
+    select name, type from system.columns where table = 'mart_payment_summary'
+    
+      and database = 'analytics'
+    
+    order by position
+  ...
+[0m18:20:15.294492 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:15.299518 [debug] [Thread-1 (]: Writing runtime sql for node "model.nyc_taxi_warehouse.mart_payment_summary"
+[0m18:20:15.301274 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_payment_summary: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_payment_summary"} */
+
+  
+    
+    
+    
+        
+        insert into `analytics`.`mart_payment_summary`
+        ("payment_type", "payment_type_name", "total_trips", "total_revenue", "avg_fare", "avg_tip", "avg_distance")select
+    payment_type,
+    case payment_type
+        when 1 then 'Credit Card'
+        when 2 then 'Cash'
+        when 3 then 'No Charge'
+        when 4 then 'Dispute'
+        when 5 then 'Unknown'
+        when 6 then 'Voided Trip'
+        else 'Other'
+    end as payment_type_name,
+    count(*)                          as total_trips,
+    round(sum(total_amount), 2)       as total_revenue,
+    round(avg(fare_amount), 2)        as avg_fare,
+    round(avg(tip_amount), 2)         as avg_tip,
+    round(avg(trip_distance), 2)      as avg_distance
+from `analytics`.`int_taxi_trips_enriched`
+group by payment_type
+order by total_trips desc
+  ...
+[0m18:20:15.314131 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:15.319116 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '73124ff8-8241-4ccf-98f3-7eb625f80ced', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa93ccace30>]}
+[0m18:20:15.320772 [info ] [Thread-1 (]: 5 of 5 OK created sql table model `analytics`.`mart_payment_summary` ........... [[32mOK[0m in 0.07s]
+[0m18:20:15.322857 [debug] [Thread-1 (]: Finished running node model.nyc_taxi_warehouse.mart_payment_summary
+[0m18:20:15.326895 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m18:20:15.328077 [debug] [MainThread]: Connection 'model.nyc_taxi_warehouse.mart_payment_summary' was left open.
+[0m18:20:15.329208 [debug] [MainThread]: On model.nyc_taxi_warehouse.mart_payment_summary: Close
+[0m18:20:15.330882 [info ] [MainThread]: 
+[0m18:20:15.332161 [info ] [MainThread]: Finished running 1 view model, 4 table models in 0 hours 0 minutes and 1.53 seconds (1.53s).
+[0m18:20:15.336130 [debug] [MainThread]: Command end result
+[0m18:20:15.405180 [info ] [MainThread]: 
+[0m18:20:15.406092 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m18:20:15.406853 [info ] [MainThread]: 
+[0m18:20:15.407644 [info ] [MainThread]: Done. PASS=5 WARN=0 ERROR=0 SKIP=0 TOTAL=5
+[0m18:20:15.409451 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 2.5987883, "process_user_time": 4.597584, "process_kernel_time": 0.570724, "process_mem_max_rss": "187360", "process_out_blocks": "2280", "process_in_blocks": "0"}
+[0m18:20:15.410498 [debug] [MainThread]: Command `dbt run` succeeded at 18:20:15.410267 after 2.60 seconds
+[0m18:20:15.411278 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa962a93d70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa93fc56480>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fa93fd4e6c0>]}
+[0m18:20:15.412063 [debug] [MainThread]: Flushing usage events
+[0m18:20:48.571695 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0b956b200>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0b6272a20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0b6270f20>]}
+
+
+============================== 18:20:48.575860 | 50be04cc-6a4a-44b5-8c3d-931480bae0d1 ==============================
+[0m18:20:48.575860 [info ] [MainThread]: Running with dbt=1.8.3
+[0m18:20:48.576612 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '.', 'version_check': 'True', 'debug': 'False', 'log_path': '/home/poridhian/code/datalake-management/project1/dbt_project/logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'introspect': 'True', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'invocation_command': 'dbt test --profiles-dir .', 'send_anonymous_usage_stats': 'True'}
+[0m18:20:48.802012 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '50be04cc-6a4a-44b5-8c3d-931480bae0d1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0b61e0500>]}
+[0m18:20:48.877367 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '50be04cc-6a4a-44b5-8c3d-931480bae0d1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0b5fd4800>]}
+[0m18:20:48.878366 [info ] [MainThread]: Registered adapter: clickhouse=1.8.1
+[0m18:20:48.985879 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m18:20:49.158500 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m18:20:49.159118 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m18:20:49.167616 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- seeds.nyc_taxi_warehouse.taxi_zone_lookup
+[0m18:20:49.218899 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '50be04cc-6a4a-44b5-8c3d-931480bae0d1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0b5ea7380>]}
+[0m18:20:49.374886 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '50be04cc-6a4a-44b5-8c3d-931480bae0d1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0b5db9c10>]}
+[0m18:20:49.375571 [info ] [MainThread]: Found 5 models, 16 data tests, 2 sources, 456 macros
+[0m18:20:49.376310 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '50be04cc-6a4a-44b5-8c3d-931480bae0d1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0b5939940>]}
+[0m18:20:49.379670 [info ] [MainThread]: 
+[0m18:20:49.380503 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m18:20:49.390334 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list__analytics'
+[0m18:20:49.429586 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m18:20:50.292054 [debug] [ThreadPool]: dbt_clickhouse adapter: On list__analytics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list__analytics"} */
+select
+      t.name as name,
+      t.database as schema,
+      multiIf(
+        engine in ('MaterializedView', 'View'), 'view',
+        engine = 'Dictionary', 'dictionary',
+        'table'
+      ) as type,
+      db.engine as db_engine,0 as is_on_cluster
+          from system.tables as t join system.databases as db on t.database = db.name
+        where schema = 'analytics'
+      
+
+  ...
+[0m18:20:50.302914 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:50.355499 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '50be04cc-6a4a-44b5-8c3d-931480bae0d1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0b5901760>]}
+[0m18:20:50.357489 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m18:20:50.358768 [info ] [MainThread]: 
+[0m18:20:50.366406 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6.62998fdb0e
+[0m18:20:50.367906 [info ] [Thread-1 (]: 1 of 16 START test accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6  [RUN]
+[0m18:20:50.369426 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list__analytics, now test.nyc_taxi_warehouse.accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6.62998fdb0e)
+[0m18:20:50.370267 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6.62998fdb0e
+[0m18:20:50.397638 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6.62998fdb0e"
+[0m18:20:50.398862 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6.62998fdb0e
+[0m18:20:50.428599 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6.62998fdb0e"
+[0m18:20:50.429777 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6.62998fdb0e: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6.62998fdb0e"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with all_values as (
+
+    select
+        payment_type as value_field,
+        count(*) as n_records
+
+    from `analytics`.`stg_taxi_trips`
+    group by payment_type
+
+)
+
+select *
+from all_values
+where value_field not in (
+    '0','1','2','3','4','5','6'
+)
+
+
+
+    ) dbt_internal_test...
+[0m18:20:50.445153 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:50.462700 [info ] [Thread-1 (]: 1 of 16 PASS accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6 .. [[32mPASS[0m in 0.09s]
+[0m18:20:50.464840 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6.62998fdb0e
+[0m18:20:50.466541 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_dropoff_borough.6363e42081
+[0m18:20:50.468166 [info ] [Thread-1 (]: 2 of 16 START test not_null_int_taxi_trips_enriched_dropoff_borough ............ [RUN]
+[0m18:20:50.470830 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.accepted_values_stg_taxi_trips_payment_type__0__1__2__3__4__5__6.62998fdb0e, now test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_dropoff_borough.6363e42081)
+[0m18:20:50.472255 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_dropoff_borough.6363e42081
+[0m18:20:50.491954 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_dropoff_borough.6363e42081"
+[0m18:20:50.493673 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_dropoff_borough.6363e42081
+[0m18:20:50.498353 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_dropoff_borough.6363e42081"
+[0m18:20:50.499882 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_dropoff_borough.6363e42081: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_dropoff_borough.6363e42081"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select dropoff_borough
+from `analytics`.`int_taxi_trips_enriched`
+where dropoff_borough is null
+
+
+
+    ) dbt_internal_test...
+[0m18:20:50.509655 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:50.514785 [info ] [Thread-1 (]: 2 of 16 PASS not_null_int_taxi_trips_enriched_dropoff_borough .................. [[32mPASS[0m in 0.04s]
+[0m18:20:50.516798 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_dropoff_borough.6363e42081
+[0m18:20:50.518295 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_pickup_borough.5369b6d7f9
+[0m18:20:50.519885 [info ] [Thread-1 (]: 3 of 16 START test not_null_int_taxi_trips_enriched_pickup_borough ............. [RUN]
+[0m18:20:50.521357 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_dropoff_borough.6363e42081, now test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_pickup_borough.5369b6d7f9)
+[0m18:20:50.522665 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_pickup_borough.5369b6d7f9
+[0m18:20:50.533513 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_pickup_borough.5369b6d7f9"
+[0m18:20:50.535354 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_pickup_borough.5369b6d7f9
+[0m18:20:50.540911 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_pickup_borough.5369b6d7f9"
+[0m18:20:50.542802 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_pickup_borough.5369b6d7f9: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_pickup_borough.5369b6d7f9"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select pickup_borough
+from `analytics`.`int_taxi_trips_enriched`
+where pickup_borough is null
+
+
+
+    ) dbt_internal_test...
+[0m18:20:50.551331 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:50.555380 [info ] [Thread-1 (]: 3 of 16 PASS not_null_int_taxi_trips_enriched_pickup_borough ................... [[32mPASS[0m in 0.03s]
+[0m18:20:50.557202 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_pickup_borough.5369b6d7f9
+[0m18:20:50.558577 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_mart_borough_metrics_pickup_borough.8f938c7098
+[0m18:20:50.559902 [info ] [Thread-1 (]: 4 of 16 START test not_null_mart_borough_metrics_pickup_borough ................ [RUN]
+[0m18:20:50.561193 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_int_taxi_trips_enriched_pickup_borough.5369b6d7f9, now test.nyc_taxi_warehouse.not_null_mart_borough_metrics_pickup_borough.8f938c7098)
+[0m18:20:50.562360 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_mart_borough_metrics_pickup_borough.8f938c7098
+[0m18:20:50.571653 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_mart_borough_metrics_pickup_borough.8f938c7098"
+[0m18:20:50.573131 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_mart_borough_metrics_pickup_borough.8f938c7098
+[0m18:20:50.577962 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_mart_borough_metrics_pickup_borough.8f938c7098"
+[0m18:20:50.579473 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_mart_borough_metrics_pickup_borough.8f938c7098: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_mart_borough_metrics_pickup_borough.8f938c7098"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select pickup_borough
+from `analytics`.`mart_borough_metrics`
+where pickup_borough is null
+
+
+
+    ) dbt_internal_test...
+[0m18:20:50.642526 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.06 seconds
+[0m18:20:50.647804 [info ] [Thread-1 (]: 4 of 16 PASS not_null_mart_borough_metrics_pickup_borough ...................... [[32mPASS[0m in 0.09s]
+[0m18:20:50.650049 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_mart_borough_metrics_pickup_borough.8f938c7098
+[0m18:20:50.651500 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_mart_borough_metrics_total_trips.65c3124da9
+[0m18:20:50.653184 [info ] [Thread-1 (]: 5 of 16 START test not_null_mart_borough_metrics_total_trips ................... [RUN]
+[0m18:20:50.654988 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_mart_borough_metrics_pickup_borough.8f938c7098, now test.nyc_taxi_warehouse.not_null_mart_borough_metrics_total_trips.65c3124da9)
+[0m18:20:50.656730 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_mart_borough_metrics_total_trips.65c3124da9
+[0m18:20:50.668611 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_mart_borough_metrics_total_trips.65c3124da9"
+[0m18:20:50.670496 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_mart_borough_metrics_total_trips.65c3124da9
+[0m18:20:50.676335 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_mart_borough_metrics_total_trips.65c3124da9"
+[0m18:20:50.678384 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_mart_borough_metrics_total_trips.65c3124da9: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_mart_borough_metrics_total_trips.65c3124da9"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select total_trips
+from `analytics`.`mart_borough_metrics`
+where total_trips is null
+
+
+
+    ) dbt_internal_test...
+[0m18:20:50.686693 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:50.691273 [info ] [Thread-1 (]: 5 of 16 PASS not_null_mart_borough_metrics_total_trips ......................... [[32mPASS[0m in 0.04s]
+[0m18:20:50.693315 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_mart_borough_metrics_total_trips.65c3124da9
+[0m18:20:50.694818 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_mart_hourly_demand_pickup_hour.ba5dc86418
+[0m18:20:50.696237 [info ] [Thread-1 (]: 6 of 16 START test not_null_mart_hourly_demand_pickup_hour ..................... [RUN]
+[0m18:20:50.697752 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_mart_borough_metrics_total_trips.65c3124da9, now test.nyc_taxi_warehouse.not_null_mart_hourly_demand_pickup_hour.ba5dc86418)
+[0m18:20:50.698924 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_mart_hourly_demand_pickup_hour.ba5dc86418
+[0m18:20:50.709827 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_mart_hourly_demand_pickup_hour.ba5dc86418"
+[0m18:20:50.711331 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_mart_hourly_demand_pickup_hour.ba5dc86418
+[0m18:20:50.716105 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_mart_hourly_demand_pickup_hour.ba5dc86418"
+[0m18:20:50.717710 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_mart_hourly_demand_pickup_hour.ba5dc86418: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_mart_hourly_demand_pickup_hour.ba5dc86418"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select pickup_hour
+from `analytics`.`mart_hourly_demand`
+where pickup_hour is null
+
+
+
+    ) dbt_internal_test...
+[0m18:20:50.728307 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:50.733239 [info ] [Thread-1 (]: 6 of 16 PASS not_null_mart_hourly_demand_pickup_hour ........................... [[32mPASS[0m in 0.04s]
+[0m18:20:50.735172 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_mart_hourly_demand_pickup_hour.ba5dc86418
+[0m18:20:50.736577 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_mart_payment_summary_payment_type_name.1bf9dea6e8
+[0m18:20:50.738013 [info ] [Thread-1 (]: 7 of 16 START test not_null_mart_payment_summary_payment_type_name ............. [RUN]
+[0m18:20:50.739439 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_mart_hourly_demand_pickup_hour.ba5dc86418, now test.nyc_taxi_warehouse.not_null_mart_payment_summary_payment_type_name.1bf9dea6e8)
+[0m18:20:50.740681 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_mart_payment_summary_payment_type_name.1bf9dea6e8
+[0m18:20:50.752142 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_mart_payment_summary_payment_type_name.1bf9dea6e8"
+[0m18:20:50.753969 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_mart_payment_summary_payment_type_name.1bf9dea6e8
+[0m18:20:50.764035 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_mart_payment_summary_payment_type_name.1bf9dea6e8"
+[0m18:20:50.766010 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_mart_payment_summary_payment_type_name.1bf9dea6e8: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_mart_payment_summary_payment_type_name.1bf9dea6e8"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select payment_type_name
+from `analytics`.`mart_payment_summary`
+where payment_type_name is null
+
+
+
+    ) dbt_internal_test...
+[0m18:20:50.776201 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:50.781148 [info ] [Thread-1 (]: 7 of 16 PASS not_null_mart_payment_summary_payment_type_name ................... [[32mPASS[0m in 0.04s]
+[0m18:20:50.783219 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_mart_payment_summary_payment_type_name.1bf9dea6e8
+[0m18:20:50.784850 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_datetime.4acfe2ebac
+[0m18:20:50.786456 [info ] [Thread-1 (]: 8 of 16 START test not_null_stg_taxi_trips_dropoff_datetime .................... [RUN]
+[0m18:20:50.787979 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_mart_payment_summary_payment_type_name.1bf9dea6e8, now test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_datetime.4acfe2ebac)
+[0m18:20:50.789328 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_datetime.4acfe2ebac
+[0m18:20:50.800816 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_datetime.4acfe2ebac"
+[0m18:20:50.802728 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_datetime.4acfe2ebac
+[0m18:20:50.808500 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_datetime.4acfe2ebac"
+[0m18:20:50.810294 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_datetime.4acfe2ebac: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_datetime.4acfe2ebac"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select dropoff_datetime
+from `analytics`.`stg_taxi_trips`
+where dropoff_datetime is null
+
+
+
+    ) dbt_internal_test...
+[0m18:20:50.823422 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:50.827475 [info ] [Thread-1 (]: 8 of 16 PASS not_null_stg_taxi_trips_dropoff_datetime .......................... [[32mPASS[0m in 0.04s]
+[0m18:20:50.829295 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_datetime.4acfe2ebac
+[0m18:20:50.830671 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_location_id.bfbac61211
+[0m18:20:50.831951 [info ] [Thread-1 (]: 9 of 16 START test not_null_stg_taxi_trips_dropoff_location_id ................. [RUN]
+[0m18:20:50.833193 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_datetime.4acfe2ebac, now test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_location_id.bfbac61211)
+[0m18:20:50.834355 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_location_id.bfbac61211
+[0m18:20:50.843435 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_location_id.bfbac61211"
+[0m18:20:50.845676 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_location_id.bfbac61211
+[0m18:20:50.850628 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_location_id.bfbac61211"
+[0m18:20:50.852146 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_location_id.bfbac61211: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_location_id.bfbac61211"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select dropoff_location_id
+from `analytics`.`stg_taxi_trips`
+where dropoff_location_id is null
+
+
+
+    ) dbt_internal_test...
+[0m18:20:50.864720 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:50.868251 [info ] [Thread-1 (]: 9 of 16 PASS not_null_stg_taxi_trips_dropoff_location_id ....................... [[32mPASS[0m in 0.04s]
+[0m18:20:50.869837 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_location_id.bfbac61211
+[0m18:20:50.871160 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_payment_type.80d546946a
+[0m18:20:50.872341 [info ] [Thread-1 (]: 10 of 16 START test not_null_stg_taxi_trips_payment_type ....................... [RUN]
+[0m18:20:50.873538 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_stg_taxi_trips_dropoff_location_id.bfbac61211, now test.nyc_taxi_warehouse.not_null_stg_taxi_trips_payment_type.80d546946a)
+[0m18:20:50.874477 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_payment_type.80d546946a
+[0m18:20:50.882648 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_payment_type.80d546946a"
+[0m18:20:50.883954 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_payment_type.80d546946a
+[0m18:20:50.888077 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_payment_type.80d546946a"
+[0m18:20:50.889453 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_stg_taxi_trips_payment_type.80d546946a: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_payment_type.80d546946a"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select payment_type
+from `analytics`.`stg_taxi_trips`
+where payment_type is null
+
+
+
+    ) dbt_internal_test...
+[0m18:20:50.901041 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:50.904100 [info ] [Thread-1 (]: 10 of 16 PASS not_null_stg_taxi_trips_payment_type ............................. [[32mPASS[0m in 0.03s]
+[0m18:20:50.905437 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_payment_type.80d546946a
+[0m18:20:50.906583 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_datetime.aff3dfcc22
+[0m18:20:50.907641 [info ] [Thread-1 (]: 11 of 16 START test not_null_stg_taxi_trips_pickup_datetime .................... [RUN]
+[0m18:20:50.908759 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_stg_taxi_trips_payment_type.80d546946a, now test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_datetime.aff3dfcc22)
+[0m18:20:50.909804 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_datetime.aff3dfcc22
+[0m18:20:50.917171 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_datetime.aff3dfcc22"
+[0m18:20:50.918605 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_datetime.aff3dfcc22
+[0m18:20:50.922368 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_datetime.aff3dfcc22"
+[0m18:20:50.923930 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_datetime.aff3dfcc22: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_datetime.aff3dfcc22"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select pickup_datetime
+from `analytics`.`stg_taxi_trips`
+where pickup_datetime is null
+
+
+
+    ) dbt_internal_test...
+[0m18:20:50.932368 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:50.935189 [info ] [Thread-1 (]: 11 of 16 PASS not_null_stg_taxi_trips_pickup_datetime .......................... [[32mPASS[0m in 0.03s]
+[0m18:20:50.936578 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_datetime.aff3dfcc22
+[0m18:20:50.937582 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_location_id.8e42a5d81c
+[0m18:20:50.938536 [info ] [Thread-1 (]: 12 of 16 START test not_null_stg_taxi_trips_pickup_location_id ................. [RUN]
+[0m18:20:50.939502 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_datetime.aff3dfcc22, now test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_location_id.8e42a5d81c)
+[0m18:20:50.940374 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_location_id.8e42a5d81c
+[0m18:20:50.946858 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_location_id.8e42a5d81c"
+[0m18:20:50.948180 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_location_id.8e42a5d81c
+[0m18:20:50.951547 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_location_id.8e42a5d81c"
+[0m18:20:50.952894 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_location_id.8e42a5d81c: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_location_id.8e42a5d81c"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select pickup_location_id
+from `analytics`.`stg_taxi_trips`
+where pickup_location_id is null
+
+
+
+    ) dbt_internal_test...
+[0m18:20:50.966068 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:50.968728 [info ] [Thread-1 (]: 12 of 16 PASS not_null_stg_taxi_trips_pickup_location_id ....................... [[32mPASS[0m in 0.03s]
+[0m18:20:50.970677 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_location_id.8e42a5d81c
+[0m18:20:50.971919 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_vendor_id.f704f52418
+[0m18:20:50.973169 [info ] [Thread-1 (]: 13 of 16 START test not_null_stg_taxi_trips_vendor_id .......................... [RUN]
+[0m18:20:50.974495 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_stg_taxi_trips_pickup_location_id.8e42a5d81c, now test.nyc_taxi_warehouse.not_null_stg_taxi_trips_vendor_id.f704f52418)
+[0m18:20:50.975572 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_vendor_id.f704f52418
+[0m18:20:50.988024 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_vendor_id.f704f52418"
+[0m18:20:50.989709 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_vendor_id.f704f52418
+[0m18:20:50.994340 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_vendor_id.f704f52418"
+[0m18:20:50.996246 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_stg_taxi_trips_vendor_id.f704f52418: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_stg_taxi_trips_vendor_id.f704f52418"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select vendor_id
+from `analytics`.`stg_taxi_trips`
+where vendor_id is null
+
+
+
+    ) dbt_internal_test...
+[0m18:20:51.005066 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:51.007730 [info ] [Thread-1 (]: 13 of 16 PASS not_null_stg_taxi_trips_vendor_id ................................ [[32mPASS[0m in 0.03s]
+[0m18:20:51.008878 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_stg_taxi_trips_vendor_id.f704f52418
+[0m18:20:51.009741 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.unique_mart_borough_metrics_pickup_borough.5d2eb7c9b0
+[0m18:20:51.010635 [info ] [Thread-1 (]: 14 of 16 START test unique_mart_borough_metrics_pickup_borough ................. [RUN]
+[0m18:20:51.011467 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_stg_taxi_trips_vendor_id.f704f52418, now test.nyc_taxi_warehouse.unique_mart_borough_metrics_pickup_borough.5d2eb7c9b0)
+[0m18:20:51.012201 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.unique_mart_borough_metrics_pickup_borough.5d2eb7c9b0
+[0m18:20:51.026733 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.unique_mart_borough_metrics_pickup_borough.5d2eb7c9b0"
+[0m18:20:51.028261 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.unique_mart_borough_metrics_pickup_borough.5d2eb7c9b0
+[0m18:20:51.032823 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.unique_mart_borough_metrics_pickup_borough.5d2eb7c9b0"
+[0m18:20:51.033938 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.unique_mart_borough_metrics_pickup_borough.5d2eb7c9b0: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.unique_mart_borough_metrics_pickup_borough.5d2eb7c9b0"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    pickup_borough as unique_field,
+    count(*) as n_records
+
+from `analytics`.`mart_borough_metrics`
+where pickup_borough is not null
+group by pickup_borough
+having count(*) > 1
+
+
+
+    ) dbt_internal_test...
+[0m18:20:51.042054 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:51.044588 [info ] [Thread-1 (]: 14 of 16 PASS unique_mart_borough_metrics_pickup_borough ....................... [[32mPASS[0m in 0.03s]
+[0m18:20:51.045716 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.unique_mart_borough_metrics_pickup_borough.5d2eb7c9b0
+[0m18:20:51.046500 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.unique_mart_hourly_demand_pickup_hour.210a19f487
+[0m18:20:51.047377 [info ] [Thread-1 (]: 15 of 16 START test unique_mart_hourly_demand_pickup_hour ...................... [RUN]
+[0m18:20:51.048308 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.unique_mart_borough_metrics_pickup_borough.5d2eb7c9b0, now test.nyc_taxi_warehouse.unique_mart_hourly_demand_pickup_hour.210a19f487)
+[0m18:20:51.048988 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.unique_mart_hourly_demand_pickup_hour.210a19f487
+[0m18:20:51.054712 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.unique_mart_hourly_demand_pickup_hour.210a19f487"
+[0m18:20:51.055643 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.unique_mart_hourly_demand_pickup_hour.210a19f487
+[0m18:20:51.058774 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.unique_mart_hourly_demand_pickup_hour.210a19f487"
+[0m18:20:51.059839 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.unique_mart_hourly_demand_pickup_hour.210a19f487: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.unique_mart_hourly_demand_pickup_hour.210a19f487"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    pickup_hour as unique_field,
+    count(*) as n_records
+
+from `analytics`.`mart_hourly_demand`
+where pickup_hour is not null
+group by pickup_hour
+having count(*) > 1
+
+
+
+    ) dbt_internal_test...
+[0m18:20:51.069339 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:51.071881 [info ] [Thread-1 (]: 15 of 16 PASS unique_mart_hourly_demand_pickup_hour ............................ [[32mPASS[0m in 0.02s]
+[0m18:20:51.072947 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.unique_mart_hourly_demand_pickup_hour.210a19f487
+[0m18:20:51.073823 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0
+[0m18:20:51.074665 [info ] [Thread-1 (]: 16 of 16 START test unique_mart_payment_summary_payment_type_name .............. [RUN]
+[0m18:20:51.075468 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.unique_mart_hourly_demand_pickup_hour.210a19f487, now test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0)
+[0m18:20:51.076181 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0
+[0m18:20:51.081925 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0"
+[0m18:20:51.082870 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0
+[0m18:20:51.085983 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0"
+[0m18:20:51.087013 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    payment_type_name as unique_field,
+    count(*) as n_records
+
+from `analytics`.`mart_payment_summary`
+where payment_type_name is not null
+group by payment_type_name
+having count(*) > 1
+
+
+
+    ) dbt_internal_test...
+[0m18:20:51.094048 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:20:51.097498 [info ] [Thread-1 (]: 16 of 16 PASS unique_mart_payment_summary_payment_type_name .................... [[32mPASS[0m in 0.02s]
+[0m18:20:51.098839 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0
+[0m18:20:51.102094 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m18:20:51.102823 [debug] [MainThread]: Connection 'test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0' was left open.
+[0m18:20:51.103596 [debug] [MainThread]: On test.nyc_taxi_warehouse.unique_mart_payment_summary_payment_type_name.56f6d633b0: Close
+[0m18:20:51.104639 [info ] [MainThread]: 
+[0m18:20:51.105564 [info ] [MainThread]: Finished running 16 data tests in 0 hours 0 minutes and 1.72 seconds (1.72s).
+[0m18:20:51.111775 [debug] [MainThread]: Command end result
+[0m18:20:51.166936 [info ] [MainThread]: 
+[0m18:20:51.167850 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m18:20:51.168665 [info ] [MainThread]: 
+[0m18:20:51.169607 [info ] [MainThread]: Done. PASS=16 WARN=0 ERROR=0 SKIP=0 TOTAL=16
+[0m18:20:51.171192 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": true, "command_wall_clock_time": 2.6678393, "process_user_time": 4.44461, "process_kernel_time": 0.651028, "process_mem_max_rss": "187692", "process_out_blocks": "2496", "process_in_blocks": "0"}
+[0m18:20:51.172127 [debug] [MainThread]: Command `dbt test` succeeded at 18:20:51.171926 after 2.67 seconds
+[0m18:20:51.172954 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0b9efb3e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0b70e9160>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fc0b70e9700>]}
+[0m18:20:51.173858 [debug] [MainThread]: Flushing usage events
+[0m18:24:33.304760 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe5b7a6d370>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe5b86e8b00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe5b7a6ce90>]}
+
+
+============================== 18:24:33.309072 | aae30554-ce25-405b-9894-4a35b532eaf8 ==============================
+[0m18:24:33.309072 [info ] [MainThread]: Running with dbt=1.8.3
+[0m18:24:33.309997 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'profiles_dir': '.', 'log_path': '/home/poridhian/code/datalake-management/project1/dbt_project/logs', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'invocation_command': 'dbt run --profiles-dir .', 'static_parser': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m18:24:33.541978 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'aae30554-ce25-405b-9894-4a35b532eaf8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe5b797c260>]}
+[0m18:24:33.619862 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'aae30554-ce25-405b-9894-4a35b532eaf8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe5b7a6d370>]}
+[0m18:24:33.620846 [info ] [MainThread]: Registered adapter: clickhouse=1.8.1
+[0m18:24:33.783873 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m18:24:33.989960 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m18:24:33.990660 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m18:24:34.001767 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- seeds.nyc_taxi_warehouse.taxi_zone_lookup
+[0m18:24:34.065918 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'aae30554-ce25-405b-9894-4a35b532eaf8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe5b7a4a4e0>]}
+[0m18:24:34.233593 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'aae30554-ce25-405b-9894-4a35b532eaf8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe5b72d8a70>]}
+[0m18:24:34.234417 [info ] [MainThread]: Found 5 models, 16 data tests, 2 sources, 456 macros
+[0m18:24:34.235097 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'aae30554-ce25-405b-9894-4a35b532eaf8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe5b7f7d730>]}
+[0m18:24:34.238808 [info ] [MainThread]: 
+[0m18:24:34.239914 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m18:24:34.250425 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list_'
+[0m18:24:34.283106 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m18:24:35.164248 [debug] [ThreadPool]: dbt_clickhouse adapter: On list_: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list_"} */
+
+    select name from system.databases
+  ...
+[0m18:24:35.170548 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m18:24:35.218729 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_, now list__analytics)
+[0m18:24:35.231975 [debug] [ThreadPool]: dbt_clickhouse adapter: On list__analytics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list__analytics"} */
+select
+      t.name as name,
+      t.database as schema,
+      multiIf(
+        engine in ('MaterializedView', 'View'), 'view',
+        engine = 'Dictionary', 'dictionary',
+        'table'
+      ) as type,
+      db.engine as db_engine,0 as is_on_cluster
+          from system.tables as t join system.databases as db on t.database = db.name
+        where schema = 'analytics'
+      
+
+  ...
+[0m18:24:35.244262 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:24:35.250687 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'aae30554-ce25-405b-9894-4a35b532eaf8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe5b98d9670>]}
+[0m18:24:35.252555 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m18:24:35.253866 [info ] [MainThread]: 
+[0m18:24:35.260736 [debug] [Thread-1 (]: Began running node model.nyc_taxi_warehouse.stg_taxi_trips
+[0m18:24:35.262448 [info ] [Thread-1 (]: 1 of 5 START sql view model `analytics`.`stg_taxi_trips` ....................... [RUN]
+[0m18:24:35.264477 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list__analytics, now model.nyc_taxi_warehouse.stg_taxi_trips)
+[0m18:24:35.265856 [debug] [Thread-1 (]: Began compiling node model.nyc_taxi_warehouse.stg_taxi_trips
+[0m18:24:35.288434 [debug] [Thread-1 (]: Writing injected SQL for node "model.nyc_taxi_warehouse.stg_taxi_trips"
+[0m18:24:35.290473 [debug] [Thread-1 (]: Began executing node model.nyc_taxi_warehouse.stg_taxi_trips
+[0m18:24:35.369934 [debug] [Thread-1 (]: Writing runtime sql for node "model.nyc_taxi_warehouse.stg_taxi_trips"
+[0m18:24:35.371131 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.stg_taxi_trips: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.stg_taxi_trips"} */
+
+
+  create view `analytics`.`stg_taxi_trips__dbt_tmp` 
+  
+    
+    
+  as (
+    with source as (
+    select * from `raw`.`taxi_trips`
+),
+
+renamed as (
+    select
+        VendorID                as vendor_id,
+        tpep_pickup_datetime    as pickup_datetime,
+        tpep_dropoff_datetime   as dropoff_datetime,
+        passenger_count,
+        trip_distance,
+        RatecodeID              as ratecode_id,
+        store_and_fwd_flag,
+        PULocationID            as pickup_location_id,
+        DOLocationID            as dropoff_location_id,
+        payment_type,
+        fare_amount,
+        extra,
+        mta_tax,
+        tip_amount,
+        tolls_amount,
+        improvement_surcharge,
+        total_amount,
+        congestion_surcharge,
+        Airport_fee             as airport_fee
+    from source
+)
+
+select * from renamed
+  )
+      
+      
+                    -- end_of_sql
+                    
+                    ...
+[0m18:24:35.384139 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:24:35.394896 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.stg_taxi_trips: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.stg_taxi_trips"} */
+
+    drop table if exists `analytics`.`stg_taxi_trips__dbt_backup` 
+  
+  ...
+[0m18:24:35.398856 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m18:24:35.401089 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.stg_taxi_trips: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.stg_taxi_trips"} */
+
+    rename table `analytics`.`stg_taxi_trips` to `analytics`.`stg_taxi_trips__dbt_backup` 
+  
+  ...
+[0m18:24:35.405296 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m18:24:35.410821 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.stg_taxi_trips: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.stg_taxi_trips"} */
+
+    drop table if exists `analytics`.`stg_taxi_trips` 
+  
+  ...
+[0m18:24:35.415024 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m18:24:35.417127 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.stg_taxi_trips: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.stg_taxi_trips"} */
+
+    rename table `analytics`.`stg_taxi_trips__dbt_tmp` to `analytics`.`stg_taxi_trips` 
+  
+  ...
+[0m18:24:35.421837 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m18:24:35.489253 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.stg_taxi_trips: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.stg_taxi_trips"} */
+
+    drop table if exists `analytics`.`stg_taxi_trips__dbt_backup` 
+  ...
+[0m18:24:35.494123 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m18:24:35.509088 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'aae30554-ce25-405b-9894-4a35b532eaf8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe5b9884710>]}
+[0m18:24:35.511139 [info ] [Thread-1 (]: 1 of 5 OK created sql view model `analytics`.`stg_taxi_trips` .................. [[32mOK[0m in 0.24s]
+[0m18:24:35.513180 [debug] [Thread-1 (]: Finished running node model.nyc_taxi_warehouse.stg_taxi_trips
+[0m18:24:35.515783 [debug] [Thread-1 (]: Began running node model.nyc_taxi_warehouse.int_taxi_trips_enriched
+[0m18:24:35.517933 [info ] [Thread-1 (]: 2 of 5 START sql table model `analytics`.`int_taxi_trips_enriched` ............. [RUN]
+[0m18:24:35.519858 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.nyc_taxi_warehouse.stg_taxi_trips, now model.nyc_taxi_warehouse.int_taxi_trips_enriched)
+[0m18:24:35.521449 [debug] [Thread-1 (]: Began compiling node model.nyc_taxi_warehouse.int_taxi_trips_enriched
+[0m18:24:35.530538 [debug] [Thread-1 (]: Writing injected SQL for node "model.nyc_taxi_warehouse.int_taxi_trips_enriched"
+[0m18:24:35.532522 [debug] [Thread-1 (]: Began executing node model.nyc_taxi_warehouse.int_taxi_trips_enriched
+[0m18:24:35.631500 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.int_taxi_trips_enriched: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.int_taxi_trips_enriched"} */
+
+            
+
+    
+        create table `analytics`.`int_taxi_trips_enriched__dbt_backup`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            with trips as (
+    select * from `analytics`.`stg_taxi_trips`
+),
+
+pickup_zones as (
+    select
+        LocationID  as location_id,
+        Borough     as borough,
+        Zone        as zone_name
+    from `raw`.`taxi_zones`
+),
+
+dropoff_zones as (
+    select
+        LocationID  as location_id,
+        Borough     as borough,
+        Zone        as zone_name
+    from `raw`.`taxi_zones`
+),
+
+enriched as (
+    select
+        t.vendor_id,
+        t.pickup_datetime,
+        t.dropoff_datetime,
+        t.passenger_count,
+        t.trip_distance,
+        t.ratecode_id,
+        t.payment_type,
+        t.fare_amount,
+        t.tip_amount,
+        t.tolls_amount,
+        t.total_amount,
+        t.congestion_surcharge,
+        t.airport_fee,
+
+        pz.borough    as pickup_borough,
+        pz.zone_name  as pickup_zone,
+        dz.borough    as dropoff_borough,
+        dz.zone_name  as dropoff_zone,
+
+        dateDiff('minute', t.pickup_datetime, t.dropoff_datetime) as trip_duration_minutes,
+        toHour(t.pickup_datetime) as pickup_hour,
+        toDayOfWeek(t.pickup_datetime) as pickup_day_of_week
+
+    from trips t
+    left join pickup_zones pz on t.pickup_location_id = pz.location_id
+    left join dropoff_zones dz on t.dropoff_location_id = dz.location_id
+    where
+        t.fare_amount > 0
+        and t.trip_distance > 0
+        and t.dropoff_datetime > t.pickup_datetime
+)
+
+select * from enriched
+          )
+        ...
+[0m18:24:35.652461 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.02 seconds
+[0m18:24:35.674251 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.int_taxi_trips_enriched: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.int_taxi_trips_enriched"} */
+
+    select name, type from system.columns where table = 'int_taxi_trips_enriched__dbt_backup'
+    
+      and database = 'analytics'
+    
+    order by position
+  ...
+[0m18:24:35.682886 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:24:35.693968 [debug] [Thread-1 (]: Writing runtime sql for node "model.nyc_taxi_warehouse.int_taxi_trips_enriched"
+[0m18:24:35.695574 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.int_taxi_trips_enriched: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.int_taxi_trips_enriched"} */
+
+  
+    
+    
+    
+        
+        insert into `analytics`.`int_taxi_trips_enriched__dbt_backup`
+        ("vendor_id", "pickup_datetime", "dropoff_datetime", "passenger_count", "trip_distance", "ratecode_id", "payment_type", "fare_amount", "tip_amount", "tolls_amount", "total_amount", "congestion_surcharge", "airport_fee", "pickup_borough", "pickup_zone", "dropoff_borough", "dropoff_zone", "trip_duration_minutes", "pickup_hour", "pickup_day_of_week")with trips as (
+    select * from `analytics`.`stg_taxi_trips`
+),
+
+pickup_zones as (
+    select
+        LocationID  as location_id,
+        Borough     as borough,
+        Zone        as zone_name
+    from `raw`.`taxi_zones`
+),
+
+dropoff_zones as (
+    select
+        LocationID  as location_id,
+        Borough     as borough,
+        Zone        as zone_name
+    from `raw`.`taxi_zones`
+),
+
+enriched as (
+    select
+        t.vendor_id,
+        t.pickup_datetime,
+        t.dropoff_datetime,
+        t.passenger_count,
+        t.trip_distance,
+        t.ratecode_id,
+        t.payment_type,
+        t.fare_amount,
+        t.tip_amount,
+        t.tolls_amount,
+        t.total_amount,
+        t.congestion_surcharge,
+        t.airport_fee,
+
+        pz.borough    as pickup_borough,
+        pz.zone_name  as pickup_zone,
+        dz.borough    as dropoff_borough,
+        dz.zone_name  as dropoff_zone,
+
+        dateDiff('minute', t.pickup_datetime, t.dropoff_datetime) as trip_duration_minutes,
+        toHour(t.pickup_datetime) as pickup_hour,
+        toDayOfWeek(t.pickup_datetime) as pickup_day_of_week
+
+    from trips t
+    left join pickup_zones pz on t.pickup_location_id = pz.location_id
+    left join dropoff_zones dz on t.dropoff_location_id = dz.location_id
+    where
+        t.fare_amount > 0
+        and t.trip_distance > 0
+        and t.dropoff_datetime > t.pickup_datetime
+)
+
+select * from enriched
+  ...
+[0m18:24:40.103104 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 4.41 seconds
+[0m18:24:40.119269 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.int_taxi_trips_enriched: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.int_taxi_trips_enriched"} */
+EXCHANGE TABLES `analytics`.`int_taxi_trips_enriched__dbt_backup` AND `analytics`.`int_taxi_trips_enriched` 
+  
+  ...
+[0m18:24:40.124814 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m18:24:40.135891 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.int_taxi_trips_enriched: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.int_taxi_trips_enriched"} */
+
+    drop table if exists `analytics`.`int_taxi_trips_enriched__dbt_backup` 
+  ...
+[0m18:24:40.140680 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m18:24:40.145115 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'aae30554-ce25-405b-9894-4a35b532eaf8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe5b76cf170>]}
+[0m18:24:40.147278 [info ] [Thread-1 (]: 2 of 5 OK created sql table model `analytics`.`int_taxi_trips_enriched` ........ [[32mOK[0m in 4.63s]
+[0m18:24:40.149449 [debug] [Thread-1 (]: Finished running node model.nyc_taxi_warehouse.int_taxi_trips_enriched
+[0m18:24:40.152329 [debug] [Thread-1 (]: Began running node model.nyc_taxi_warehouse.mart_borough_metrics
+[0m18:24:40.154240 [info ] [Thread-1 (]: 3 of 5 START sql table model `analytics`.`mart_borough_metrics` ................ [RUN]
+[0m18:24:40.156043 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.nyc_taxi_warehouse.int_taxi_trips_enriched, now model.nyc_taxi_warehouse.mart_borough_metrics)
+[0m18:24:40.157907 [debug] [Thread-1 (]: Began compiling node model.nyc_taxi_warehouse.mart_borough_metrics
+[0m18:24:40.165925 [debug] [Thread-1 (]: Writing injected SQL for node "model.nyc_taxi_warehouse.mart_borough_metrics"
+[0m18:24:40.167969 [debug] [Thread-1 (]: Began executing node model.nyc_taxi_warehouse.mart_borough_metrics
+[0m18:24:40.175808 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_borough_metrics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_borough_metrics"} */
+
+            
+
+    
+        create table `analytics`.`mart_borough_metrics__dbt_backup`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            select
+    pickup_borough,
+    count(*)                          as total_trips,
+    round(avg(fare_amount), 2)        as avg_fare,
+    round(avg(tip_amount), 2)         as avg_tip,
+    round(avg(trip_distance), 2)      as avg_distance,
+    round(avg(trip_duration_minutes), 2) as avg_duration_minutes,
+    round(sum(total_amount), 2)       as total_revenue
+from `analytics`.`int_taxi_trips_enriched`
+where pickup_borough != ''
+group by pickup_borough
+order by total_trips desc
+          )
+        ...
+[0m18:24:40.192194 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.02 seconds
+[0m18:24:40.197888 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_borough_metrics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_borough_metrics"} */
+
+    select name, type from system.columns where table = 'mart_borough_metrics__dbt_backup'
+    
+      and database = 'analytics'
+    
+    order by position
+  ...
+[0m18:24:40.203133 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m18:24:40.207926 [debug] [Thread-1 (]: Writing runtime sql for node "model.nyc_taxi_warehouse.mart_borough_metrics"
+[0m18:24:40.209633 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_borough_metrics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_borough_metrics"} */
+
+  
+    
+    
+    
+        
+        insert into `analytics`.`mart_borough_metrics__dbt_backup`
+        ("pickup_borough", "total_trips", "avg_fare", "avg_tip", "avg_distance", "avg_duration_minutes", "total_revenue")select
+    pickup_borough,
+    count(*)                          as total_trips,
+    round(avg(fare_amount), 2)        as avg_fare,
+    round(avg(tip_amount), 2)         as avg_tip,
+    round(avg(trip_distance), 2)      as avg_distance,
+    round(avg(trip_duration_minutes), 2) as avg_duration_minutes,
+    round(sum(total_amount), 2)       as total_revenue
+from `analytics`.`int_taxi_trips_enriched`
+where pickup_borough != ''
+group by pickup_borough
+order by total_trips desc
+  ...
+[0m18:24:40.373320 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.16 seconds
+[0m18:24:40.376477 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_borough_metrics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_borough_metrics"} */
+EXCHANGE TABLES `analytics`.`mart_borough_metrics__dbt_backup` AND `analytics`.`mart_borough_metrics` 
+  
+  ...
+[0m18:24:40.381141 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m18:24:40.388443 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_borough_metrics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_borough_metrics"} */
+
+    drop table if exists `analytics`.`mart_borough_metrics__dbt_backup` 
+  ...
+[0m18:24:40.392475 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m18:24:40.395374 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'aae30554-ce25-405b-9894-4a35b532eaf8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe593851fa0>]}
+[0m18:24:40.396720 [info ] [Thread-1 (]: 3 of 5 OK created sql table model `analytics`.`mart_borough_metrics` ........... [[32mOK[0m in 0.24s]
+[0m18:24:40.398144 [debug] [Thread-1 (]: Finished running node model.nyc_taxi_warehouse.mart_borough_metrics
+[0m18:24:40.399142 [debug] [Thread-1 (]: Began running node model.nyc_taxi_warehouse.mart_hourly_demand
+[0m18:24:40.400406 [info ] [Thread-1 (]: 4 of 5 START sql table model `analytics`.`mart_hourly_demand` .................. [RUN]
+[0m18:24:40.401456 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.nyc_taxi_warehouse.mart_borough_metrics, now model.nyc_taxi_warehouse.mart_hourly_demand)
+[0m18:24:40.402331 [debug] [Thread-1 (]: Began compiling node model.nyc_taxi_warehouse.mart_hourly_demand
+[0m18:24:40.410619 [debug] [Thread-1 (]: Writing injected SQL for node "model.nyc_taxi_warehouse.mart_hourly_demand"
+[0m18:24:40.411915 [debug] [Thread-1 (]: Began executing node model.nyc_taxi_warehouse.mart_hourly_demand
+[0m18:24:40.417967 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_hourly_demand: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_hourly_demand"} */
+
+            
+
+    
+        create table `analytics`.`mart_hourly_demand__dbt_backup`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            select
+    pickup_hour,
+    count(*)                          as total_trips,
+    round(avg(fare_amount), 2)        as avg_fare,
+    round(avg(tip_amount), 2)         as avg_tip,
+    round(avg(trip_distance), 2)      as avg_distance,
+    round(avg(trip_duration_minutes), 2) as avg_duration_minutes
+from `analytics`.`int_taxi_trips_enriched`
+group by pickup_hour
+order by pickup_hour
+          )
+        ...
+[0m18:24:40.429282 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:24:40.434383 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_hourly_demand: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_hourly_demand"} */
+
+    select name, type from system.columns where table = 'mart_hourly_demand__dbt_backup'
+    
+      and database = 'analytics'
+    
+    order by position
+  ...
+[0m18:24:40.440089 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m18:24:40.443939 [debug] [Thread-1 (]: Writing runtime sql for node "model.nyc_taxi_warehouse.mart_hourly_demand"
+[0m18:24:40.445273 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_hourly_demand: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_hourly_demand"} */
+
+  
+    
+    
+    
+        
+        insert into `analytics`.`mart_hourly_demand__dbt_backup`
+        ("pickup_hour", "total_trips", "avg_fare", "avg_tip", "avg_distance", "avg_duration_minutes")select
+    pickup_hour,
+    count(*)                          as total_trips,
+    round(avg(fare_amount), 2)        as avg_fare,
+    round(avg(tip_amount), 2)         as avg_tip,
+    round(avg(trip_distance), 2)      as avg_distance,
+    round(avg(trip_duration_minutes), 2) as avg_duration_minutes
+from `analytics`.`int_taxi_trips_enriched`
+group by pickup_hour
+order by pickup_hour
+  ...
+[0m18:24:40.520670 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.07 seconds
+[0m18:24:40.524448 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_hourly_demand: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_hourly_demand"} */
+EXCHANGE TABLES `analytics`.`mart_hourly_demand__dbt_backup` AND `analytics`.`mart_hourly_demand` 
+  
+  ...
+[0m18:24:40.529909 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m18:24:40.539983 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_hourly_demand: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_hourly_demand"} */
+
+    drop table if exists `analytics`.`mart_hourly_demand__dbt_backup` 
+  ...
+[0m18:24:40.544837 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m18:24:40.547989 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'aae30554-ce25-405b-9894-4a35b532eaf8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe59389ff50>]}
+[0m18:24:40.549459 [info ] [Thread-1 (]: 4 of 5 OK created sql table model `analytics`.`mart_hourly_demand` ............. [[32mOK[0m in 0.15s]
+[0m18:24:40.550960 [debug] [Thread-1 (]: Finished running node model.nyc_taxi_warehouse.mart_hourly_demand
+[0m18:24:40.552096 [debug] [Thread-1 (]: Began running node model.nyc_taxi_warehouse.mart_payment_summary
+[0m18:24:40.553489 [info ] [Thread-1 (]: 5 of 5 START sql table model `analytics`.`mart_payment_summary` ................ [RUN]
+[0m18:24:40.554626 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.nyc_taxi_warehouse.mart_hourly_demand, now model.nyc_taxi_warehouse.mart_payment_summary)
+[0m18:24:40.555588 [debug] [Thread-1 (]: Began compiling node model.nyc_taxi_warehouse.mart_payment_summary
+[0m18:24:40.561064 [debug] [Thread-1 (]: Writing injected SQL for node "model.nyc_taxi_warehouse.mart_payment_summary"
+[0m18:24:40.562419 [debug] [Thread-1 (]: Began executing node model.nyc_taxi_warehouse.mart_payment_summary
+[0m18:24:40.568571 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_payment_summary: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_payment_summary"} */
+
+            
+
+    
+        create table `analytics`.`mart_payment_summary__dbt_backup`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            select
+    payment_type,
+    case payment_type
+        when 1 then 'Credit Card'
+        when 2 then 'Cash'
+        when 3 then 'No Charge'
+        when 4 then 'Dispute'
+        when 5 then 'Unknown'
+        when 6 then 'Voided Trip'
+        else 'Other'
+    end as payment_type_name,
+    count(*)                          as total_trips,
+    round(sum(total_amount), 2)       as total_revenue,
+    round(avg(fare_amount), 2)        as avg_fare,
+    round(avg(tip_amount), 2)         as avg_tip,
+    round(avg(trip_distance), 2)      as avg_distance
+from `analytics`.`int_taxi_trips_enriched`
+group by payment_type
+order by total_trips desc
+          )
+        ...
+[0m18:24:40.582542 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:24:40.587207 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_payment_summary: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_payment_summary"} */
+
+    select name, type from system.columns where table = 'mart_payment_summary__dbt_backup'
+    
+      and database = 'analytics'
+    
+    order by position
+  ...
+[0m18:24:40.593883 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:24:40.597720 [debug] [Thread-1 (]: Writing runtime sql for node "model.nyc_taxi_warehouse.mart_payment_summary"
+[0m18:24:40.599015 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_payment_summary: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_payment_summary"} */
+
+  
+    
+    
+    
+        
+        insert into `analytics`.`mart_payment_summary__dbt_backup`
+        ("payment_type", "payment_type_name", "total_trips", "total_revenue", "avg_fare", "avg_tip", "avg_distance")select
+    payment_type,
+    case payment_type
+        when 1 then 'Credit Card'
+        when 2 then 'Cash'
+        when 3 then 'No Charge'
+        when 4 then 'Dispute'
+        when 5 then 'Unknown'
+        when 6 then 'Voided Trip'
+        else 'Other'
+    end as payment_type_name,
+    count(*)                          as total_trips,
+    round(sum(total_amount), 2)       as total_revenue,
+    round(avg(fare_amount), 2)        as avg_fare,
+    round(avg(tip_amount), 2)         as avg_tip,
+    round(avg(trip_distance), 2)      as avg_distance
+from `analytics`.`int_taxi_trips_enriched`
+group by payment_type
+order by total_trips desc
+  ...
+[0m18:24:40.701129 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.10 seconds
+[0m18:24:40.705259 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_payment_summary: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_payment_summary"} */
+EXCHANGE TABLES `analytics`.`mart_payment_summary__dbt_backup` AND `analytics`.`mart_payment_summary` 
+  
+  ...
+[0m18:24:40.711939 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m18:24:40.723055 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_payment_summary: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_payment_summary"} */
+
+    drop table if exists `analytics`.`mart_payment_summary__dbt_backup` 
+  ...
+[0m18:24:40.728864 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m18:24:40.733362 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'aae30554-ce25-405b-9894-4a35b532eaf8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe59392bbc0>]}
+[0m18:24:40.735276 [info ] [Thread-1 (]: 5 of 5 OK created sql table model `analytics`.`mart_payment_summary` ........... [[32mOK[0m in 0.18s]
+[0m18:24:40.737276 [debug] [Thread-1 (]: Finished running node model.nyc_taxi_warehouse.mart_payment_summary
+[0m18:24:40.741692 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m18:24:40.742829 [debug] [MainThread]: Connection 'model.nyc_taxi_warehouse.mart_payment_summary' was left open.
+[0m18:24:40.744020 [debug] [MainThread]: On model.nyc_taxi_warehouse.mart_payment_summary: Close
+[0m18:24:40.745707 [info ] [MainThread]: 
+[0m18:24:40.747016 [info ] [MainThread]: Finished running 1 view model, 4 table models in 0 hours 0 minutes and 6.51 seconds (6.51s).
+[0m18:24:40.750916 [debug] [MainThread]: Command end result
+[0m18:24:40.815315 [info ] [MainThread]: 
+[0m18:24:40.816131 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m18:24:40.816847 [info ] [MainThread]: 
+[0m18:24:40.817632 [info ] [MainThread]: Done. PASS=5 WARN=0 ERROR=0 SKIP=0 TOTAL=5
+[0m18:24:40.819391 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 7.585815, "process_user_time": 4.871588, "process_kernel_time": 0.661545, "process_mem_max_rss": "187936", "process_out_blocks": "2296", "process_in_blocks": "0"}
+[0m18:24:40.820381 [debug] [MainThread]: Command `dbt run` succeeded at 18:24:40.820154 after 7.59 seconds
+[0m18:24:40.821158 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe5b85dbe90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe598a8f140>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fe5985daf90>]}
+[0m18:24:40.821908 [debug] [MainThread]: Flushing usage events
+[0m19:33:51.219894 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb73580f320>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb7332fd8b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb733a8f6e0>]}
+
+
+============================== 19:33:51.223896 | d5e2d219-0e0b-43a2-915a-fbbe13dd13ea ==============================
+[0m19:33:51.223896 [info ] [MainThread]: Running with dbt=1.8.3
+[0m19:33:51.224686 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '.', 'version_check': 'True', 'warn_error': 'None', 'log_path': '/home/poridhian/code/datalake-management/project1/dbt_project/logs', 'debug': 'False', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'introspect': 'True', 'invocation_command': 'dbt run --select mart_weekend_vs_weekday --profiles-dir .', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m19:33:51.441362 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'd5e2d219-0e0b-43a2-915a-fbbe13dd13ea', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb734ea9460>]}
+[0m19:33:51.515982 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'd5e2d219-0e0b-43a2-915a-fbbe13dd13ea', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb733011730>]}
+[0m19:33:51.516846 [info ] [MainThread]: Registered adapter: clickhouse=1.8.1
+[0m19:33:51.610494 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m19:33:51.778571 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m19:33:51.779211 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m19:33:51.787579 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- seeds.nyc_taxi_warehouse.taxi_zone_lookup
+[0m19:33:51.837032 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'd5e2d219-0e0b-43a2-915a-fbbe13dd13ea', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb732db2090>]}
+[0m19:33:51.968749 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'd5e2d219-0e0b-43a2-915a-fbbe13dd13ea', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb73290c4a0>]}
+[0m19:33:51.969380 [info ] [MainThread]: Found 5 models, 16 data tests, 2 sources, 456 macros
+[0m19:33:51.969992 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'd5e2d219-0e0b-43a2-915a-fbbe13dd13ea', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb732d10e60>]}
+[0m19:33:51.970981 [warn ] [MainThread]: The selection criterion 'mart_weekend_vs_weekday' does not match any enabled nodes
+[0m19:33:51.972882 [info ] [MainThread]: 
+[0m19:33:51.973433 [warn ] [MainThread]: Nothing to do. Try checking your model configs and model specification args
+[0m19:33:51.975947 [debug] [MainThread]: Command end result
+[0m19:33:52.010287 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 0.861042, "process_user_time": 2.510126, "process_kernel_time": 0.347728, "process_mem_max_rss": "102620", "process_out_blocks": "2136", "process_in_blocks": "0"}
+[0m19:33:52.011054 [debug] [MainThread]: Command `dbt run` succeeded at 19:33:52.010889 after 0.86 seconds
+[0m19:33:52.011650 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb7332d67e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb732fca630>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb7329157c0>]}
+[0m19:33:52.012232 [debug] [MainThread]: Flushing usage events

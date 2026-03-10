@@ -1,0 +1,6 @@
+# Virtual environment
+venv/
+
+# Downloaded data (keep the download script, ignore the actual data files)
+data/*.csv
+data/*.parquet
