@@ -27,3 +27,15 @@ models:
         data_tests:
           - not_null
           - unique
+
+  - name: mart_weekend_vs_weekday
+    description: Comparison of trip patterns between weekends and weekdays
+    columns:
+      - name: day_type
+        description: "Either 'Weekend' or 'Weekday'"
+        tests:
+          - not_null
+          - unique
+      - name: total_trips
+        tests:
+          - not_null

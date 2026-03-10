@@ -2788,3 +2788,1271 @@ There are 1 unused configuration paths:
 [0m19:33:52.011054 [debug] [MainThread]: Command `dbt run` succeeded at 19:33:52.010889 after 0.86 seconds
 [0m19:33:52.011650 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb7332d67e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb732fca630>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb7329157c0>]}
 [0m19:33:52.012232 [debug] [MainThread]: Flushing usage events
+[0m19:55:05.339644 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3bc98e6ff0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3bc7296270>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3bc66dbb00>]}
+
+
+============================== 19:55:05.343446 | 73b6b2f8-9994-48c5-a2e3-bec9922b1394 ==============================
+[0m19:55:05.343446 [info ] [MainThread]: Running with dbt=1.8.3
+[0m19:55:05.344231 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'version_check': 'True', 'log_path': '/home/poridhian/code/datalake-management/project1/dbt_project/logs', 'fail_fast': 'False', 'profiles_dir': '.', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run --select mart_weekend_vs_weekday --profiles-dir .', 'static_parser': 'True', 'log_format': 'default', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m19:55:05.555498 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '73b6b2f8-9994-48c5-a2e3-bec9922b1394', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3bc690cb60>]}
+[0m19:55:05.630814 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '73b6b2f8-9994-48c5-a2e3-bec9922b1394', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3bc664c680>]}
+[0m19:55:05.631815 [info ] [MainThread]: Registered adapter: clickhouse=1.8.1
+[0m19:55:05.724885 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m19:55:05.882855 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 1 files added, 1 files changed.
+[0m19:55:05.883575 [debug] [MainThread]: Partial parsing: added file: nyc_taxi_warehouse://models/marts/mart_weekend_vs_weekday.sql
+[0m19:55:05.884235 [debug] [MainThread]: Partial parsing: updated file: nyc_taxi_warehouse://models/marts/_marts.yml
+[0m19:55:06.179885 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `tests` config has been renamed to `data_tests`. Please see
+https://docs.getdbt.com/docs/build/data-tests#new-data_tests-syntax for more
+information.
+[0m19:55:06.180601 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': '73b6b2f8-9994-48c5-a2e3-bec9922b1394', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3bc621ec90>]}
+[0m19:55:06.403113 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- seeds.nyc_taxi_warehouse.taxi_zone_lookup
+[0m19:55:06.418889 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '73b6b2f8-9994-48c5-a2e3-bec9922b1394', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3bc5d76900>]}
+[0m19:55:06.547823 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '73b6b2f8-9994-48c5-a2e3-bec9922b1394', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3bc51fcc20>]}
+[0m19:55:06.548514 [info ] [MainThread]: Found 6 models, 19 data tests, 2 sources, 456 macros
+[0m19:55:06.549106 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '73b6b2f8-9994-48c5-a2e3-bec9922b1394', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3bc6425340>]}
+[0m19:55:06.551418 [info ] [MainThread]: 
+[0m19:55:06.552173 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m19:55:06.554235 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list_'
+[0m19:55:06.586945 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m19:55:07.487998 [debug] [ThreadPool]: dbt_clickhouse adapter: On list_: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list_"} */
+
+    select name from system.databases
+  ...
+[0m19:55:07.494006 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m19:55:07.563910 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_, now list__analytics)
+[0m19:55:07.582489 [debug] [ThreadPool]: dbt_clickhouse adapter: On list__analytics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list__analytics"} */
+select
+      t.name as name,
+      t.database as schema,
+      multiIf(
+        engine in ('MaterializedView', 'View'), 'view',
+        engine = 'Dictionary', 'dictionary',
+        'table'
+      ) as type,
+      db.engine as db_engine,0 as is_on_cluster
+          from system.tables as t join system.databases as db on t.database = db.name
+        where schema = 'analytics'
+      
+
+  ...
+[0m19:55:07.598707 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m19:55:07.606061 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '73b6b2f8-9994-48c5-a2e3-bec9922b1394', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3bc408ec60>]}
+[0m19:55:07.607735 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m19:55:07.609025 [info ] [MainThread]: 
+[0m19:55:07.616627 [debug] [Thread-1 (]: Began running node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m19:55:07.618475 [info ] [Thread-1 (]: 1 of 1 START sql table model `analytics`.`mart_weekend_vs_weekday` ............. [RUN]
+[0m19:55:07.620027 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list__analytics, now model.nyc_taxi_warehouse.mart_weekend_vs_weekday)
+[0m19:55:07.621539 [debug] [Thread-1 (]: Began compiling node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m19:55:07.642903 [debug] [Thread-1 (]: Writing injected SQL for node "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"
+[0m19:55:07.644690 [debug] [Thread-1 (]: Began executing node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m19:55:07.690807 [debug] [Thread-1 (]: Creating new relation mart_weekend_vs_weekday
+[0m19:55:07.750843 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+            
+
+    
+        create table `analytics`.`mart_weekend_vs_weekday`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            select
+    case
+        when pickup_day_of_week in (6, 7) then 'Weekend'
+        else 'Weekday'
+    end                                      as day_type,
+    count(*)                                 as total_trips,
+    round(avg(fare_amount), 2)               as avg_fare,
+    round(avg(tip_amount), 2)                as avg_tip,
+    round(avg(trip_distance), 2)             as avg_distance,
+    round(avg(trip_duration_minutes), 2)     as avg_duration_minutes
+from `analytics`.`int_taxi_trips_enriched`
+group by day_type
+order by day_type
+          )
+        ...
+[0m19:55:07.767771 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.02 seconds
+[0m19:55:07.785389 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+    select name, type from system.columns where table = 'mart_weekend_vs_weekday'
+    
+      and database = 'analytics'
+    
+    order by position
+  ...
+[0m19:55:07.795848 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m19:55:07.803776 [debug] [Thread-1 (]: Writing runtime sql for node "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"
+[0m19:55:07.805185 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+  
+    
+    
+    
+        
+        insert into `analytics`.`mart_weekend_vs_weekday`
+        ("day_type", "total_trips", "avg_fare", "avg_tip", "avg_distance", "avg_duration_minutes")select
+    case
+        when pickup_day_of_week in (6, 7) then 'Weekend'
+        else 'Weekday'
+    end                                      as day_type,
+    count(*)                                 as total_trips,
+    round(avg(fare_amount), 2)               as avg_fare,
+    round(avg(tip_amount), 2)                as avg_tip,
+    round(avg(trip_distance), 2)             as avg_distance,
+    round(avg(trip_duration_minutes), 2)     as avg_duration_minutes
+from `analytics`.`int_taxi_trips_enriched`
+group by day_type
+order by day_type
+  ...
+[0m19:55:07.954272 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.15 seconds
+[0m19:55:08.001632 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '73b6b2f8-9994-48c5-a2e3-bec9922b1394', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3b8de22db0>]}
+[0m19:55:08.002886 [info ] [Thread-1 (]: 1 of 1 OK created sql table model `analytics`.`mart_weekend_vs_weekday` ........ [[32mOK[0m in 0.38s]
+[0m19:55:08.004145 [debug] [Thread-1 (]: Finished running node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m19:55:08.007447 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m19:55:08.008131 [debug] [MainThread]: Connection 'model.nyc_taxi_warehouse.mart_weekend_vs_weekday' was left open.
+[0m19:55:08.008831 [debug] [MainThread]: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: Close
+[0m19:55:08.009823 [info ] [MainThread]: 
+[0m19:55:08.010613 [info ] [MainThread]: Finished running 1 table model in 0 hours 0 minutes and 1.46 seconds (1.46s).
+[0m19:55:08.012076 [debug] [MainThread]: Command end result
+[0m19:55:08.063121 [info ] [MainThread]: 
+[0m19:55:08.063958 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m19:55:08.064638 [info ] [MainThread]: 
+[0m19:55:08.065380 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[0m19:55:08.067012 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 2.7928147, "process_user_time": 4.476893, "process_kernel_time": 0.546592, "process_mem_max_rss": "190496", "process_out_blocks": "3248", "process_in_blocks": "0"}
+[0m19:55:08.067904 [debug] [MainThread]: Command `dbt run` succeeded at 19:55:08.067702 after 2.79 seconds
+[0m19:55:08.068611 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3bca38f3e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3bc66dbb00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3bc5dc2150>]}
+[0m19:55:08.069334 [debug] [MainThread]: Flushing usage events
+[0m19:55:48.656443 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f107c5143e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f107cf49c40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f107cf4aab0>]}
+
+
+============================== 19:55:48.659985 | e7a6201d-4d48-4477-aaad-7bd4a56c307c ==============================
+[0m19:55:48.659985 [info ] [MainThread]: Running with dbt=1.8.3
+[0m19:55:48.660769 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'profiles_dir': '.', 'log_path': '/home/poridhian/code/datalake-management/project1/dbt_project/logs', 'fail_fast': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'invocation_command': 'dbt test --select mart_weekend_vs_weekday --profiles-dir .', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'introspect': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m19:55:48.873818 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'e7a6201d-4d48-4477-aaad-7bd4a56c307c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f107c895b20>]}
+[0m19:55:48.950025 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'e7a6201d-4d48-4477-aaad-7bd4a56c307c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f107c296d20>]}
+[0m19:55:48.950982 [info ] [MainThread]: Registered adapter: clickhouse=1.8.1
+[0m19:55:49.044564 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m19:55:49.201967 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m19:55:49.202539 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m19:55:49.211507 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- seeds.nyc_taxi_warehouse.taxi_zone_lookup
+[0m19:55:49.263501 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'e7a6201d-4d48-4477-aaad-7bd4a56c307c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f107c80eb70>]}
+[0m19:55:49.412921 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'e7a6201d-4d48-4477-aaad-7bd4a56c307c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f107bb8f2f0>]}
+[0m19:55:49.413726 [info ] [MainThread]: Found 6 models, 19 data tests, 2 sources, 456 macros
+[0m19:55:49.414382 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'e7a6201d-4d48-4477-aaad-7bd4a56c307c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f107ba7ec00>]}
+[0m19:55:49.416837 [info ] [MainThread]: 
+[0m19:55:49.417739 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m19:55:49.426552 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list__analytics'
+[0m19:55:49.462660 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m19:55:50.174955 [debug] [ThreadPool]: dbt_clickhouse adapter: On list__analytics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list__analytics"} */
+select
+      t.name as name,
+      t.database as schema,
+      multiIf(
+        engine in ('MaterializedView', 'View'), 'view',
+        engine = 'Dictionary', 'dictionary',
+        'table'
+      ) as type,
+      db.engine as db_engine,0 as is_on_cluster
+          from system.tables as t join system.databases as db on t.database = db.name
+        where schema = 'analytics'
+      
+
+  ...
+[0m19:55:50.185242 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m19:55:50.217179 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'e7a6201d-4d48-4477-aaad-7bd4a56c307c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f107bba3f20>]}
+[0m19:55:50.218880 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m19:55:50.220066 [info ] [MainThread]: 
+[0m19:55:50.225899 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_day_type.cf167b71d1
+[0m19:55:50.227245 [info ] [Thread-1 (]: 1 of 3 START test not_null_mart_weekend_vs_weekday_day_type .................... [RUN]
+[0m19:55:50.229153 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list__analytics, now test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_day_type.cf167b71d1)
+[0m19:55:50.230448 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_day_type.cf167b71d1
+[0m19:55:50.274966 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_day_type.cf167b71d1"
+[0m19:55:50.276225 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_day_type.cf167b71d1
+[0m19:55:50.302653 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_day_type.cf167b71d1"
+[0m19:55:50.303735 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_day_type.cf167b71d1: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_day_type.cf167b71d1"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select day_type
+from `analytics`.`mart_weekend_vs_weekday`
+where day_type is null
+
+
+
+    ) dbt_internal_test...
+[0m19:55:50.313909 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m19:55:50.321524 [info ] [Thread-1 (]: 1 of 3 PASS not_null_mart_weekend_vs_weekday_day_type .......................... [[32mPASS[0m in 0.09s]
+[0m19:55:50.322705 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_day_type.cf167b71d1
+[0m19:55:50.323547 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_total_trips.921851b43a
+[0m19:55:50.324494 [info ] [Thread-1 (]: 2 of 3 START test not_null_mart_weekend_vs_weekday_total_trips ................. [RUN]
+[0m19:55:50.325339 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_day_type.cf167b71d1, now test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_total_trips.921851b43a)
+[0m19:55:50.326120 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_total_trips.921851b43a
+[0m19:55:50.332527 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_total_trips.921851b43a"
+[0m19:55:50.333517 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_total_trips.921851b43a
+[0m19:55:50.338385 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_total_trips.921851b43a"
+[0m19:55:50.339431 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_total_trips.921851b43a: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_total_trips.921851b43a"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select total_trips
+from `analytics`.`mart_weekend_vs_weekday`
+where total_trips is null
+
+
+
+    ) dbt_internal_test...
+[0m19:55:50.348021 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m19:55:50.350602 [info ] [Thread-1 (]: 2 of 3 PASS not_null_mart_weekend_vs_weekday_total_trips ....................... [[32mPASS[0m in 0.03s]
+[0m19:55:50.351702 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_total_trips.921851b43a
+[0m19:55:50.352495 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6
+[0m19:55:50.353374 [info ] [Thread-1 (]: 3 of 3 START test unique_mart_weekend_vs_weekday_day_type ...................... [RUN]
+[0m19:55:50.354241 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_total_trips.921851b43a, now test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6)
+[0m19:55:50.354984 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6
+[0m19:55:50.364571 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6"
+[0m19:55:50.365527 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6
+[0m19:55:50.368605 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6"
+[0m19:55:50.369665 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    day_type as unique_field,
+    count(*) as n_records
+
+from `analytics`.`mart_weekend_vs_weekday`
+where day_type is not null
+group by day_type
+having count(*) > 1
+
+
+
+    ) dbt_internal_test...
+[0m19:55:50.380916 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m19:55:50.383520 [info ] [Thread-1 (]: 3 of 3 PASS unique_mart_weekend_vs_weekday_day_type ............................ [[32mPASS[0m in 0.03s]
+[0m19:55:50.384609 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6
+[0m19:55:50.387628 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m19:55:50.388656 [debug] [MainThread]: Connection 'test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6' was left open.
+[0m19:55:50.389761 [debug] [MainThread]: On test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6: Close
+[0m19:55:50.391036 [info ] [MainThread]: 
+[0m19:55:50.392173 [info ] [MainThread]: Finished running 3 data tests in 0 hours 0 minutes and 0.97 seconds (0.97s).
+[0m19:55:50.395070 [debug] [MainThread]: Command end result
+[0m19:55:50.469769 [info ] [MainThread]: 
+[0m19:55:50.471105 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m19:55:50.472260 [info ] [MainThread]: 
+[0m19:55:50.473537 [info ] [MainThread]: Done. PASS=3 WARN=0 ERROR=0 SKIP=0 TOTAL=3
+[0m19:55:50.476008 [debug] [MainThread]: Resource report: {"command_name": "test", "command_success": true, "command_wall_clock_time": 1.8872854, "process_user_time": 3.842723, "process_kernel_time": 0.375901, "process_mem_max_rss": "188044", "process_out_blocks": "2256", "process_in_blocks": "0"}
+[0m19:55:50.477568 [debug] [MainThread]: Command `dbt test` succeeded at 19:55:50.477167 after 1.89 seconds
+[0m19:55:50.478803 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f107ce69460>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f107c576b40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f105c6cc4a0>]}
+[0m19:55:50.480007 [debug] [MainThread]: Flushing usage events
+[0m19:56:14.374304 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f24e8136810>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f24eaad2f90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f24e78f7c50>]}
+
+
+============================== 19:56:14.378033 | 10d11efe-da22-460a-a1b5-403e6274f63e ==============================
+[0m19:56:14.378033 [info ] [MainThread]: Running with dbt=1.8.3
+[0m19:56:14.378885 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': '/home/poridhian/code/datalake-management/project1/dbt_project/logs', 'profiles_dir': '.', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'introspect': 'True', 'log_format': 'default', 'target_path': 'None', 'invocation_command': 'dbt ls --resource-type model --profiles-dir .', 'send_anonymous_usage_stats': 'True'}
+[0m19:56:14.602765 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '10d11efe-da22-460a-a1b5-403e6274f63e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f24e931ca70>]}
+[0m19:56:14.681764 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '10d11efe-da22-460a-a1b5-403e6274f63e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f24e8135610>]}
+[0m19:56:14.682911 [info ] [MainThread]: Registered adapter: clickhouse=1.8.1
+[0m19:56:14.787571 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m19:56:14.959219 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m19:56:14.959871 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m19:56:14.969330 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- seeds.nyc_taxi_warehouse.taxi_zone_lookup
+[0m19:56:15.024680 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '10d11efe-da22-460a-a1b5-403e6274f63e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f24e7441790>]}
+[0m19:56:15.179569 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '10d11efe-da22-460a-a1b5-403e6274f63e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f24e6fa6780>]}
+[0m19:56:15.180335 [info ] [MainThread]: Found 6 models, 19 data tests, 2 sources, 456 macros
+[0m19:56:15.180963 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '10d11efe-da22-460a-a1b5-403e6274f63e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f24e741b0b0>]}
+[0m19:56:15.183199 [debug] [MainThread]: Resource report: {"command_name": "list", "command_success": true, "command_wall_clock_time": 0.8774613, "process_user_time": 2.537464, "process_kernel_time": 0.2361, "process_mem_max_rss": "103104", "process_out_blocks": "1128", "process_in_blocks": "0"}
+[0m19:56:15.183925 [debug] [MainThread]: Command `dbt ls` succeeded at 19:56:15.183751 after 0.88 seconds
+[0m19:56:15.184555 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f24e8136810>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f24e76381d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f24e7638140>]}
+[0m19:56:15.185134 [debug] [MainThread]: Flushing usage events
+[0m20:00:36.896401 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0929a991f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f092d361be0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0929b46630>]}
+
+
+============================== 20:00:36.900589 | de33541b-c6ec-4b33-a975-776f40efc57b ==============================
+[0m20:00:36.900589 [info ] [MainThread]: Running with dbt=1.8.3
+[0m20:00:36.901435 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'debug': 'False', 'log_path': '/home/poridhian/code/datalake-management/project1/dbt_project/logs', 'version_check': 'True', 'profiles_dir': '.', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'invocation_command': 'dbt run --select mart_weekend_vs_weekday --profiles-dir .', 'log_format': 'default', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m20:00:37.118063 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'de33541b-c6ec-4b33-a975-776f40efc57b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f09296ef320>]}
+[0m20:00:37.193043 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'de33541b-c6ec-4b33-a975-776f40efc57b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0929710350>]}
+[0m20:00:37.193956 [info ] [MainThread]: Registered adapter: clickhouse=1.8.1
+[0m20:00:37.299393 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m20:00:37.462101 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m20:00:37.462922 [debug] [MainThread]: Partial parsing: updated file: nyc_taxi_warehouse://models/marts/mart_weekend_vs_weekday.sql
+[0m20:00:37.819111 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `tests` config has been renamed to `data_tests`. Please see
+https://docs.getdbt.com/docs/build/data-tests#new-data_tests-syntax for more
+information.
+[0m20:00:37.820055 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': 'de33541b-c6ec-4b33-a975-776f40efc57b', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0928fa3ce0>]}
+[0m20:00:38.009875 [error] [MainThread]: Encountered an error:
+Compilation Error
+  Model 'model.nyc_taxi_warehouse.mart_weekend_vs_weekday' (models/marts/mart_weekend_vs_weekday.sql) depends on a node named 'int_taxi_trips_WRONG' which was not found
+[0m20:00:38.011539 [debug] [MainThread]: Resource report: {"command_name": "run", "command_wall_clock_time": 1.1861212, "process_user_time": 3.094201, "process_kernel_time": 0.340255, "process_mem_max_rss": "105092", "process_out_blocks": "16", "command_success": false, "process_in_blocks": "0"}
+[0m20:00:38.012461 [debug] [MainThread]: Command `dbt run` failed at 20:00:38.012254 after 1.19 seconds
+[0m20:00:38.013204 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0929a105f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0929766120>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0928fa8230>]}
+[0m20:00:38.013946 [debug] [MainThread]: Flushing usage events
+[0m20:01:14.560734 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd05fd785c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd0608bb7a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd05fd78830>]}
+
+
+============================== 20:01:14.564596 | db3fc83d-3220-4837-804e-d0b36e4e2fe8 ==============================
+[0m20:01:14.564596 [info ] [MainThread]: Running with dbt=1.8.3
+[0m20:01:14.565516 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '.', 'debug': 'False', 'fail_fast': 'False', 'log_path': '/home/poridhian/code/datalake-management/project1/dbt_project/logs', 'warn_error': 'None', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'log_format': 'default', 'static_parser': 'True', 'target_path': 'None', 'invocation_command': 'dbt run --select mart_weekend_vs_weekday --profiles-dir .', 'send_anonymous_usage_stats': 'True'}
+[0m20:01:14.785932 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'db3fc83d-3220-4837-804e-d0b36e4e2fe8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd061c7d280>]}
+[0m20:01:14.861313 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'db3fc83d-3220-4837-804e-d0b36e4e2fe8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd0608bbc20>]}
+[0m20:01:14.862303 [info ] [MainThread]: Registered adapter: clickhouse=1.8.1
+[0m20:01:14.966160 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m20:01:15.122804 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m20:01:15.123320 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m20:01:15.131924 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- seeds.nyc_taxi_warehouse.taxi_zone_lookup
+[0m20:01:15.182796 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'db3fc83d-3220-4837-804e-d0b36e4e2fe8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd05fc7f200>]}
+[0m20:01:15.320254 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'db3fc83d-3220-4837-804e-d0b36e4e2fe8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd05faecef0>]}
+[0m20:01:15.320974 [info ] [MainThread]: Found 6 models, 19 data tests, 2 sources, 456 macros
+[0m20:01:15.321626 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'db3fc83d-3220-4837-804e-d0b36e4e2fe8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd05f6fade0>]}
+[0m20:01:15.324232 [info ] [MainThread]: 
+[0m20:01:15.325132 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m20:01:15.326877 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list_'
+[0m20:01:15.360399 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m20:01:16.210748 [debug] [ThreadPool]: dbt_clickhouse adapter: On list_: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list_"} */
+
+    select name from system.databases
+  ...
+[0m20:01:16.217015 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m20:01:16.278083 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_, now list__analytics)
+[0m20:01:16.289897 [debug] [ThreadPool]: dbt_clickhouse adapter: On list__analytics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list__analytics"} */
+select
+      t.name as name,
+      t.database as schema,
+      multiIf(
+        engine in ('MaterializedView', 'View'), 'view',
+        engine = 'Dictionary', 'dictionary',
+        'table'
+      ) as type,
+      db.engine as db_engine,0 as is_on_cluster
+          from system.tables as t join system.databases as db on t.database = db.name
+        where schema = 'analytics'
+      
+
+  ...
+[0m20:01:16.301061 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m20:01:16.308226 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'db3fc83d-3220-4837-804e-d0b36e4e2fe8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd05fc7ef00>]}
+[0m20:01:16.310273 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m20:01:16.311605 [info ] [MainThread]: 
+[0m20:01:16.318796 [debug] [Thread-1 (]: Began running node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m20:01:16.320865 [info ] [Thread-1 (]: 1 of 1 START sql table model `analytics`.`mart_weekend_vs_weekday` ............. [RUN]
+[0m20:01:16.322413 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list__analytics, now model.nyc_taxi_warehouse.mart_weekend_vs_weekday)
+[0m20:01:16.323659 [debug] [Thread-1 (]: Began compiling node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m20:01:16.346010 [debug] [Thread-1 (]: Writing injected SQL for node "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"
+[0m20:01:16.347769 [debug] [Thread-1 (]: Began executing node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m20:01:16.447293 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+            
+
+    
+        create table `analytics`.`mart_weekend_vs_weekday__dbt_backup`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            select
+    case
+        when pickup_day_of_week in (6, 7) then 'Weekend'
+        else 'Weekday'
+    end                                      as day_type,
+    count(*)                                 as total_trips,
+    round(avg(fare_amount), 2)               as avg_fare,
+    round(avg(tip_amount), 2)                as avg_tip,
+    round(avg(trip_distance), 2)             as avg_distance,
+    round(avg(trip_duration_minutes), 2)     as avg_duration_minutes
+from `analytics`.`int_taxi_trips_enriched`
+group by day_type
+order by day_type
+          )
+        ...
+[0m20:01:16.458988 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m20:01:16.475295 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+    select name, type from system.columns where table = 'mart_weekend_vs_weekday__dbt_backup'
+    
+      and database = 'analytics'
+    
+    order by position
+  ...
+[0m20:01:16.480949 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m20:01:16.487577 [debug] [Thread-1 (]: Writing runtime sql for node "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"
+[0m20:01:16.488789 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+  
+    
+    
+    
+        
+        insert into `analytics`.`mart_weekend_vs_weekday__dbt_backup`
+        ("day_type", "total_trips", "avg_fare", "avg_tip", "avg_distance", "avg_duration_minutes")select
+    case
+        when pickup_day_of_week in (6, 7) then 'Weekend'
+        else 'Weekday'
+    end                                      as day_type,
+    count(*)                                 as total_trips,
+    round(avg(fare_amount), 2)               as avg_fare,
+    round(avg(tip_amount), 2)                as avg_tip,
+    round(avg(trip_distance), 2)             as avg_distance,
+    round(avg(trip_duration_minutes), 2)     as avg_duration_minutes
+from `analytics`.`int_taxi_trips_enriched`
+group by day_type
+order by day_type
+  ...
+[0m20:01:16.714065 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.22 seconds
+[0m20:01:16.729501 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+EXCHANGE TABLES `analytics`.`mart_weekend_vs_weekday__dbt_backup` AND `analytics`.`mart_weekend_vs_weekday` 
+  
+  ...
+[0m20:01:16.735621 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m20:01:16.782413 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+    drop table if exists `analytics`.`mart_weekend_vs_weekday__dbt_backup` 
+  ...
+[0m20:01:16.786966 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m20:01:16.793233 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'db3fc83d-3220-4837-804e-d0b36e4e2fe8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd061c7c2c0>]}
+[0m20:01:16.794562 [info ] [Thread-1 (]: 1 of 1 OK created sql table model `analytics`.`mart_weekend_vs_weekday` ........ [[32mOK[0m in 0.47s]
+[0m20:01:16.795814 [debug] [Thread-1 (]: Finished running node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m20:01:16.799801 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m20:01:16.800496 [debug] [MainThread]: Connection 'model.nyc_taxi_warehouse.mart_weekend_vs_weekday' was left open.
+[0m20:01:16.801172 [debug] [MainThread]: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: Close
+[0m20:01:16.802089 [info ] [MainThread]: 
+[0m20:01:16.802832 [info ] [MainThread]: Finished running 1 table model in 0 hours 0 minutes and 1.48 seconds (1.48s).
+[0m20:01:16.804368 [debug] [MainThread]: Command end result
+[0m20:01:16.855308 [info ] [MainThread]: 
+[0m20:01:16.856195 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m20:01:16.856968 [info ] [MainThread]: 
+[0m20:01:16.857798 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[0m20:01:16.859610 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 2.3653753, "process_user_time": 4.108623, "process_kernel_time": 0.45691, "process_mem_max_rss": "187060", "process_out_blocks": "2224", "process_in_blocks": "0"}
+[0m20:01:16.860750 [debug] [MainThread]: Command `dbt run` succeeded at 20:01:16.860482 after 2.37 seconds
+[0m20:01:16.861606 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd0608bb7a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd060001130>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fd041225070>]}
+[0m20:01:16.862364 [debug] [MainThread]: Flushing usage events
+[0m20:04:42.094324 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7bc41b4650>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7bc4f2a300>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7bc44aeae0>]}
+
+
+============================== 20:04:42.099722 | a9393270-c8e8-4ce9-8a42-77ae984f603f ==============================
+[0m20:04:42.099722 [info ] [MainThread]: Running with dbt=1.8.3
+[0m20:04:42.100743 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '.', 'debug': 'False', 'warn_error': 'None', 'log_path': '/home/poridhian/code/datalake-management/project1/dbt_project/logs', 'version_check': 'True', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'log_format': 'default', 'invocation_command': 'dbt run --select mart_weekend_vs_weekday --profiles-dir .', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m20:04:42.376346 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'a9393270-c8e8-4ce9-8a42-77ae984f603f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7bc5ded250>]}
+[0m20:04:42.472161 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'a9393270-c8e8-4ce9-8a42-77ae984f603f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7bc3dd2e70>]}
+[0m20:04:42.473323 [info ] [MainThread]: Registered adapter: clickhouse=1.8.1
+[0m20:04:42.586164 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m20:04:42.747719 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m20:04:42.748702 [debug] [MainThread]: Partial parsing: updated file: nyc_taxi_warehouse://models/marts/mart_weekend_vs_weekday.sql
+[0m20:04:43.046894 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `tests` config has been renamed to `data_tests`. Please see
+https://docs.getdbt.com/docs/build/data-tests#new-data_tests-syntax for more
+information.
+[0m20:04:43.047556 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': 'a9393270-c8e8-4ce9-8a42-77ae984f603f', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7bc3cd9010>]}
+[0m20:04:43.272638 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- seeds.nyc_taxi_warehouse.taxi_zone_lookup
+[0m20:04:43.289384 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'a9393270-c8e8-4ce9-8a42-77ae984f603f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7bc2c26060>]}
+[0m20:04:43.422883 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'a9393270-c8e8-4ce9-8a42-77ae984f603f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7bc38714c0>]}
+[0m20:04:43.423522 [info ] [MainThread]: Found 6 models, 19 data tests, 2 sources, 456 macros
+[0m20:04:43.424150 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'a9393270-c8e8-4ce9-8a42-77ae984f603f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7bc3e159a0>]}
+[0m20:04:43.426886 [info ] [MainThread]: 
+[0m20:04:43.427744 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m20:04:43.429605 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list_'
+[0m20:04:43.458815 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m20:04:44.366674 [debug] [ThreadPool]: dbt_clickhouse adapter: On list_: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list_"} */
+
+    select name from system.databases
+  ...
+[0m20:04:44.374476 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m20:04:44.443665 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_, now list__analytics)
+[0m20:04:44.456352 [debug] [ThreadPool]: dbt_clickhouse adapter: On list__analytics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list__analytics"} */
+select
+      t.name as name,
+      t.database as schema,
+      multiIf(
+        engine in ('MaterializedView', 'View'), 'view',
+        engine = 'Dictionary', 'dictionary',
+        'table'
+      ) as type,
+      db.engine as db_engine,0 as is_on_cluster
+          from system.tables as t join system.databases as db on t.database = db.name
+        where schema = 'analytics'
+      
+
+  ...
+[0m20:04:44.469546 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m20:04:44.477899 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'a9393270-c8e8-4ce9-8a42-77ae984f603f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7bc2cce720>]}
+[0m20:04:44.479774 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m20:04:44.481282 [info ] [MainThread]: 
+[0m20:04:44.489748 [debug] [Thread-1 (]: Began running node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m20:04:44.492154 [info ] [Thread-1 (]: 1 of 1 START sql table model `analytics`.`mart_weekend_vs_weekday` ............. [RUN]
+[0m20:04:44.493939 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list__analytics, now model.nyc_taxi_warehouse.mart_weekend_vs_weekday)
+[0m20:04:44.495314 [debug] [Thread-1 (]: Began compiling node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m20:04:44.518778 [debug] [Thread-1 (]: Writing injected SQL for node "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"
+[0m20:04:44.520984 [debug] [Thread-1 (]: Began executing node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m20:04:44.636788 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+            
+
+    
+        create table `analytics`.`mart_weekend_vs_weekday__dbt_backup`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            select
+    case
+        when pickup_day_of_week in (6, 7) then 'Weekend'
+        else 'Weekday'
+    end as day_type,
+    fare_amount,
+    tip_amount,
+    trip_distance,
+    trip_duration_minutes
+from `analytics`.`int_taxi_trips_enriched`
+group by day_type
+order by day_type
+          )
+        ...
+[0m20:04:44.646331 [debug] [Thread-1 (]: dbt_clickhouse adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+            
+
+    
+        create table `analytics`.`mart_weekend_vs_weekday__dbt_backup`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            select
+    case
+        when pickup_day_of_week in (6, 7) then 'Weekend'
+        else 'Weekday'
+    end as day_type,
+    fare_amount,
+    tip_amount,
+    trip_distance,
+    trip_duration_minutes
+from `analytics`.`int_taxi_trips_enriched`
+group by day_type
+order by day_type
+          )
+        
+[0m20:04:44.664022 [debug] [Thread-1 (]: Database Error in model mart_weekend_vs_weekday (models/marts/mart_weekend_vs_weekday.sql)
+  HTTPDriver for http://localhost:8123 returned response code 500)
+   Code: 215. DB::Exception: Column analytics.int_taxi_trips_enriched.fare_amount is not under aggregate function and not in GROUP BY keys. In query SELECT multiIf(pickup_day_of_week IN (6, 7), 'Weekend', 'Weekday') AS day_type, fare_amount, tip_amount, trip_distance, trip_duration_minutes FROM analytics.int_taxi_trips_enriched GROUP BY day_type ORDER BY day_type ASC. (NOT_AN_AGGREGATE) (version 24.3.18.7 (official build))
+[0m20:04:44.668505 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'a9393270-c8e8-4ce9-8a42-77ae984f603f', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7b87950680>]}
+[0m20:04:44.670692 [error] [Thread-1 (]: 1 of 1 ERROR creating sql table model `analytics`.`mart_weekend_vs_weekday` .... [[31mERROR[0m in 0.17s]
+[0m20:04:44.672888 [debug] [Thread-1 (]: Finished running node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m20:04:44.679070 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m20:04:44.680608 [debug] [MainThread]: Connection 'model.nyc_taxi_warehouse.mart_weekend_vs_weekday' was left open.
+[0m20:04:44.681912 [debug] [MainThread]: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: Close
+[0m20:04:44.683323 [info ] [MainThread]: 
+[0m20:04:44.684853 [info ] [MainThread]: Finished running 1 table model in 0 hours 0 minutes and 1.26 seconds (1.26s).
+[0m20:04:44.687381 [debug] [MainThread]: Command end result
+[0m20:04:44.765991 [info ] [MainThread]: 
+[0m20:04:44.767093 [info ] [MainThread]: [31mCompleted with 1 error and 0 warnings:[0m
+[0m20:04:44.768030 [info ] [MainThread]: 
+[0m20:04:44.769106 [error] [MainThread]:   Database Error in model mart_weekend_vs_weekday (models/marts/mart_weekend_vs_weekday.sql)
+  HTTPDriver for http://localhost:8123 returned response code 500)
+   Code: 215. DB::Exception: Column analytics.int_taxi_trips_enriched.fare_amount is not under aggregate function and not in GROUP BY keys. In query SELECT multiIf(pickup_day_of_week IN (6, 7), 'Weekend', 'Weekday') AS day_type, fare_amount, tip_amount, trip_distance, trip_duration_minutes FROM analytics.int_taxi_trips_enriched GROUP BY day_type ORDER BY day_type ASC. (NOT_AN_AGGREGATE) (version 24.3.18.7 (official build))
+[0m20:04:44.770067 [info ] [MainThread]: 
+[0m20:04:44.771013 [info ] [MainThread]: Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1
+[0m20:04:44.773126 [debug] [MainThread]: Resource report: {"command_name": "run", "command_wall_clock_time": 2.7650936, "process_user_time": 4.853138, "process_kernel_time": 0.564096, "process_mem_max_rss": "190592", "process_out_blocks": "3240", "command_success": false, "process_in_blocks": "0"}
+[0m20:04:44.774718 [debug] [MainThread]: Command `dbt run` failed at 20:04:44.774443 after 2.77 seconds
+[0m20:04:44.775732 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7bc4977cb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7bc41b4650>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f7bc2c7c7a0>]}
+[0m20:04:44.776682 [debug] [MainThread]: Flushing usage events
+[0m20:06:36.683137 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f73daab4e30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f73daab4800>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f73daab47a0>]}
+
+
+============================== 20:06:36.687478 | bb1788a1-9ef1-4251-83d4-c165d1504434 ==============================
+[0m20:06:36.687478 [info ] [MainThread]: Running with dbt=1.8.3
+[0m20:06:36.688341 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '.', 'debug': 'False', 'warn_error': 'None', 'log_path': '/home/poridhian/code/datalake-management/project1/dbt_project/logs', 'version_check': 'True', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'introspect': 'True', 'invocation_command': 'dbt run --select mart_weekend_vs_weekday --profiles-dir .', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m20:06:36.905151 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'bb1788a1-9ef1-4251-83d4-c165d1504434', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f73daba4c50>]}
+[0m20:06:36.981278 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'bb1788a1-9ef1-4251-83d4-c165d1504434', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f73da9fb260>]}
+[0m20:06:36.982231 [info ] [MainThread]: Registered adapter: clickhouse=1.8.1
+[0m20:06:37.077219 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m20:06:37.245739 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m20:06:37.246708 [debug] [MainThread]: Partial parsing: updated file: nyc_taxi_warehouse://models/marts/mart_weekend_vs_weekday.sql
+[0m20:06:37.547913 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `tests` config has been renamed to `data_tests`. Please see
+https://docs.getdbt.com/docs/build/data-tests#new-data_tests-syntax for more
+information.
+[0m20:06:37.548595 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': 'bb1788a1-9ef1-4251-83d4-c165d1504434', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f73dab205c0>]}
+[0m20:06:37.775560 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- seeds.nyc_taxi_warehouse.taxi_zone_lookup
+[0m20:06:37.792192 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'bb1788a1-9ef1-4251-83d4-c165d1504434', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f73da430980>]}
+[0m20:06:37.933843 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'bb1788a1-9ef1-4251-83d4-c165d1504434', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f73d984e060>]}
+[0m20:06:37.934664 [info ] [MainThread]: Found 6 models, 19 data tests, 2 sources, 456 macros
+[0m20:06:37.935283 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'bb1788a1-9ef1-4251-83d4-c165d1504434', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f73da2fa780>]}
+[0m20:06:37.938133 [info ] [MainThread]: 
+[0m20:06:37.939125 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m20:06:37.940653 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list_'
+[0m20:06:37.963007 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m20:06:38.899959 [debug] [ThreadPool]: dbt_clickhouse adapter: On list_: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list_"} */
+
+    select name from system.databases
+  ...
+[0m20:06:38.906996 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m20:06:38.976981 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_, now list__analytics)
+[0m20:06:38.997093 [debug] [ThreadPool]: dbt_clickhouse adapter: On list__analytics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list__analytics"} */
+select
+      t.name as name,
+      t.database as schema,
+      multiIf(
+        engine in ('MaterializedView', 'View'), 'view',
+        engine = 'Dictionary', 'dictionary',
+        'table'
+      ) as type,
+      db.engine as db_engine,0 as is_on_cluster
+          from system.tables as t join system.databases as db on t.database = db.name
+        where schema = 'analytics'
+      
+
+  ...
+[0m20:06:39.013742 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.02 seconds
+[0m20:06:39.022420 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'bb1788a1-9ef1-4251-83d4-c165d1504434', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f73daab6300>]}
+[0m20:06:39.024336 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m20:06:39.025723 [info ] [MainThread]: 
+[0m20:06:39.033502 [debug] [Thread-1 (]: Began running node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m20:06:39.035446 [info ] [Thread-1 (]: 1 of 1 START sql table model `analytics`.`mart_weekend_vs_weekday` ............. [RUN]
+[0m20:06:39.037202 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list__analytics, now model.nyc_taxi_warehouse.mart_weekend_vs_weekday)
+[0m20:06:39.038712 [debug] [Thread-1 (]: Began compiling node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m20:06:39.062520 [debug] [Thread-1 (]: Writing injected SQL for node "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"
+[0m20:06:39.064635 [debug] [Thread-1 (]: Began executing node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m20:06:39.175535 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+            
+
+    
+        create table `analytics`.`mart_weekend_vs_weekday__dbt_backup`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            select
+    case
+        when pickup_day_of_week in (6, 7) then 'Weekend'
+        else 'Weekday'
+    end as day_type
+from `analytics`.`int_taxi_trips_enriched`
+group by day_type
+order by day_type
+          )
+        ...
+[0m20:06:39.189924 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m20:06:39.206291 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+    select name, type from system.columns where table = 'mart_weekend_vs_weekday__dbt_backup'
+    
+      and database = 'analytics'
+    
+    order by position
+  ...
+[0m20:06:39.214782 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m20:06:39.221315 [debug] [Thread-1 (]: Writing runtime sql for node "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"
+[0m20:06:39.222753 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+  
+    
+    
+    
+        
+        insert into `analytics`.`mart_weekend_vs_weekday__dbt_backup`
+        ("day_type")select
+    case
+        when pickup_day_of_week in (6, 7) then 'Weekend'
+        else 'Weekday'
+    end as day_type
+from `analytics`.`int_taxi_trips_enriched`
+group by day_type
+order by day_type
+  ...
+[0m20:06:39.272188 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.05 seconds
+[0m20:06:39.280582 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+EXCHANGE TABLES `analytics`.`mart_weekend_vs_weekday__dbt_backup` AND `analytics`.`mart_weekend_vs_weekday` 
+  
+  ...
+[0m20:06:39.285536 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m20:06:39.327960 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+    drop table if exists `analytics`.`mart_weekend_vs_weekday__dbt_backup` 
+  ...
+[0m20:06:39.332305 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m20:06:39.338351 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'bb1788a1-9ef1-4251-83d4-c165d1504434', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f73c819a930>]}
+[0m20:06:39.339507 [info ] [Thread-1 (]: 1 of 1 OK created sql table model `analytics`.`mart_weekend_vs_weekday` ........ [[32mOK[0m in 0.30s]
+[0m20:06:39.340807 [debug] [Thread-1 (]: Finished running node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m20:06:39.344449 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m20:06:39.345605 [debug] [MainThread]: Connection 'model.nyc_taxi_warehouse.mart_weekend_vs_weekday' was left open.
+[0m20:06:39.346695 [debug] [MainThread]: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: Close
+[0m20:06:39.348007 [info ] [MainThread]: 
+[0m20:06:39.349184 [info ] [MainThread]: Finished running 1 table model in 0 hours 0 minutes and 1.41 seconds (1.41s).
+[0m20:06:39.351844 [debug] [MainThread]: Command end result
+[0m20:06:39.423285 [info ] [MainThread]: 
+[0m20:06:39.424229 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m20:06:39.425052 [info ] [MainThread]: 
+[0m20:06:39.425947 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[0m20:06:39.427819 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 2.813365, "process_user_time": 4.598334, "process_kernel_time": 0.55419, "process_mem_max_rss": "190400", "process_out_blocks": "3248", "process_in_blocks": "0"}
+[0m20:06:39.429165 [debug] [MainThread]: Command `dbt run` succeeded at 20:06:39.428892 after 2.81 seconds
+[0m20:06:39.430130 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f73dad70f50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f73da44b590>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f739e83d940>]}
+[0m20:06:39.430947 [debug] [MainThread]: Flushing usage events
+[0m20:06:51.879428 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f544c45d400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f544dc0e990>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f544bcc88c0>]}
+
+
+============================== 20:06:51.888129 | c5a46544-516e-474a-ba90-b06ed830b2f6 ==============================
+[0m20:06:51.888129 [info ] [MainThread]: Running with dbt=1.8.3
+[0m20:06:51.890033 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '.', 'debug': 'False', 'fail_fast': 'False', 'log_path': '/home/poridhian/code/datalake-management/project1/dbt_project/logs', 'version_check': 'True', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'invocation_command': 'dbt test --select mart_weekend_vs_weekday --profiles-dir .', 'introspect': 'True', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m20:06:52.183063 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'c5a46544-516e-474a-ba90-b06ed830b2f6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f544d871730>]}
+[0m20:06:52.278971 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'c5a46544-516e-474a-ba90-b06ed830b2f6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f544bfea180>]}
+[0m20:06:52.280163 [info ] [MainThread]: Registered adapter: clickhouse=1.8.1
+[0m20:06:52.398393 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m20:06:52.578972 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m20:06:52.579624 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m20:06:52.588404 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- seeds.nyc_taxi_warehouse.taxi_zone_lookup
+[0m20:06:52.642822 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'c5a46544-516e-474a-ba90-b06ed830b2f6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f544b9d8ec0>]}
+[0m20:06:52.795880 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'c5a46544-516e-474a-ba90-b06ed830b2f6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f544b8f0140>]}
+[0m20:06:52.796594 [info ] [MainThread]: Found 6 models, 19 data tests, 2 sources, 456 macros
+[0m20:06:52.797202 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'c5a46544-516e-474a-ba90-b06ed830b2f6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f544b753650>]}
+[0m20:06:52.799966 [info ] [MainThread]: 
+[0m20:06:52.800840 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m20:06:52.809532 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list__analytics'
+[0m20:06:52.843627 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m20:06:53.595875 [debug] [ThreadPool]: dbt_clickhouse adapter: On list__analytics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list__analytics"} */
+select
+      t.name as name,
+      t.database as schema,
+      multiIf(
+        engine in ('MaterializedView', 'View'), 'view',
+        engine = 'Dictionary', 'dictionary',
+        'table'
+      ) as type,
+      db.engine as db_engine,0 as is_on_cluster
+          from system.tables as t join system.databases as db on t.database = db.name
+        where schema = 'analytics'
+      
+
+  ...
+[0m20:06:53.603855 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m20:06:53.644450 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'c5a46544-516e-474a-ba90-b06ed830b2f6', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f544b30a630>]}
+[0m20:06:53.646135 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m20:06:53.647302 [info ] [MainThread]: 
+[0m20:06:53.653185 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_day_type.cf167b71d1
+[0m20:06:53.654691 [info ] [Thread-1 (]: 1 of 3 START test not_null_mart_weekend_vs_weekday_day_type .................... [RUN]
+[0m20:06:53.656167 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list__analytics, now test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_day_type.cf167b71d1)
+[0m20:06:53.657484 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_day_type.cf167b71d1
+[0m20:06:53.703822 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_day_type.cf167b71d1"
+[0m20:06:53.705386 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_day_type.cf167b71d1
+[0m20:06:53.732986 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_day_type.cf167b71d1"
+[0m20:06:53.734234 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_day_type.cf167b71d1: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_day_type.cf167b71d1"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select day_type
+from `analytics`.`mart_weekend_vs_weekday`
+where day_type is null
+
+
+
+    ) dbt_internal_test...
+[0m20:06:53.742368 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m20:06:53.755050 [info ] [Thread-1 (]: 1 of 3 PASS not_null_mart_weekend_vs_weekday_day_type .......................... [[32mPASS[0m in 0.10s]
+[0m20:06:53.756964 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_day_type.cf167b71d1
+[0m20:06:53.758422 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_total_trips.921851b43a
+[0m20:06:53.759907 [info ] [Thread-1 (]: 2 of 3 START test not_null_mart_weekend_vs_weekday_total_trips ................. [RUN]
+[0m20:06:53.761318 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_day_type.cf167b71d1, now test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_total_trips.921851b43a)
+[0m20:06:53.762629 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_total_trips.921851b43a
+[0m20:06:53.772951 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_total_trips.921851b43a"
+[0m20:06:53.774708 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_total_trips.921851b43a
+[0m20:06:53.783156 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_total_trips.921851b43a"
+[0m20:06:53.784982 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_total_trips.921851b43a: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_total_trips.921851b43a"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select total_trips
+from `analytics`.`mart_weekend_vs_weekday`
+where total_trips is null
+
+
+
+    ) dbt_internal_test...
+[0m20:06:53.794839 [debug] [Thread-1 (]: dbt_clickhouse adapter: Error running SQL: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_total_trips.921851b43a"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select total_trips
+from `analytics`.`mart_weekend_vs_weekday`
+where total_trips is null
+
+
+
+    ) dbt_internal_test
+[0m20:06:53.805300 [debug] [Thread-1 (]: Database Error in test not_null_mart_weekend_vs_weekday_total_trips (models/marts/_marts.yml)
+  HTTPDriver for http://localhost:8123 returned response code 404)
+   Code: 47. DB::Exception: Unknown expression identifier 'total_trips' in scope SELECT total_trips FROM analytics.mart_weekend_vs_weekday WHERE total_trips IS NULL. (UNKNOWN_IDENTIFIER) (version 24.3.18.7 (official build))
+  compiled code at target/run/nyc_taxi_warehouse/models/marts/_marts.yml/not_null_mart_weekend_vs_weekday_total_trips.sql
+[0m20:06:53.806875 [error] [Thread-1 (]: 2 of 3 ERROR not_null_mart_weekend_vs_weekday_total_trips ...................... [[31mERROR[0m in 0.05s]
+[0m20:06:53.808676 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_total_trips.921851b43a
+[0m20:06:53.810021 [debug] [Thread-1 (]: Began running node test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6
+[0m20:06:53.813183 [info ] [Thread-1 (]: 3 of 3 START test unique_mart_weekend_vs_weekday_day_type ...................... [RUN]
+[0m20:06:53.814610 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.nyc_taxi_warehouse.not_null_mart_weekend_vs_weekday_total_trips.921851b43a, now test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6)
+[0m20:06:53.815731 [debug] [Thread-1 (]: Began compiling node test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6
+[0m20:06:53.831277 [debug] [Thread-1 (]: Writing injected SQL for node "test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6"
+[0m20:06:53.832672 [debug] [Thread-1 (]: Began executing node test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6
+[0m20:06:53.837094 [debug] [Thread-1 (]: Writing runtime sql for node "test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6"
+[0m20:06:53.838598 [debug] [Thread-1 (]: dbt_clickhouse adapter: On test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6"} */
+
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    day_type as unique_field,
+    count(*) as n_records
+
+from `analytics`.`mart_weekend_vs_weekday`
+where day_type is not null
+group by day_type
+having count(*) > 1
+
+
+
+    ) dbt_internal_test...
+[0m20:06:53.852430 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m20:06:53.857300 [info ] [Thread-1 (]: 3 of 3 PASS unique_mart_weekend_vs_weekday_day_type ............................ [[32mPASS[0m in 0.04s]
+[0m20:06:53.859299 [debug] [Thread-1 (]: Finished running node test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6
+[0m20:06:53.863062 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m20:06:53.864238 [debug] [MainThread]: Connection 'test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6' was left open.
+[0m20:06:53.865647 [debug] [MainThread]: On test.nyc_taxi_warehouse.unique_mart_weekend_vs_weekday_day_type.65b40af2d6: Close
+[0m20:06:53.867020 [info ] [MainThread]: 
+[0m20:06:53.868286 [info ] [MainThread]: Finished running 3 data tests in 0 hours 0 minutes and 1.07 seconds (1.07s).
+[0m20:06:53.871362 [debug] [MainThread]: Command end result
+[0m20:06:53.942913 [info ] [MainThread]: 
+[0m20:06:53.943916 [info ] [MainThread]: [31mCompleted with 1 error and 0 warnings:[0m
+[0m20:06:53.944740 [info ] [MainThread]: 
+[0m20:06:53.945795 [error] [MainThread]:   Database Error in test not_null_mart_weekend_vs_weekday_total_trips (models/marts/_marts.yml)
+  HTTPDriver for http://localhost:8123 returned response code 404)
+   Code: 47. DB::Exception: Unknown expression identifier 'total_trips' in scope SELECT total_trips FROM analytics.mart_weekend_vs_weekday WHERE total_trips IS NULL. (UNKNOWN_IDENTIFIER) (version 24.3.18.7 (official build))
+  compiled code at target/run/nyc_taxi_warehouse/models/marts/_marts.yml/not_null_mart_weekend_vs_weekday_total_trips.sql
+[0m20:06:53.946717 [info ] [MainThread]: 
+[0m20:06:53.947594 [info ] [MainThread]: Done. PASS=2 WARN=0 ERROR=1 SKIP=0 TOTAL=3
+[0m20:06:53.949440 [debug] [MainThread]: Resource report: {"command_name": "test", "command_wall_clock_time": 2.1392276, "process_user_time": 4.069574, "process_kernel_time": 0.430881, "process_mem_max_rss": "187860", "process_out_blocks": "2264", "command_success": false, "process_in_blocks": "0"}
+[0m20:06:53.950585 [debug] [MainThread]: Command `dbt test` failed at 20:06:53.950340 after 2.14 seconds
+[0m20:06:53.951460 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f544c45d400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f544c80b140>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f544f8bb3e0>]}
+[0m20:06:53.952309 [debug] [MainThread]: Flushing usage events
+[0m20:08:57.374104 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1fa1ed0b30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1fa0ada180>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1fa0e26270>]}
+
+
+============================== 20:08:57.378021 | 4500f0a4-4043-4869-8bad-32ebdba98c7b ==============================
+[0m20:08:57.378021 [info ] [MainThread]: Running with dbt=1.8.3
+[0m20:08:57.378852 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'version_check': 'True', 'log_path': '/home/poridhian/code/datalake-management/project1/dbt_project/logs', 'fail_fast': 'False', 'profiles_dir': '.', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'static_parser': 'True', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'invocation_command': 'dbt run --select mart_weekend_vs_weekday --profiles-dir .', 'send_anonymous_usage_stats': 'True'}
+[0m20:08:57.594781 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '4500f0a4-4043-4869-8bad-32ebdba98c7b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1f9fd4f860>]}
+[0m20:08:57.671572 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '4500f0a4-4043-4869-8bad-32ebdba98c7b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1fa11d1df0>]}
+[0m20:08:57.672501 [info ] [MainThread]: Registered adapter: clickhouse=1.8.1
+[0m20:08:57.770346 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m20:08:57.934016 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m20:08:57.935108 [debug] [MainThread]: Partial parsing: updated file: nyc_taxi_warehouse://models/marts/mart_weekend_vs_weekday.sql
+[0m20:08:58.246358 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `tests` config has been renamed to `data_tests`. Please see
+https://docs.getdbt.com/docs/build/data-tests#new-data_tests-syntax for more
+information.
+[0m20:08:58.247239 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': '4500f0a4-4043-4869-8bad-32ebdba98c7b', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1f9fd4f6b0>]}
+[0m20:08:58.472338 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- seeds.nyc_taxi_warehouse.taxi_zone_lookup
+[0m20:08:58.490121 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '4500f0a4-4043-4869-8bad-32ebdba98c7b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1f9f822de0>]}
+[0m20:08:58.625611 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '4500f0a4-4043-4869-8bad-32ebdba98c7b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1f9ec312b0>]}
+[0m20:08:58.626284 [info ] [MainThread]: Found 6 models, 19 data tests, 2 sources, 456 macros
+[0m20:08:58.626897 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '4500f0a4-4043-4869-8bad-32ebdba98c7b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1f9eb81700>]}
+[0m20:08:58.629502 [info ] [MainThread]: 
+[0m20:08:58.630295 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m20:08:58.632011 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list_'
+[0m20:08:58.659298 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m20:08:59.501061 [debug] [ThreadPool]: dbt_clickhouse adapter: On list_: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list_"} */
+
+    select name from system.databases
+  ...
+[0m20:08:59.508269 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m20:08:59.577154 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_, now list__analytics)
+[0m20:08:59.595978 [debug] [ThreadPool]: dbt_clickhouse adapter: On list__analytics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list__analytics"} */
+select
+      t.name as name,
+      t.database as schema,
+      multiIf(
+        engine in ('MaterializedView', 'View'), 'view',
+        engine = 'Dictionary', 'dictionary',
+        'table'
+      ) as type,
+      db.engine as db_engine,0 as is_on_cluster
+          from system.tables as t join system.databases as db on t.database = db.name
+        where schema = 'analytics'
+      
+
+  ...
+[0m20:08:59.610605 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m20:08:59.618935 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '4500f0a4-4043-4869-8bad-32ebdba98c7b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1f69603050>]}
+[0m20:08:59.620750 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m20:08:59.622097 [info ] [MainThread]: 
+[0m20:08:59.629806 [debug] [Thread-1 (]: Began running node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m20:08:59.631725 [info ] [Thread-1 (]: 1 of 1 START sql view model `analytics`.`mart_weekend_vs_weekday` .............. [RUN]
+[0m20:08:59.633296 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list__analytics, now model.nyc_taxi_warehouse.mart_weekend_vs_weekday)
+[0m20:08:59.634665 [debug] [Thread-1 (]: Began compiling node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m20:08:59.656923 [debug] [Thread-1 (]: Writing injected SQL for node "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"
+[0m20:08:59.659000 [debug] [Thread-1 (]: Began executing node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m20:08:59.728211 [debug] [Thread-1 (]: Writing runtime sql for node "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"
+[0m20:08:59.729975 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+
+  create view `analytics`.`mart_weekend_vs_weekday__dbt_backup` 
+  
+    
+    
+  as (
+    
+select
+    case
+        when pickup_day_of_week in (6, 7) then 'Weekend'
+        else 'Weekday'
+    end                                      as day_type,
+    count(*)                                 as total_trips,
+    round(avg(fare_amount), 2)               as avg_fare,
+    round(avg(tip_amount), 2)                as avg_tip,
+    round(avg(trip_distance), 2)             as avg_distance,
+    round(avg(trip_duration_minutes), 2)     as avg_duration_minutes
+from `analytics`.`int_taxi_trips_enriched`
+group by day_type
+order by day_type
+  )
+      
+      
+                    -- end_of_sql
+                    
+                    ...
+[0m20:08:59.741038 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m20:08:59.748676 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+EXCHANGE TABLES `analytics`.`mart_weekend_vs_weekday__dbt_backup` AND `analytics`.`mart_weekend_vs_weekday` 
+  
+  ...
+[0m20:08:59.753490 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m20:08:59.797943 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+    drop table if exists `analytics`.`mart_weekend_vs_weekday__dbt_backup` 
+  ...
+[0m20:08:59.802369 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m20:08:59.807787 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '4500f0a4-4043-4869-8bad-32ebdba98c7b', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1f69737f80>]}
+[0m20:08:59.808905 [info ] [Thread-1 (]: 1 of 1 OK created sql view model `analytics`.`mart_weekend_vs_weekday` ......... [[32mOK[0m in 0.17s]
+[0m20:08:59.810106 [debug] [Thread-1 (]: Finished running node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m20:08:59.813216 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m20:08:59.814398 [debug] [MainThread]: Connection 'model.nyc_taxi_warehouse.mart_weekend_vs_weekday' was left open.
+[0m20:08:59.815537 [debug] [MainThread]: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: Close
+[0m20:08:59.816804 [info ] [MainThread]: 
+[0m20:08:59.818021 [info ] [MainThread]: Finished running 1 view model in 0 hours 0 minutes and 1.19 seconds (1.19s).
+[0m20:08:59.820125 [debug] [MainThread]: Command end result
+[0m20:08:59.893456 [info ] [MainThread]: 
+[0m20:08:59.894431 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m20:08:59.895250 [info ] [MainThread]: 
+[0m20:08:59.896084 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[0m20:08:59.897952 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 2.5910802, "process_user_time": 4.409496, "process_kernel_time": 0.478305, "process_mem_max_rss": "190388", "process_out_blocks": "3248", "process_in_blocks": "0"}
+[0m20:08:59.899009 [debug] [MainThread]: Command `dbt run` succeeded at 20:08:59.898771 after 2.59 seconds
+[0m20:08:59.899851 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1f9ff80200>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1f9f7e1ac0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f1fa023b350>]}
+[0m20:08:59.900666 [debug] [MainThread]: Flushing usage events
+[0m20:09:52.864748 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f338ffdd1f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f338efbfa40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f338f2df830>]}
+
+
+============================== 20:09:52.868996 | 1ac4c301-b9a6-4ecc-a404-1a2d844d90b2 ==============================
+[0m20:09:52.868996 [info ] [MainThread]: Running with dbt=1.8.3
+[0m20:09:52.869875 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '.', 'fail_fast': 'False', 'warn_error': 'None', 'log_path': '/home/poridhian/code/datalake-management/project1/dbt_project/logs', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt run --select mart_weekend_vs_weekday --profiles-dir .', 'introspect': 'True', 'static_parser': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m20:09:53.088455 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '1ac4c301-b9a6-4ecc-a404-1a2d844d90b2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f338ffa9bb0>]}
+[0m20:09:53.168290 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '1ac4c301-b9a6-4ecc-a404-1a2d844d90b2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f338eb8b710>]}
+[0m20:09:53.169305 [info ] [MainThread]: Registered adapter: clickhouse=1.8.1
+[0m20:09:53.270775 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m20:09:53.436327 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m20:09:53.437214 [debug] [MainThread]: Partial parsing: updated file: nyc_taxi_warehouse://models/marts/mart_weekend_vs_weekday.sql
+[0m20:09:53.755694 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+The `tests` config has been renamed to `data_tests`. Please see
+https://docs.getdbt.com/docs/build/data-tests#new-data_tests-syntax for more
+information.
+[0m20:09:53.756589 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': '1ac4c301-b9a6-4ecc-a404-1a2d844d90b2', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f338e49bce0>]}
+[0m20:09:53.997061 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- seeds.nyc_taxi_warehouse.taxi_zone_lookup
+[0m20:09:54.014961 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '1ac4c301-b9a6-4ecc-a404-1a2d844d90b2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f338e55acc0>]}
+[0m20:09:54.169841 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '1ac4c301-b9a6-4ecc-a404-1a2d844d90b2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f338d809400>]}
+[0m20:09:54.171054 [info ] [MainThread]: Found 6 models, 19 data tests, 2 sources, 456 macros
+[0m20:09:54.171718 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '1ac4c301-b9a6-4ecc-a404-1a2d844d90b2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f338e50a7b0>]}
+[0m20:09:54.174914 [info ] [MainThread]: 
+[0m20:09:54.176156 [debug] [MainThread]: Acquiring new clickhouse connection 'master'
+[0m20:09:54.178294 [debug] [ThreadPool]: Acquiring new clickhouse connection 'list_'
+[0m20:09:54.195606 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m20:09:54.900931 [debug] [ThreadPool]: dbt_clickhouse adapter: On list_: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list_"} */
+
+    select name from system.databases
+  ...
+[0m20:09:54.907284 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m20:09:54.968084 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_, now list__analytics)
+[0m20:09:54.986330 [debug] [ThreadPool]: dbt_clickhouse adapter: On list__analytics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "connection_name": "list__analytics"} */
+select
+      t.name as name,
+      t.database as schema,
+      multiIf(
+        engine in ('MaterializedView', 'View'), 'view',
+        engine = 'Dictionary', 'dictionary',
+        'table'
+      ) as type,
+      db.engine as db_engine,0 as is_on_cluster
+          from system.tables as t join system.databases as db on t.database = db.name
+        where schema = 'analytics'
+      
+
+  ...
+[0m20:09:54.998849 [debug] [ThreadPool]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m20:09:55.006746 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '1ac4c301-b9a6-4ecc-a404-1a2d844d90b2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3352ce74a0>]}
+[0m20:09:55.008351 [info ] [MainThread]: Concurrency: 1 threads (target='dev')
+[0m20:09:55.009570 [info ] [MainThread]: 
+[0m20:09:55.016099 [debug] [Thread-1 (]: Began running node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m20:09:55.017806 [info ] [Thread-1 (]: 1 of 1 START sql table model `analytics`.`mart_weekend_vs_weekday` ............. [RUN]
+[0m20:09:55.019227 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list__analytics, now model.nyc_taxi_warehouse.mart_weekend_vs_weekday)
+[0m20:09:55.020527 [debug] [Thread-1 (]: Began compiling node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m20:09:55.041492 [debug] [Thread-1 (]: Writing injected SQL for node "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"
+[0m20:09:55.043376 [debug] [Thread-1 (]: Began executing node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m20:09:55.159745 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+            
+
+    
+        create table `analytics`.`mart_weekend_vs_weekday__dbt_tmp`
+        
+  
+        
+  engine = MergeTree()
+        
+      order by (tuple())
+        
+        
+        
+        
+                    -- end_of_sql
+                    SETTINGS  replicated_deduplication_window=0
+
+                    
+            empty
+          as (
+            select
+    case
+        when pickup_day_of_week in (6, 7) then 'Weekend'
+        else 'Weekday'
+    end                                      as day_type,
+    count(*)                                 as total_trips,
+    round(avg(fare_amount), 2)               as avg_fare,
+    round(avg(tip_amount), 2)                as avg_tip,
+    round(avg(trip_distance), 2)             as avg_distance,
+    round(avg(trip_duration_minutes), 2)     as avg_duration_minutes
+from `analytics`.`int_taxi_trips_enriched`
+group by day_type
+order by day_type
+          )
+        ...
+[0m20:09:55.174259 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m20:09:55.190572 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+    select name, type from system.columns where table = 'mart_weekend_vs_weekday__dbt_tmp'
+    
+      and database = 'analytics'
+    
+    order by position
+  ...
+[0m20:09:55.197371 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.01 seconds
+[0m20:09:55.208417 [debug] [Thread-1 (]: Writing runtime sql for node "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"
+[0m20:09:55.210365 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+  
+    
+    
+    
+        
+        insert into `analytics`.`mart_weekend_vs_weekday__dbt_tmp`
+        ("day_type", "total_trips", "avg_fare", "avg_tip", "avg_distance", "avg_duration_minutes")select
+    case
+        when pickup_day_of_week in (6, 7) then 'Weekend'
+        else 'Weekday'
+    end                                      as day_type,
+    count(*)                                 as total_trips,
+    round(avg(fare_amount), 2)               as avg_fare,
+    round(avg(tip_amount), 2)                as avg_tip,
+    round(avg(trip_distance), 2)             as avg_distance,
+    round(avg(trip_duration_minutes), 2)     as avg_duration_minutes
+from `analytics`.`int_taxi_trips_enriched`
+group by day_type
+order by day_type
+  ...
+[0m20:09:55.347607 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.14 seconds
+[0m20:09:55.368142 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+    drop table if exists `analytics`.`mart_weekend_vs_weekday__dbt_backup` 
+  
+  ...
+[0m20:09:55.372866 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m20:09:55.375035 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+    rename table `analytics`.`mart_weekend_vs_weekday` to `analytics`.`mart_weekend_vs_weekday__dbt_backup` 
+  
+  ...
+[0m20:09:55.379297 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m20:09:55.384676 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+    drop table if exists `analytics`.`mart_weekend_vs_weekday` 
+  
+  ...
+[0m20:09:55.388482 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m20:09:55.390615 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+    rename table `analytics`.`mart_weekend_vs_weekday__dbt_tmp` to `analytics`.`mart_weekend_vs_weekday` 
+  
+  ...
+[0m20:09:55.395127 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m20:09:55.444223 [debug] [Thread-1 (]: dbt_clickhouse adapter: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "nyc_taxi_warehouse", "target_name": "dev", "node_id": "model.nyc_taxi_warehouse.mart_weekend_vs_weekday"} */
+
+    drop table if exists `analytics`.`mart_weekend_vs_weekday__dbt_backup` 
+  ...
+[0m20:09:55.448639 [debug] [Thread-1 (]: dbt_clickhouse adapter: SQL status: OK in 0.00 seconds
+[0m20:09:55.459807 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1ac4c301-b9a6-4ecc-a404-1a2d844d90b2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f338e4e7260>]}
+[0m20:09:55.462206 [info ] [Thread-1 (]: 1 of 1 OK created sql table model `analytics`.`mart_weekend_vs_weekday` ........ [[32mOK[0m in 0.44s]
+[0m20:09:55.464320 [debug] [Thread-1 (]: Finished running node model.nyc_taxi_warehouse.mart_weekend_vs_weekday
+[0m20:09:55.468684 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m20:09:55.469858 [debug] [MainThread]: Connection 'model.nyc_taxi_warehouse.mart_weekend_vs_weekday' was left open.
+[0m20:09:55.470935 [debug] [MainThread]: On model.nyc_taxi_warehouse.mart_weekend_vs_weekday: Close
+[0m20:09:55.472676 [info ] [MainThread]: 
+[0m20:09:55.473966 [info ] [MainThread]: Finished running 1 table model in 0 hours 0 minutes and 1.30 seconds (1.30s).
+[0m20:09:55.476294 [debug] [MainThread]: Command end result
+[0m20:09:55.537095 [info ] [MainThread]: 
+[0m20:09:55.538005 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m20:09:55.538726 [info ] [MainThread]: 
+[0m20:09:55.539475 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[0m20:09:55.541374 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 2.7462146, "process_user_time": 4.58288, "process_kernel_time": 0.443553, "process_mem_max_rss": "190672", "process_out_blocks": "3256", "process_in_blocks": "0"}
+[0m20:09:55.542394 [debug] [MainThread]: Command `dbt run` succeeded at 20:09:55.542183 after 2.75 seconds
+[0m20:09:55.543183 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3392baf3b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f3392baf3e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f338efeac30>]}
+[0m20:09:55.543944 [debug] [MainThread]: Flushing usage events
