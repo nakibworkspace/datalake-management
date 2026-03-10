@@ -52,6 +52,26 @@ ENGINE = MergeTree()
 ORDER BY LocationID;
 SQLEOF
 
+# ─── clickhouse/prometheus.xml ────────────────────────────────
+echo "==> Writing clickhouse/prometheus.xml"
+cat > clickhouse/prometheus.xml << 'EOF'
+<clickhouse>
+    <http_handlers>
+        <defaults/>
+        <rule>
+            <url>/metrics</url>
+            <methods>GET</methods>
+            <handler>
+                <type>prometheus</type>
+                <metrics>true</metrics>
+                <events>true</events>
+                <asynchronous_metrics>true</asynchronous_metrics>
+            </handler>
+        </rule>
+    </http_handlers>
+</clickhouse>
+EOF
+
 # ─── prometheus/prometheus.yml ─────────────────────────────────
 echo "==> Writing prometheus/prometheus.yml"
 cat > prometheus/prometheus.yml << 'EOF'
@@ -61,8 +81,9 @@ global:
 
 scrape_configs:
   - job_name: "clickhouse"
+    metrics_path: "/metrics"
     static_configs:
-      - targets: ["clickhouse-exporter:9116"]
+      - targets: ["clickhouse:8123"]
 
   - job_name: "prometheus"
     static_configs:
@@ -546,5 +567,17 @@ group by payment_type
 order by total_trips desc
 EOF
 
+# ─── .gitignore ──────────────────────────────────────────────
+echo "==> Writing .gitignore"
+cat > .gitignore << 'EOF'
+# Virtual environment
+venv/
+
+# Downloaded data (keep the download script, ignore the actual data files)
+data/*.csv
+data/*.parquet
+EOF
+
 echo ""
 echo "==> Setup complete! All files and directories created."
+
