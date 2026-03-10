@@ -1,0 +1,141 @@
+{
+  "annotations": { "list": [] },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "gridPos": { "h": 4, "w": 6, "x": 0, "y": 0 },
+      "id": 1,
+      "title": "Total Trips",
+      "type": "stat",
+      "datasource": { "type": "grafana-clickhouse-datasource", "uid": "" },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": { "mode": "absolute", "steps": [{ "color": "blue", "value": null }] },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "options": { "colorMode": "value", "graphMode": "none", "justifyMode": "auto", "textMode": "auto", "reduceOptions": { "calcs": ["lastNotNull"] } },
+      "targets": [{ "queryType": "sql", "rawSql": "SELECT sum(total_trips) as total_trips FROM analytics.mart_borough_metrics", "refId": "A" }]
+    },
+    {
+      "gridPos": { "h": 4, "w": 6, "x": 6, "y": 0 },
+      "id": 2,
+      "title": "Avg Fare",
+      "type": "stat",
+      "datasource": { "type": "grafana-clickhouse-datasource", "uid": "" },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": null }] },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "options": { "colorMode": "value", "graphMode": "none", "justifyMode": "auto", "textMode": "auto", "reduceOptions": { "calcs": ["lastNotNull"] } },
+      "targets": [{ "queryType": "sql", "rawSql": "SELECT round(sum(avg_fare * total_trips) / sum(total_trips), 2) as avg_fare FROM analytics.mart_borough_metrics", "refId": "A" }]
+    },
+    {
+      "gridPos": { "h": 4, "w": 6, "x": 12, "y": 0 },
+      "id": 3,
+      "title": "Avg Tip",
+      "type": "stat",
+      "datasource": { "type": "grafana-clickhouse-datasource", "uid": "" },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": { "mode": "absolute", "steps": [{ "color": "orange", "value": null }] },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "options": { "colorMode": "value", "graphMode": "none", "justifyMode": "auto", "textMode": "auto", "reduceOptions": { "calcs": ["lastNotNull"] } },
+      "targets": [{ "queryType": "sql", "rawSql": "SELECT round(sum(avg_tip * total_trips) / sum(total_trips), 2) as avg_tip FROM analytics.mart_borough_metrics", "refId": "A" }]
+    },
+    {
+      "gridPos": { "h": 4, "w": 6, "x": 18, "y": 0 },
+      "id": 4,
+      "title": "Total Revenue",
+      "type": "stat",
+      "datasource": { "type": "grafana-clickhouse-datasource", "uid": "" },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": { "mode": "absolute", "steps": [{ "color": "purple", "value": null }] },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "options": { "colorMode": "value", "graphMode": "none", "justifyMode": "auto", "textMode": "auto", "reduceOptions": { "calcs": ["lastNotNull"] } },
+      "targets": [{ "queryType": "sql", "rawSql": "SELECT sum(total_revenue) as total_revenue FROM analytics.mart_borough_metrics", "refId": "A" }]
+    },
+    {
+      "gridPos": { "h": 10, "w": 12, "x": 0, "y": 4 },
+      "id": 5,
+      "title": "Trips & Avg Tip by Borough",
+      "type": "barchart",
+      "datasource": { "type": "grafana-clickhouse-datasource", "uid": "" },
+      "fieldConfig": {
+        "defaults": { "unit": "short" },
+        "overrides": [{ "matcher": { "id": "byName", "options": "avg_tip" }, "properties": [{ "id": "unit", "value": "currencyUSD" }, { "id": "custom.axisPlacement", "value": "right" }] }]
+      },
+      "options": { "orientation": "horizontal", "showValue": "auto", "barWidth": 0.8 },
+      "targets": [{ "queryType": "sql", "rawSql": "SELECT pickup_borough, total_trips, avg_tip FROM analytics.mart_borough_metrics ORDER BY total_trips DESC", "refId": "A" }]
+    },
+    {
+      "gridPos": { "h": 10, "w": 12, "x": 12, "y": 4 },
+      "id": 6,
+      "title": "Hourly Trip Demand",
+      "type": "barchart",
+      "datasource": { "type": "grafana-clickhouse-datasource", "uid": "" },
+      "fieldConfig": { "defaults": { "unit": "short" }, "overrides": [] },
+      "options": { "orientation": "vertical", "showValue": "auto", "barWidth": 0.8 },
+      "targets": [{ "queryType": "sql", "rawSql": "SELECT concat('Hour ', toString(pickup_hour)) as hour, total_trips FROM analytics.mart_hourly_demand ORDER BY pickup_hour", "refId": "A" }]
+    },
+    {
+      "gridPos": { "h": 10, "w": 12, "x": 0, "y": 14 },
+      "id": 7,
+      "title": "Revenue by Payment Type",
+      "type": "piechart",
+      "datasource": { "type": "grafana-clickhouse-datasource", "uid": "" },
+      "fieldConfig": { "defaults": { "unit": "currencyUSD" }, "overrides": [] },
+      "options": { "pieType": "donut", "legend": { "displayMode": "table", "placement": "right" } },
+      "targets": [{ "queryType": "sql", "rawSql": "SELECT payment_type_name, total_revenue FROM analytics.mart_payment_summary ORDER BY total_revenue DESC", "refId": "A" }]
+    },
+    {
+      "gridPos": { "h": 10, "w": 12, "x": 12, "y": 14 },
+      "id": 8,
+      "title": "Avg Fare & Distance by Hour",
+      "type": "barchart",
+      "datasource": { "type": "grafana-clickhouse-datasource", "uid": "" },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": [
+          { "matcher": { "id": "byName", "options": "avg_fare" }, "properties": [{ "id": "unit", "value": "currencyUSD" }] },
+          { "matcher": { "id": "byName", "options": "avg_distance" }, "properties": [{ "id": "unit", "value": "lengthmi" }] }
+        ]
+      },
+      "options": { "orientation": "vertical", "showValue": "auto", "barWidth": 0.8 },
+      "targets": [{ "queryType": "sql", "rawSql": "SELECT concat('Hour ', toString(pickup_hour)) as hour, avg_fare, avg_distance FROM analytics.mart_hourly_demand ORDER BY pickup_hour", "refId": "A" }]
+    },
+    {
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 24 },
+      "id": 9,
+      "title": "ClickHouse - Queries per Second",
+      "type": "timeseries",
+      "datasource": { "type": "prometheus", "uid": "" },
+      "fieldConfig": { "defaults": { "unit": "ops" }, "overrides": [] },
+      "targets": [{ "expr": "rate(ClickHouseProfileEvents_Query[5m])", "legendFormat": "Queries/sec", "refId": "A" }]
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": ["nyc-taxi", "data-warehouse"],
+  "templating": { "list": [] },
+  "time": { "from": "now-1h", "to": "now" },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "NYC Taxi Analytics",
+  "uid": "nyc-taxi-analytics",
+  "version": 1
+}

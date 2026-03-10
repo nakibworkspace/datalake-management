@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: int_taxi_trips_enriched
+    description: >
+      Taxi trips enriched with borough/zone names and trip duration.
+      Filtered to remove invalid records.
+    columns:
+      - name: pickup_borough
+        data_tests:
+          - not_null
+      - name: dropoff_borough
+        data_tests:
+          - not_null
+      - name: trip_duration_minutes
+        description: Duration of trip in minutes

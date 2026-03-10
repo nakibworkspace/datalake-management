@@ -1,0 +1,33 @@
+name: nyc_taxi_warehouse
+version: "1.0.0"
+config-version: 2
+
+profile: nyc_taxi_warehouse
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+analysis-paths: ["analyses"]
+macro-paths: ["macros"]
+
+clean-targets:
+  - target
+  - dbt_packages
+
+seeds:
+  nyc_taxi_warehouse:
+    taxi_zone_lookup:
+      +column_types:
+        LocationID: Int32
+        Borough: String
+        Zone: String
+        service_zone: String
+
+models:
+  nyc_taxi_warehouse:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: table
+    marts:
+      +materialized: table

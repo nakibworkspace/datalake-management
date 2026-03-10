@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: mart_borough_metrics
+    description: Aggregated trip metrics per pickup borough
+    columns:
+      - name: pickup_borough
+        data_tests:
+          - not_null
+          - unique
+      - name: total_trips
+        data_tests:
+          - not_null
+
+  - name: mart_hourly_demand
+    description: Trip volume and metrics by hour of day
+    columns:
+      - name: pickup_hour
+        data_tests:
+          - not_null
+          - unique
+
+  - name: mart_payment_summary
+    description: Revenue and trip breakdown by payment type
+    columns:
+      - name: payment_type_name
+        data_tests:
+          - not_null
+          - unique
