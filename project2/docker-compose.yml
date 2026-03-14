@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  warehouse-db:
+    image: timescale/timescaledb:latest-pg16
+    container_name: taxi_warehouse
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - warehouse_data:/var/lib/postgresql/data
+      - ./config/postgresql.conf:/etc/postgresql/custom.conf
+      - ./sql:/docker-entrypoint-initdb.d/sql
+      - ./scripts/init-runner.sh:/docker-entrypoint-initdb.d/00-init-runner.sh
+    command: postgres -c config_file=/etc/postgresql/custom.conf
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-warehouse_admin}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  loader:
+    image: python:3.11-slim
+    container_name: taxi_loader
+    depends_on:
+      warehouse-db:
+        condition: service_healthy
+    env_file: .env
+    environment:
+      - POSTGRES_HOST=warehouse-db
+      - POSTGRES_PORT_INTERNAL=5432
+    volumes:
+      - ./scripts/load_data.py:/app/load_data.py
+      - ./requirements.txt:/app/requirements.txt
+    working_dir: /app
+    command: >
+      bash -c "
+        apt-get update -qq && apt-get install -y -qq postgresql-client > /dev/null 2>&1 &&
+        pip install -q -r requirements.txt &&
+        python load_data.py
+      "
+
+volumes:
+  warehouse_data:
+    driver: local
