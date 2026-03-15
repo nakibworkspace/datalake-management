@@ -1,0 +1,51 @@
+services:
+
+  # ── Spark Master ──
+  spark-master:
+    build:
+      context: ./spark
+      dockerfile: Dockerfile
+    container_name: lab02-spark-master
+    ports:
+      - "8080:8080"    # Spark Master UI
+      - "7077:7077"    # Spark Master port
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8080 > /dev/null 2>&1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Spark Worker ──
+  spark-worker:
+    build:
+      context: ./spark
+      dockerfile: Dockerfile
+    container_name: lab02-spark-worker
+    depends_on:
+      spark-master:
+        condition: service_healthy
+    ports:
+      - "8081:8081"    # Worker UI
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
+    environment:
+      SPARK_WORKER_CORES: 2
+      SPARK_WORKER_MEMORY: 2g
+
+  # ── Pipeline Runner (runs ingest / process / query scripts) ──
+  pipeline:
+    build:
+      context: ./spark
+      dockerfile: Dockerfile
+    container_name: lab02-pipeline
+    depends_on:
+      spark-master:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      SPARK_MASTER_URL: spark://spark-master:7077
+    volumes:
+      - ./scripts:/app/scripts:ro
+    working_dir: /app
+    entrypoint: ["tail", "-f", "/dev/null"]   # keep alive for exec
