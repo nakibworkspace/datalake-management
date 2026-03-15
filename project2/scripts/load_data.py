@@ -61,6 +61,7 @@ def load_zones():
 
     conn = get_conn()
     cur = conn.cursor()
+    cur.execute("TRUNCATE dim_zones CASCADE;")
     buf = io.StringIO()
     df.to_csv(buf, index=False, header=False)
     buf.seek(0)
@@ -98,6 +99,7 @@ def load_trips(url):
     ]
 
     # Handle nulls
+    df["passenger_count"] = df["passenger_count"].fillna(1).astype(int)
     df["rate_code_id"] = df["rate_code_id"].fillna(99).astype(int)
     df["vendor_id"] = df["vendor_id"].fillna(1).astype(int)
     df["payment_type"] = df["payment_type"].fillna(5).astype(int)
